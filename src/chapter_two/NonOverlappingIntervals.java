@@ -1,6 +1,5 @@
 package chapter_two;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
