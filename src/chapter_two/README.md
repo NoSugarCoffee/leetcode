@@ -53,7 +53,7 @@
 连续 n 个 0 -> 可种 (n+1)/2 朵花
 ```
 
-## 贪心策略 (TODO)
+### 贪心策略 (TODO)
 遍历，能种就种（在可种的时候不种都不会得到更优解）
 
 ## [minimum-number-of-arrows-to-burst-balloons](https://leetcode-cn.com/problems/minimum-number-of-arrows-to-burst-balloons/)
