@@ -2,13 +2,13 @@
 
 待补充
 
-目录
-=================
+# 目录
 * [<a href="https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/" rel="nofollow">167. Two Sum II - Input array is sorted</a>](#two-sum-ii---input-array-is-sorted)
 * [<a href="https://leetcode.com/problems/merge-sorted-array/" rel="nofollow">88. Merge Sorted Array</a>](#88-merge-sorted-array)
 * [<a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/" rel="nofollow">142. linked-list-cycle-ii</a>](#142-linked-list-cycle-ii)
    * [哈希法](#哈希法)
    * [快慢指针](#快慢指针)
+* [<a href="https://leetcode-cn.com/problems/minimum-window-substring/" rel="nofollow">76. minimum-window-substring</a>](#76-minimum-window-substring-1)
 
 
 
@@ -22,26 +22,38 @@
 
 ## [142. linked-list-cycle-ii](https://leetcode-cn.com/problems/linked-list-cycle-ii/)
 
-### 哈希法
+1. 哈希法
 
-该思路比较直接也比较简单, 后续在补充
+    该思路比较直接也比较简单, 后续在补充
 
-### 快慢指针
-该思路比较有趣, 具体如下:
+1. 快慢指针
+    
+    该思路比较有趣, 具体如下:
+    
+    若存在环时, 遍历永不结束。慢指针每次走 1 步, 快指针每次走 2 步, 成环时快指针总是能追上慢指针
+    
+    那么如何知道入口点, 由已知关系得:
 
-若存在环时, 遍历永不结束。慢指针每次走 1 步, 快指针每次走 2 步, 成环时快指针总是能追上慢指针
-那么如何知道入口点, 由已知关系得:
+    ![](https://assets.leetcode-cn.com/solution-static/142/142_fig1.png)
 
-![](https://assets.leetcode-cn.com/solution-static/142/142_fig1.png)
-
-```
-快指针路径长 = 2 倍慢指针的路径 = n 圈路径长 + a + b
-
-2(a+b) = a+b+(b+c)*n 
-   a+b = (b+c)n
-     a = (b+c)n-b
-     a = (b+c)(n-1)+c
-   
-从相遇点到入环点的距离加上 n-1 圈的环长，恰好等于从链表头部到入环点的距离
-```
+    ```
+      快指针路径长 = 2 倍慢指针的路径 = n 圈路径长 + a + b
+      
+      2(a+b) = a+b+(b+c)*n 
+         a+b = (b+c)n
+           a = (b+c)n-b
+           a = (b+c)(n-1)+c
+         
+      从相遇点到入环点的距离加上 n-1 圈的环长，恰好等于从链表头部到入环点的距离
+    ```
 在表头新建指针与 slow 同步移动, 相交处即为入口点
+
+## [76. minimum-window-substring](https://leetcode-cn.com/problems/minimum-window-substring/)
+
+1. 暴力法
+ 
+1. 滑动窗口
+
+    原字符 ori（s），以及需要包含的字符串 need（t），[l,r) 代表当前窗口，r 右滑直至满足条件，此时通过 l 右滑，可能找到最优解，重复直到结束。
+
+    
