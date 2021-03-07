@@ -5,4 +5,4 @@
 
 - [贪心算法](https://github.com/NoSugarCoffee/leetcode/blob/main/src/chapter_two/README.md)
 - [双指针](https://github.com/NoSugarCoffee/leetcode/tree/main/src/chapter_three/README.md)
-- [二分查找]()
+- [二分查找](https://github.com/NoSugarCoffee/leetcode/blob/main/src/chapter_four/README.md)
