@@ -1,4 +1,4 @@
-package chapter_two;
+package greedy;
 
 import java.util.Arrays;
 
@@ -14,7 +14,6 @@ public class AssignCookies {
       // ascending
       Arrays.sort(cookies);
       Arrays.sort(appetites);
-
 
       int counter = 0;
 

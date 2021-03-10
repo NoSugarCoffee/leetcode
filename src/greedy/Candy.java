@@ -1,6 +1,6 @@
 // Copyright 2021 Leyantech Ltd. All Rights Reserved.
 
-package chapter_two;
+package greedy;
 
 import java.util.Arrays;
 import java.util.Optional;

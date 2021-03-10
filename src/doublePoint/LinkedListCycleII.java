@@ -1,16 +1,20 @@
-package chapter_three;
+package doublePoint;
 
 class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) {
-        val = x;
-        next = null;
-    }
+
+  int val;
+  ListNode next;
+
+  ListNode(int x) {
+    val = x;
+    next = null;
+  }
 }
 
 public class LinkedListCycleII {
+
   public class Solution {
+
     public ListNode detectCycle(ListNode head) {
       ListNode slow, fast, find;
       try {
@@ -20,9 +24,9 @@ public class LinkedListCycleII {
       } catch (NullPointerException e) {
         return null;
       }
-      while(fast != null) {
-        if (fast==slow) {
-          while(find!=slow) {
+      while (fast != null) {
+        if (fast == slow) {
+          while (find != slow) {
             find = find.next;
             slow = slow.next;
           }
@@ -30,7 +34,7 @@ public class LinkedListCycleII {
         }
         fast = fast.next;
         slow = slow.next;
-        if (fast!=null) {
+        if (fast != null) {
           fast = fast.next;
         } else {
           return null;
