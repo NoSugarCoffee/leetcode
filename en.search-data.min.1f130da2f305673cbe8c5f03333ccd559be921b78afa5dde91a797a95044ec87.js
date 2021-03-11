@@ -1,1 +1,0 @@
-'use strict';(function(){const a={cache:!0};a.doc={id:'id',field:['title','content'],store:['title','href','section']};const b=FlexSearch.create('balance',a);window.bookSearchIndex=b,b.add({id:0,href:'/NoSugarCoffee/leetcode/posts/readme/',title:"Readme",section:"Posts",content:"算法分类 #   贪心 双指针 二分查找 排序  "})})()

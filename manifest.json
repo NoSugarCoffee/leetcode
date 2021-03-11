@@ -1,14 +1,14 @@
 {
   "name": "LeetCode solutions",
   "short_name": "LeetCode solutions",
-  "start_url": "/NoSugarCoffee/leetcode/",
-  "scope": "/NoSugarCoffee/leetcode/",
+  "start_url": "/leetcode/",
+  "scope": "/leetcode/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "/NoSugarCoffee/leetcode/favicon.svg",
+      "src": "/leetcode/favicon.svg",
       "sizes": "512x512"
     }
   ]
