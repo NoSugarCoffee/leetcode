@@ -1,4 +1,7 @@
-baseURL = "http://example.org/"
+baseURL = "https://github.com/NoSugarCoffee/leetcode"
 languageCode = "en-us"
-title = "My New Hugo Site"
-theme = "ananke"
+title = "LeetCode solutions"
+theme = "book"
+
+[params]
+  BookSection = '*'
