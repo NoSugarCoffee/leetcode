@@ -1,0 +1,7 @@
+baseURL = "https://github.com/NoSugarCoffee/leetcode"
+languageCode = "en-us"
+title = "LeetCode solutions"
+theme = "book"
+
+[params]
+  BookSection = '*'
