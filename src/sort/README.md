@@ -2,10 +2,38 @@
 
 ## 快速排序
 
-https://wiki.jikexueyuan.com/project/easy-learn-algorithm/fast-sort.html
-
 ## 冒泡排序
 
 ## 选择排序
 
 ## 归并排序
+
+## 插入排序
+
+### 两数的交换
+排序过程中经常会使用到两个数值的交换，常用的，我们会使用 temp variable 作为媒介，如：
+
+```
+  t = a;
+  a = b;
+  b = t;
+```
+
+有没有不耗费空间，或者更快的方式呢？
+1. 数值运算交换两个元素
+
+  ```
+    a = a + b   // a1 = a + b
+    b = a - b   // b = a1 - b -> b = a
+    a = a - b   // a = a1 - b -> a = a1 - a -> a = b
+  ```
+
+1. 异或运算交换两个元素
+
+  ```
+    a = a ^ b   // a1 = a ^ b
+    b = a ^ b   // b = a1 ^ b -> a ^ b ^ b = a
+    a = a ^ b   // a = a1 ^ b -> a ^ b ^ a = b
+  ```
+
+
