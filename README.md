@@ -1,4 +1,4 @@
-## readme
-This repo is leetcode solutions writing in java, using hugo / github pages render for friendly view
+## Leetcode
+This repo is leetcode solutions writing in java. Rendered by hugo / github pages.
 
-see https://github.com/NoSugarCoffee/leetcode 
+you can visit [here](https://nosugarcoffee.github.io/leetcode) for reading
