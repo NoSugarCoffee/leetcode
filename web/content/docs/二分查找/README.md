@@ -1,3 +1,8 @@
+---
+weight: 3
+title: "二分查找"
+---
+
 # 二分查找
 
 ## [Sqrt(x)](https://leetcode.com/problems/sqrtx/)

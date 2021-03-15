@@ -1,4 +1,9 @@
-# 贪心算法
+---
+weight: 1
+title: "贪心"
+---
+
+# 贪心
 
 ## [AssignCookies](https://leetcode-cn.com/problems/assign-cookies/submissions/)
 
