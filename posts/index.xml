@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on LeetCode solutions</title><link>https://nosugarcoffee.github.io/leetcode/posts/</link><description>Recent content in Posts on LeetCode solutions</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://nosugarcoffee.github.io/leetcode/posts/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://nosugarcoffee.github.io/leetcode/posts/readme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nosugarcoffee.github.io/leetcode/posts/readme/</guid><description>算法分类 # 贪心 双指针 二分查找 排序</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on LeetCode Cookbook</title>
+    <link>https://books.halfrost.com/leetcode/posts/</link>
+    <description>Recent content in Posts on LeetCode Cookbook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://books.halfrost.com/leetcode/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://books.halfrost.com/leetcode/posts/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://books.halfrost.com/leetcode/posts/readme/</guid>
+      <description>分类 #   贪心算法 双指针 二分查找 排序  </description>
+    </item>
+    
+  </channel>
+</rss>
