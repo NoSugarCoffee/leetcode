@@ -1,15 +1,72 @@
-<!doctype html><html lang=en dir=ltr><head><meta name=generator content="Hugo 0.81.0"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="双指针 #  待补充
-目录 #   167. Two Sum II - Input array is sorted 88. Merge Sorted Array 142. linked-list-cycle-ii  哈希法 快慢指针   76. minimum-window-substring  167. Two Sum II - Input array is sorted #  由于数组升序排列, 分别使用指针 ps 指向数组开头, 指针 pe 指向数组末尾, 当 array[ps] + array[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target
-88. Merge Sorted Array #  开辟足够大的 nums3, p1、p2 分别指向两个有序数组初始位置, 储存当前指针指向的较小值至 nums3 且移动指针, 相等则任选"><meta name=theme-color content="#FFFFFF"><meta property="og:title" content="排序"><meta property="og:description" content="双指针 #  待补充
-目录 #   167. Two Sum II - Input array is sorted 88. Merge Sorted Array 142. linked-list-cycle-ii  哈希法 快慢指针   76. minimum-window-substring  167. Two Sum II - Input array is sorted #  由于数组升序排列, 分别使用指针 ps 指向数组开头, 指针 pe 指向数组末尾, 当 array[ps] + array[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target
-88. Merge Sorted Array #  开辟足够大的 nums3, p1、p2 分别指向两个有序数组初始位置, 储存当前指针指向的较小值至 nums3 且移动指针, 相等则任选"><meta property="og:type" content="article"><meta property="og:url" content="https://nosugarcoffee.github.io/leetcode/docs/%E5%8F%8C%E6%8C%87%E9%92%88/readme/"><meta property="article:section" content="docs"><title>排序 | LeetCode solutions</title><link rel=manifest href=/leetcode/manifest.json><link rel=icon href=/leetcode/favicon.png type=image/x-icon><link rel=stylesheet href=/leetcode/book.min.2bc2364a4a4b31f0ec1debecf0a8f90a840821f143dfe1ac6a0f7cbcbdcf64ac.css integrity="sha256-K8I2SkpLMfDsHevs8Kj5CoQIIfFD3+Gsag98vL3PZKw="><script defer src=/leetcode/en.search.min.cfdfd463c1c61cf72a57492bad8649b3db481d9568328ef3a6b9769449f06cb6.js integrity="sha256-z9/UY8HGHPcqV0krrYZJs9tIHZVoMo7zprl2lEnwbLY="></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a href=/leetcode><span>LeetCode solutions</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><span>算法分类</span><ul><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E8%B4%AA%E5%BF%83/readme/>贪心</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%8F%8C%E6%8C%87%E9%92%88/readme/ class=active>排序</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/readme/>二分查找</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E6%8E%92%E5%BA%8F/readme/>排序</a></li></ul></li></ul></nav><script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/leetcode/svg/menu.svg class=book-icon alt=Menu></label>
-<strong>排序</strong>
+<!doctype html><html lang=en dir=ltr><head><meta name=generator content="Hugo 0.82.1"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="双指针 #  167. Two Sum II - Input array is sorted #  由于数组升序排列, 分别使用指针 ps 指向数组开头, 指针 pe 指向数组末尾, 当 array[ps] + array[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target
+// ../../../../src/doublePoint/TwoSumIIInputArrayIsSorted.java  package doublePoint; public class TwoSumIIInputArrayIsSorted { class Solution { public int[] twoSum(int[] numbers, int target) { int ps = 0; int pe = numbers.length - 1; while (ps < pe) { if (numbers[ps] + numbers[pe] == target) { return new int[]{ps + 1, pe + 1}; } else if (numbers[ps] + numbers[pe] > target) { pe--; } else { ps++; } } return new int[]{-1, -1}; } } } 88."><meta name=theme-color content="#FFFFFF"><meta property="og:title" content="双指针"><meta property="og:description" content="双指针 #  167. Two Sum II - Input array is sorted #  由于数组升序排列, 分别使用指针 ps 指向数组开头, 指针 pe 指向数组末尾, 当 array[ps] + array[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target
+// ../../../../src/doublePoint/TwoSumIIInputArrayIsSorted.java  package doublePoint; public class TwoSumIIInputArrayIsSorted { class Solution { public int[] twoSum(int[] numbers, int target) { int ps = 0; int pe = numbers.length - 1; while (ps < pe) { if (numbers[ps] + numbers[pe] == target) { return new int[]{ps + 1, pe + 1}; } else if (numbers[ps] + numbers[pe] > target) { pe--; } else { ps++; } } return new int[]{-1, -1}; } } } 88."><meta property="og:type" content="article"><meta property="og:url" content="https://nosugarcoffee.github.io/leetcode/docs/%E5%8F%8C%E6%8C%87%E9%92%88/readme/"><meta property="article:section" content="docs"><title>双指针 | LeetCode solutions</title><link rel=manifest href=/leetcode/manifest.json><link rel=icon href=/leetcode/favicon.png type=image/x-icon><link rel=stylesheet href=/leetcode/book.min.2bc2364a4a4b31f0ec1debecf0a8f90a840821f143dfe1ac6a0f7cbcbdcf64ac.css integrity="sha256-K8I2SkpLMfDsHevs8Kj5CoQIIfFD3+Gsag98vL3PZKw="><script defer src=/leetcode/en.search.min.e6a862a1965658cecaf5d3a2ee3eadada4f1f8b03140d05eb079f48f94395fc3.js integrity="sha256-5qhioZZWWM7K9dOi7j6traTx+LAxQNBesHn0j5Q5X8M="></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a href=/leetcode><span>LeetCode solutions</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><span>算法分类</span><ul><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E8%B4%AA%E5%BF%83/readme/>贪心</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%8F%8C%E6%8C%87%E9%92%88/readme/ class=active>双指针</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/readme/>二分查找</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E6%8E%92%E5%BA%8F/readme/>排序</a></li></ul></li></ul></nav><script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/leetcode/svg/menu.svg class=book-icon alt=Menu></label>
+<strong>双指针</strong>
 <label for=toc-control><img src=/leetcode/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#167-two-sum-ii---input-array-is-sortedhttpsleetcode-cncomproblemstwo-sum-ii-input-array-is-sorted><a href=https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/>167. Two Sum II - Input array is sorted</a></a></li><li><a href=#88-merge-sorted-arrayhttpsleetcodecomproblemsmerge-sorted-array><a href=https://leetcode.com/problems/merge-sorted-array/>88. Merge Sorted Array</a></a></li><li><a href=#142-linked-list-cycle-iihttpsleetcode-cncomproblemslinked-list-cycle-ii><a href=https://leetcode-cn.com/problems/linked-list-cycle-ii/>142. linked-list-cycle-ii</a></a></li><li><a href=#76-minimum-window-substringhttpsleetcode-cncomproblemsminimum-window-substring><a href=https://leetcode-cn.com/problems/minimum-window-substring/>76. minimum-window-substring</a></a></li></ul></nav></aside></header><article class=markdown><h1 id=双指针>双指针
-<a class=anchor href=#%e5%8f%8c%e6%8c%87%e9%92%88>#</a></h1><p>待补充</p><h1 id=目录>目录
-<a class=anchor href=#%e7%9b%ae%e5%bd%95>#</a></h1><ul><li><a href=#two-sum-ii---input-array-is-sorted>167. Two Sum II - Input array is sorted</a></li><li><a href=#88-merge-sorted-array>88. Merge Sorted Array</a></li><li><a href=#142-linked-list-cycle-ii>142. linked-list-cycle-ii</a><ul><li><a href=#%e5%93%88%e5%b8%8c%e6%b3%95>哈希法</a></li><li><a href=#%e5%bf%ab%e6%85%a2%e6%8c%87%e9%92%88>快慢指针</a></li></ul></li><li><a href=#76-minimum-window-substring-1>76. minimum-window-substring</a></li></ul><h2 id=167-two-sum-ii---input-array-is-sortedhttpsleetcode-cncomproblemstwo-sum-ii-input-array-is-sorted><a href=https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/>167. Two Sum II - Input array is sorted</a>
-<a class=anchor href=#167-two-sum-ii---input-array-is-sortedhttpsleetcode-cncomproblemstwo-sum-ii-input-array-is-sorted>#</a></h2><p>由于数组升序排列, 分别使用指针 ps 指向数组开头, 指针 pe 指向数组末尾, 当 array[ps] + array[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target</p><h2 id=88-merge-sorted-arrayhttpsleetcodecomproblemsmerge-sorted-array><a href=https://leetcode.com/problems/merge-sorted-array/>88. Merge Sorted Array</a>
-<a class=anchor href=#88-merge-sorted-arrayhttpsleetcodecomproblemsmerge-sorted-array>#</a></h2><p>开辟足够大的 nums3, p1、p2 分别指向两个有序数组初始位置, 储存当前指针指向的较小值至 nums3 且移动指针, 相等则任选</p><h2 id=142-linked-list-cycle-iihttpsleetcode-cncomproblemslinked-list-cycle-ii><a href=https://leetcode-cn.com/problems/linked-list-cycle-ii/>142. linked-list-cycle-ii</a>
+<a class=anchor href=#%e5%8f%8c%e6%8c%87%e9%92%88>#</a></h1><h2 id=167-two-sum-ii---input-array-is-sortedhttpsleetcode-cncomproblemstwo-sum-ii-input-array-is-sorted><a href=https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/>167. Two Sum II - Input array is sorted</a>
+<a class=anchor href=#167-two-sum-ii---input-array-is-sortedhttpsleetcode-cncomproblemstwo-sum-ii-input-array-is-sorted>#</a></h2><p>由于数组升序排列, 分别使用指针 ps 指向数组开头, 指针 pe 指向数组末尾, 当 array[ps] + array[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/doublePoint/TwoSumIIInputArrayIsSorted.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> doublePoint<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>TwoSumIIInputArrayIsSorted</span> <span style=color:#f92672>{</span>
+
+  <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>twoSum</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> numbers<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>int</span> ps <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>int</span> pe <span style=color:#f92672>=</span> numbers<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>ps <span style=color:#f92672>&lt;</span> pe<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>numbers<span style=color:#f92672>[</span>ps<span style=color:#f92672>]</span> <span style=color:#f92672>+</span> numbers<span style=color:#f92672>[</span>pe<span style=color:#f92672>]</span> <span style=color:#f92672>==</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{</span>ps <span style=color:#f92672>+</span> 1<span style=color:#f92672>,</span> pe <span style=color:#f92672>+</span> 1<span style=color:#f92672>};</span>
+        <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>numbers<span style=color:#f92672>[</span>ps<span style=color:#f92672>]</span> <span style=color:#f92672>+</span> numbers<span style=color:#f92672>[</span>pe<span style=color:#f92672>]</span> <span style=color:#f92672>&gt;</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          pe<span style=color:#f92672>--;</span>
+        <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+          ps<span style=color:#f92672>++;</span>
+        <span style=color:#f92672>}</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{-</span>1<span style=color:#f92672>,</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>};</span>
+    <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+</code></pre></div><h2 id=88-merge-sorted-arrayhttpsleetcodecomproblemsmerge-sorted-array><a href=https://leetcode.com/problems/merge-sorted-array/>88. Merge Sorted Array</a>
+<a class=anchor href=#88-merge-sorted-arrayhttpsleetcodecomproblemsmerge-sorted-array>#</a></h2><p>开辟足够大的 nums3, p1、p2 分别指向两个有序数组初始位置, 储存当前指针指向的较小值至 nums3 且移动指针, 相等则任选</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/doublePoint/MergeSortedArray.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> doublePoint<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MergeSortedArray</span> <span style=color:#f92672>{</span>
+
+  <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>merge</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums1<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> m<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums2<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> n<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums3 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[</span>m <span style=color:#f92672>+</span> n<span style=color:#f92672>];</span>
+      <span style=color:#66d9ef>int</span> p1 <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>int</span> p2 <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>int</span> index <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+
+      <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>p1 <span style=color:#f92672>&lt;</span> m <span style=color:#f92672>&amp;&amp;</span> p2 <span style=color:#f92672>&lt;</span> n<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>nums1<span style=color:#f92672>[</span>p1<span style=color:#f92672>]</span> <span style=color:#f92672>&lt;=</span> nums2<span style=color:#f92672>[</span>p2<span style=color:#f92672>])</span> <span style=color:#f92672>{</span>
+          nums3<span style=color:#f92672>[</span>index<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> nums1<span style=color:#f92672>[</span>p1<span style=color:#f92672>];</span>
+          p1<span style=color:#f92672>++;</span>
+        <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+          nums3<span style=color:#f92672>[</span>index<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> nums2<span style=color:#f92672>[</span>p2<span style=color:#f92672>];</span>
+          p2<span style=color:#f92672>++;</span>
+        <span style=color:#f92672>}</span>
+        index<span style=color:#f92672>++;</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#66d9ef>for</span> <span style=color:#f92672>(;</span> p1 <span style=color:#f92672>&lt;</span> m<span style=color:#f92672>;</span> p1<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+        nums3<span style=color:#f92672>[</span>index<span style=color:#f92672>++]</span> <span style=color:#f92672>=</span> nums1<span style=color:#f92672>[</span>p1<span style=color:#f92672>];</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#66d9ef>for</span> <span style=color:#f92672>(;</span> p2 <span style=color:#f92672>&lt;</span> n<span style=color:#f92672>;</span> p2<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+        nums3<span style=color:#f92672>[</span>index<span style=color:#f92672>++]</span> <span style=color:#f92672>=</span> nums2<span style=color:#f92672>[</span>p2<span style=color:#f92672>];</span>
+      <span style=color:#f92672>}</span>
+      System<span style=color:#f92672>.</span><span style=color:#a6e22e>arraycopy</span><span style=color:#f92672>(</span>nums3<span style=color:#f92672>,</span> 0<span style=color:#f92672>,</span> nums1<span style=color:#f92672>,</span> 0<span style=color:#f92672>,</span> m <span style=color:#f92672>+</span> n<span style=color:#f92672>);</span>
+    <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+</code></pre></div><h2 id=142-linked-list-cycle-iihttpsleetcode-cncomproblemslinked-list-cycle-ii><a href=https://leetcode-cn.com/problems/linked-list-cycle-ii/>142. linked-list-cycle-ii</a>
 <a class=anchor href=#142-linked-list-cycle-iihttpsleetcode-cncomproblemslinked-list-cycle-ii>#</a></h2><ol><li><p>哈希法</p><p>该思路比较直接也比较简单, 后续在补充</p></li><li><p>快慢指针</p><p>该思路比较有趣, 具体如下:</p><p>若存在环时, 遍历永不结束。慢指针每次走 1 步, 快指针每次走 2 步, 成环时快指针总是能追上慢指针</p><p>那么如何知道入口点, 由已知关系得:</p><p><img src=https://assets.leetcode-cn.com/solution-static/142/142_fig1.png alt></p><pre><code>  快指针路径长 = 2 倍慢指针的路径 = n 圈路径长 + a + b
      
   2(a+b) = a+b+(b+c)*n 
@@ -18,5 +75,115 @@
        a = (b+c)(n-1)+c
         
   从相遇点到入环点的距离加上 n-1 圈的环长，恰好等于从链表头部到入环点的距离
-</code></pre></li></ol><p>在表头新建指针与 slow 同步移动, 相交处即为入口点</p><h2 id=76-minimum-window-substringhttpsleetcode-cncomproblemsminimum-window-substring><a href=https://leetcode-cn.com/problems/minimum-window-substring/>76. minimum-window-substring</a>
-<a class=anchor href=#76-minimum-window-substringhttpsleetcode-cncomproblemsminimum-window-substring>#</a></h2><ol><li><p>暴力法</p></li><li><p>滑动窗口</p><p>原字符 ori（s），以及需要包含的字符串 need（t），[l,r) 代表当前窗口，r 右滑直至满足条件，此时通过 l 右滑，可能找到最优解，重复直到结束。</p></li></ol></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#167-two-sum-ii---input-array-is-sortedhttpsleetcode-cncomproblemstwo-sum-ii-input-array-is-sorted><a href=https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/>167. Two Sum II - Input array is sorted</a></a></li><li><a href=#88-merge-sorted-arrayhttpsleetcodecomproblemsmerge-sorted-array><a href=https://leetcode.com/problems/merge-sorted-array/>88. Merge Sorted Array</a></a></li><li><a href=#142-linked-list-cycle-iihttpsleetcode-cncomproblemslinked-list-cycle-ii><a href=https://leetcode-cn.com/problems/linked-list-cycle-ii/>142. linked-list-cycle-ii</a></a></li><li><a href=#76-minimum-window-substringhttpsleetcode-cncomproblemsminimum-window-substring><a href=https://leetcode-cn.com/problems/minimum-window-substring/>76. minimum-window-substring</a></a></li></ul></nav></div></aside></main></body></html>
+</code></pre></li></ol><p>在表头新建指针与 slow 同步移动, 相交处即为入口点</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/doublePoint/LinkedListCycleII.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> doublePoint<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ListNode</span> <span style=color:#f92672>{</span>
+
+  <span style=color:#66d9ef>int</span> val<span style=color:#f92672>;</span>
+  ListNode next<span style=color:#f92672>;</span>
+
+  ListNode<span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> x<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    val <span style=color:#f92672>=</span> x<span style=color:#f92672>;</span>
+    next <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>LinkedListCycleII</span> <span style=color:#f92672>{</span>
+
+  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+
+    <span style=color:#66d9ef>public</span> ListNode <span style=color:#a6e22e>detectCycle</span><span style=color:#f92672>(</span>ListNode head<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      ListNode slow<span style=color:#f92672>,</span> fast<span style=color:#f92672>,</span> find<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
+        find <span style=color:#f92672>=</span> head<span style=color:#f92672>;</span>
+        slow <span style=color:#f92672>=</span> head<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
+        fast <span style=color:#f92672>=</span> slow<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
+      <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>NullPointerException e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>fast <span style=color:#f92672>!=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>fast <span style=color:#f92672>==</span> slow<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>find <span style=color:#f92672>!=</span> slow<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            find <span style=color:#f92672>=</span> find<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
+            slow <span style=color:#f92672>=</span> slow<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
+          <span style=color:#f92672>}</span>
+          <span style=color:#66d9ef>return</span> find<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+        fast <span style=color:#f92672>=</span> fast<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
+        slow <span style=color:#f92672>=</span> slow<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>fast <span style=color:#f92672>!=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          fast <span style=color:#f92672>=</span> fast<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+          <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+</code></pre></div><h2 id=76-minimum-window-substringhttpsleetcode-cncomproblemsminimum-window-substring><a href=https://leetcode-cn.com/problems/minimum-window-substring/>76. minimum-window-substring</a>
+<a class=anchor href=#76-minimum-window-substringhttpsleetcode-cncomproblemsminimum-window-substring>#</a></h2><ol><li><p>暴力法</p></li><li><p>滑动窗口</p><p>原字符 ori（s），以及需要包含的字符串 need（t），[l,r) 代表当前窗口，r 右滑直至满足条件，此时通过 l 右滑，可能找到最优解，重复直到结束。</p></li></ol><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/doublePoint/MinimumWindowSubstring.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> doublePoint<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.HashMap<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Iterator<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Map<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Map.Entry<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MinimumWindowSubstring</span> <span style=color:#f92672>{</span>
+
+  <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+
+    <span style=color:#66d9ef>public</span> Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>calc_freq</span><span style=color:#f92672>(</span>String s<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> freq <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;();</span>
+      <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> s<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>();</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+        freq<span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>s<span style=color:#f92672>.</span><span style=color:#a6e22e>charAt</span><span style=color:#f92672>(</span>i<span style=color:#f92672>),</span> freq<span style=color:#f92672>.</span><span style=color:#a6e22e>getOrDefault</span><span style=color:#f92672>(</span>s<span style=color:#f92672>.</span><span style=color:#a6e22e>charAt</span><span style=color:#f92672>(</span>i<span style=color:#f92672>),</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>+</span> 1<span style=color:#f92672>);</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#66d9ef>return</span> freq<span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>check</span><span style=color:#f92672>(</span>Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> window_freq<span style=color:#f92672>,</span> Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> need_freq<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      Iterator<span style=color:#f92672>&lt;</span>Entry<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;&gt;</span> iterator <span style=color:#f92672>=</span> need_freq<span style=color:#f92672>.</span><span style=color:#a6e22e>entrySet</span><span style=color:#f92672>().</span><span style=color:#a6e22e>iterator</span><span style=color:#f92672>();</span>
+      <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>iterator<span style=color:#f92672>.</span><span style=color:#a6e22e>hasNext</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+        Entry<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> next <span style=color:#f92672>=</span> iterator<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>();</span>
+        Character key <span style=color:#f92672>=</span> next<span style=color:#f92672>.</span><span style=color:#a6e22e>getKey</span><span style=color:#f92672>();</span>
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(!(</span>window_freq<span style=color:#f92672>.</span><span style=color:#a6e22e>containsKey</span><span style=color:#f92672>(</span>key<span style=color:#f92672>)</span> <span style=color:#f92672>&amp;&amp;</span> window_freq<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>key<span style=color:#f92672>)</span> <span style=color:#f92672>&gt;=</span> next<span style=color:#f92672>.</span><span style=color:#a6e22e>getValue</span><span style=color:#f92672>()))</span> <span style=color:#f92672>{</span>
+          <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span><span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span><span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>minWindow</span><span style=color:#f92672>(</span>String s<span style=color:#f92672>,</span> String t<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      String ori <span style=color:#f92672>=</span> s<span style=color:#f92672>;</span>
+      String need <span style=color:#f92672>=</span> t<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>int</span> l <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>int</span> r <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+      String result <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&#34;</span><span style=color:#f92672>;</span>
+      Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> needFreq <span style=color:#f92672>=</span> calc_freq<span style=color:#f92672>(</span>need<span style=color:#f92672>);</span>
+      Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> window_frep <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;();</span>
+      <span style=color:#66d9ef>int</span> endIndex <span style=color:#f92672>=</span> ori<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>()</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>r <span style=color:#f92672>&lt;=</span> endIndex<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        window_frep<span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>ori<span style=color:#f92672>.</span><span style=color:#a6e22e>charAt</span><span style=color:#f92672>(</span>r<span style=color:#f92672>),</span> window_frep<span style=color:#f92672>.</span><span style=color:#a6e22e>getOrDefault</span><span style=color:#f92672>(</span>ori<span style=color:#f92672>.</span><span style=color:#a6e22e>charAt</span><span style=color:#f92672>(</span>r<span style=color:#f92672>),</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>+</span> 1<span style=color:#f92672>);</span>
+        <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>check<span style=color:#f92672>(</span>window_frep<span style=color:#f92672>,</span> needFreq<span style=color:#f92672>)</span> <span style=color:#f92672>&amp;&amp;</span> l <span style=color:#f92672>&lt;=</span> r<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span><span style=color:#e6db74>&#34;&#34;</span><span style=color:#f92672>.</span><span style=color:#a6e22e>equals</span><span style=color:#f92672>(</span>result<span style=color:#f92672>))</span> <span style=color:#f92672>{</span>
+            result <span style=color:#f92672>=</span> ori<span style=color:#f92672>.</span><span style=color:#a6e22e>substring</span><span style=color:#f92672>(</span>l<span style=color:#f92672>,</span> r <span style=color:#f92672>+</span> 1<span style=color:#f92672>);</span>
+          <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+            result <span style=color:#f92672>=</span> ori<span style=color:#f92672>.</span><span style=color:#a6e22e>substring</span><span style=color:#f92672>(</span>l<span style=color:#f92672>,</span> r <span style=color:#f92672>+</span> 1<span style=color:#f92672>).</span><span style=color:#a6e22e>length</span><span style=color:#f92672>()</span> <span style=color:#f92672>&lt;</span> result<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>()</span> <span style=color:#f92672>?</span> ori<span style=color:#f92672>.</span><span style=color:#a6e22e>substring</span><span style=color:#f92672>(</span>l<span style=color:#f92672>,</span> r <span style=color:#f92672>+</span> 1<span style=color:#f92672>)</span>
+                <span style=color:#f92672>:</span> result<span style=color:#f92672>;</span>
+          <span style=color:#f92672>}</span>
+          window_frep<span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>ori<span style=color:#f92672>.</span><span style=color:#a6e22e>charAt</span><span style=color:#f92672>(</span>l<span style=color:#f92672>),</span> window_frep<span style=color:#f92672>.</span><span style=color:#a6e22e>getOrDefault</span><span style=color:#f92672>(</span>ori<span style=color:#f92672>.</span><span style=color:#a6e22e>charAt</span><span style=color:#f92672>(</span>l<span style=color:#f92672>),</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>);</span>
+          l<span style=color:#f92672>++;</span>
+        <span style=color:#f92672>}</span>
+        r<span style=color:#f92672>++;</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+</code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#167-two-sum-ii---input-array-is-sortedhttpsleetcode-cncomproblemstwo-sum-ii-input-array-is-sorted><a href=https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/>167. Two Sum II - Input array is sorted</a></a></li><li><a href=#88-merge-sorted-arrayhttpsleetcodecomproblemsmerge-sorted-array><a href=https://leetcode.com/problems/merge-sorted-array/>88. Merge Sorted Array</a></a></li><li><a href=#142-linked-list-cycle-iihttpsleetcode-cncomproblemslinked-list-cycle-ii><a href=https://leetcode-cn.com/problems/linked-list-cycle-ii/>142. linked-list-cycle-ii</a></a></li><li><a href=#76-minimum-window-substringhttpsleetcode-cncomproblemsminimum-window-substring><a href=https://leetcode-cn.com/problems/minimum-window-substring/>76. minimum-window-substring</a></a></li></ul></nav></div></aside></main></body></html>
