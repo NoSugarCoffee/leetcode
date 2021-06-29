@@ -19,8 +19,7 @@ You can visit [here](https://nosugarcoffee.github.io/leetcode) for a happy readi
 
 ## Github Actions
 
-
-- Use [super-linter](https://github.com/github/super-linter) for code lint 
+- Use [super-linter](https://github.com/github/super-linter) for code lint
 
 - Use [actions-hugo](https://github.com/peaceiris/actions-hugo) for pages deploy
 
