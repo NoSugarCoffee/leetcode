@@ -1,4 +1,4 @@
-package com.dll.swardmeansoffer;
+package com.dll.offer;
 
 public class Offer04 {
   class Solution {

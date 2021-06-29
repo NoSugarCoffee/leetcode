@@ -7,9 +7,9 @@ title: "剑指 offer"
 
 
 ```java
-// ../../../../src/swardmeansoffer/Offer04.java
+// ../../../../src/main/java/com/dll/offer/Offer04.java
 
-package swardmeansoffer;
+package com.dll.offer;
 
 public class Offer04 {
   class Solution {
