@@ -1,0 +1,128 @@
+<!doctype html><html lang=en dir=ltr><head><meta name=generator content="Hugo 0.84.2"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="LRU 缓存 #  // ../../../../src/lrucache_146/LRUCache.java  package lrucache_146; import java.util.HashMap; import java.util.Map; public class LRUCache { class DoubleLinkedList { private Map<Integer, Node> map; private Node head; private Node tail; private int size; public int getSize() { return this.size; } private DoubleLinkedList() { head = new Node(null, -1, -1, null); tail = new Node(null, -1, -1, null); head.next = tail; tail.prev = head; this.map = new HashMap<>(); } class Node { int key; int value; Node prev; Node next; Node(Node prev, int key, int value, Node next) { this."><meta name=theme-color content="#FFFFFF"><meta property="og:title" content="LRU 缓存"><meta property="og:description" content="LRU 缓存 #  // ../../../../src/lrucache_146/LRUCache.java  package lrucache_146; import java.util.HashMap; import java.util.Map; public class LRUCache { class DoubleLinkedList { private Map<Integer, Node> map; private Node head; private Node tail; private int size; public int getSize() { return this.size; } private DoubleLinkedList() { head = new Node(null, -1, -1, null); tail = new Node(null, -1, -1, null); head.next = tail; tail.prev = head; this.map = new HashMap<>(); } class Node { int key; int value; Node prev; Node next; Node(Node prev, int key, int value, Node next) { this."><meta property="og:type" content="article"><meta property="og:url" content="https://nosugarcoffee.github.io/leetcode/docs/lru%E7%BC%93%E5%AD%98/readme/"><meta property="article:section" content="docs"><title>LRU 缓存 | LeetCode solutions</title><link rel=manifest href=/leetcode/manifest.json><link rel=icon href=/leetcode/favicon.png type=image/x-icon><link rel=stylesheet href=/leetcode/book.min.2bc2364a4a4b31f0ec1debecf0a8f90a840821f143dfe1ac6a0f7cbcbdcf64ac.css integrity="sha256-K8I2SkpLMfDsHevs8Kj5CoQIIfFD3+Gsag98vL3PZKw="><script defer src=/leetcode/en.search.min.e71778cda008fcac2711e3cc91feb8ee8a2cbefe42795dd0af9fb8838928d250.js integrity="sha256-5xd4zaAI/KwnEePMkf647oosvv5CeV3Qr5+4g4ko0lA="></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a href=/leetcode><span>LeetCode solutions</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><span>算法分类</span><ul><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E8%B4%AA%E5%BF%83/readme/>贪心</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%8F%8C%E6%8C%87%E9%92%88/readme/>双指针</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/lru%E7%BC%93%E5%AD%98/readme/ class=active>LRU 缓存</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/readme/>二分查找</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E6%8E%92%E5%BA%8F/readme/>排序</a></li></ul></li></ul></nav><script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/leetcode/svg/menu.svg class=book-icon alt=Menu></label>
+<strong>LRU 缓存</strong>
+<label for=toc-control><img src=/leetcode/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#lru-缓存httpsleetcode-cncomproblemslru-cache><a href=https://leetcode-cn.com/problems/lru-cache>LRU 缓存</a></a></li></ul></nav></aside></header><article class=markdown><h2 id=lru-缓存httpsleetcode-cncomproblemslru-cache><a href=https://leetcode-cn.com/problems/lru-cache>LRU 缓存</a>
+<a class=anchor href=#lru-%e7%bc%93%e5%ad%98httpsleetcode-cncomproblemslru-cache>#</a></h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/lrucache_146/LRUCache.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> lrucache_146<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.HashMap<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Map<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>LRUCache</span> <span style=color:#f92672>{</span>
+
+  <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DoubleLinkedList</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>private</span> Map<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>,</span> Node<span style=color:#f92672>&gt;</span> map<span style=color:#f92672>;</span>
+    <span style=color:#66d9ef>private</span> Node head<span style=color:#f92672>;</span>
+    <span style=color:#66d9ef>private</span> Node tail<span style=color:#f92672>;</span>
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> size<span style=color:#f92672>;</span>
+
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>getSize</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>private</span> <span style=color:#a6e22e>DoubleLinkedList</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+      head <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Node<span style=color:#f92672>(</span><span style=color:#66d9ef>null</span><span style=color:#f92672>,</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>,</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>,</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>);</span>
+      tail <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Node<span style=color:#f92672>(</span><span style=color:#66d9ef>null</span><span style=color:#f92672>,</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>,</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>,</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>);</span>
+      head<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span> <span style=color:#f92672>=</span> tail<span style=color:#f92672>;</span>
+      tail<span style=color:#f92672>.</span><span style=color:#a6e22e>prev</span> <span style=color:#f92672>=</span> head<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>map</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;();</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Node</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>int</span> key<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>int</span> value<span style=color:#f92672>;</span>
+      Node prev<span style=color:#f92672>;</span>
+      Node next<span style=color:#f92672>;</span>
+
+      Node<span style=color:#f92672>(</span>Node prev<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> key<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> value<span style=color:#f92672>,</span> Node next<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>key</span> <span style=color:#f92672>=</span> key<span style=color:#f92672>;</span>
+        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>prev</span> <span style=color:#f92672>=</span> prev<span style=color:#f92672>;</span>
+        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>value</span> <span style=color:#f92672>=</span> value<span style=color:#f92672>;</span>
+        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>next</span> <span style=color:#f92672>=</span> next<span style=color:#f92672>;</span>
+      <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>containsKey</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> key<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>map</span><span style=color:#f92672>.</span><span style=color:#a6e22e>containsKey</span><span style=color:#f92672>(</span>key<span style=color:#f92672>);</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>public</span> Node <span style=color:#a6e22e>get</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> key<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>map</span><span style=color:#f92672>.</span><span style=color:#a6e22e>getOrDefault</span><span style=color:#f92672>(</span>key<span style=color:#f92672>,</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>);</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>delete</span><span style=color:#f92672>(</span>Node node<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      Node prev <span style=color:#f92672>=</span> node<span style=color:#f92672>.</span><span style=color:#a6e22e>prev</span><span style=color:#f92672>;</span>
+      Node next <span style=color:#f92672>=</span> node<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
+      prev<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span> <span style=color:#f92672>=</span> next<span style=color:#f92672>;</span>
+      next<span style=color:#f92672>.</span><span style=color:#a6e22e>prev</span> <span style=color:#f92672>=</span> prev<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>map</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remove</span><span style=color:#f92672>(</span>node<span style=color:#f92672>.</span><span style=color:#a6e22e>key</span><span style=color:#f92672>);</span>
+      <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>--;</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>private</span> Node <span style=color:#a6e22e>addFirst</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> key<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> value<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      Node node <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Node<span style=color:#f92672>(</span>head<span style=color:#f92672>,</span> key<span style=color:#f92672>,</span> value<span style=color:#f92672>,</span> head<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>);</span>
+      head<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>.</span><span style=color:#a6e22e>prev</span> <span style=color:#f92672>=</span> node<span style=color:#f92672>;</span>
+      head<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span> <span style=color:#f92672>=</span> node<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>++;</span>
+      <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>map</span><span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>key<span style=color:#f92672>,</span> node<span style=color:#f92672>);</span>
+      <span style=color:#66d9ef>return</span> node<span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>private</span> Node <span style=color:#a6e22e>deleteLast</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+      Node deletedPrev <span style=color:#f92672>=</span> tail<span style=color:#f92672>.</span><span style=color:#a6e22e>prev</span><span style=color:#f92672>.</span><span style=color:#a6e22e>prev</span><span style=color:#f92672>;</span>
+      Node deleted <span style=color:#f92672>=</span> deletedPrev<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
+      deletedPrev<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span> <span style=color:#f92672>=</span> tail<span style=color:#f92672>;</span>
+      tail<span style=color:#f92672>.</span><span style=color:#a6e22e>prev</span> <span style=color:#f92672>=</span> deletedPrev<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>map</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remove</span><span style=color:#f92672>(</span>deleted<span style=color:#f92672>.</span><span style=color:#a6e22e>key</span><span style=color:#f92672>);</span>
+      <span style=color:#66d9ef>return</span> deleted<span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+
+  <span style=color:#f92672>}</span>
+
+  <span style=color:#66d9ef>private</span> DoubleLinkedList list <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> DoubleLinkedList<span style=color:#f92672>();</span>
+  <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> capacity<span style=color:#f92672>;</span>
+
+  <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>LRUCache</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> capacity<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>capacity <span style=color:#f92672>&lt;=</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> RuntimeException<span style=color:#f92672>();</span>
+    <span style=color:#f92672>}</span>
+    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>capacity</span> <span style=color:#f92672>=</span> capacity<span style=color:#f92672>;</span>
+  <span style=color:#f92672>}</span>
+
+  <span style=color:#75715e>/**
+</span><span style=color:#75715e>   * get value by key from cache
+</span><span style=color:#75715e>   * @param key key of cache
+</span><span style=color:#75715e>   * @return value of key
+</span><span style=color:#75715e>   */</span>
+  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>get</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> key<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    DoubleLinkedList<span style=color:#f92672>.</span><span style=color:#a6e22e>Node</span> node <span style=color:#f92672>=</span> list<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>key<span style=color:#f92672>);</span>
+    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>node <span style=color:#f92672>==</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>return</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+    list<span style=color:#f92672>.</span><span style=color:#a6e22e>delete</span><span style=color:#f92672>(</span>node<span style=color:#f92672>);</span>
+    list<span style=color:#f92672>.</span><span style=color:#a6e22e>addFirst</span><span style=color:#f92672>(</span>node<span style=color:#f92672>.</span><span style=color:#a6e22e>key</span><span style=color:#f92672>,</span> node<span style=color:#f92672>.</span><span style=color:#a6e22e>value</span><span style=color:#f92672>);</span>
+    <span style=color:#66d9ef>return</span> node<span style=color:#f92672>.</span><span style=color:#a6e22e>value</span><span style=color:#f92672>;</span>
+  <span style=color:#f92672>}</span>
+
+  <span style=color:#75715e>/**
+</span><span style=color:#75715e>   * put key and value to cache
+</span><span style=color:#75715e>   * @param key key of cache
+</span><span style=color:#75715e>   * @param value value of key
+</span><span style=color:#75715e>   */</span>
+  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>put</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> key<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> value<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    <span style=color:#75715e>// 1. exist in map -&gt; remove(value) &amp; push(value)
+</span><span style=color:#75715e></span>    <span style=color:#75715e>// 2. don&#39;t exist in map -&gt; deque is full -&gt; removeLast &amp; push(value)
+</span><span style=color:#75715e></span>    <span style=color:#75715e>// 3. don&#39;t exist in map -&gt; deque is empty -&gt; push(value)
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>list<span style=color:#f92672>.</span><span style=color:#a6e22e>containsKey</span><span style=color:#f92672>(</span>key<span style=color:#f92672>))</span> <span style=color:#f92672>{</span>
+      list<span style=color:#f92672>.</span><span style=color:#a6e22e>delete</span><span style=color:#f92672>(</span>list<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>key<span style=color:#f92672>));</span>
+    <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>list<span style=color:#f92672>.</span><span style=color:#a6e22e>getSize</span><span style=color:#f92672>()</span> <span style=color:#f92672>&gt;=</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>capacity</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        list<span style=color:#f92672>.</span><span style=color:#a6e22e>deleteLast</span><span style=color:#f92672>();</span>
+      <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+    list<span style=color:#f92672>.</span><span style=color:#a6e22e>addFirst</span><span style=color:#f92672>(</span>key<span style=color:#f92672>,</span> value<span style=color:#f92672>);</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+</code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#lru-缓存httpsleetcode-cncomproblemslru-cache><a href=https://leetcode-cn.com/problems/lru-cache>LRU 缓存</a></a></li></ul></nav></div></aside></main></body></html>
