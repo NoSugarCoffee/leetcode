@@ -1,0 +1,40 @@
+---
+weight: 3
+title: "剑指 offer"
+---
+
+## [04. 二维数组中的查找](https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/)
+
+
+```java
+// ../../../../src/swardmeansoffer/Offer04.java
+
+package swardmeansoffer;
+
+public class Offer04 {
+  class Solution {
+    public boolean findNumberIn2DArray(int[][] matrix, int target) {
+      int rows;
+      if (matrix == null || (rows = matrix.length) < 1) {
+        return false;
+      }
+      int cols = matrix[0].length;
+      int i = 0;
+      int j = cols - 1;
+
+      while (i < rows  && j > -1) {
+        int upperRightCorner = matrix[i][j];
+        if (upperRightCorner == target) {
+          return true;
+        } else if (upperRightCorner > target) {
+          j--;
+        } else {
+          i++;
+        }
+      }
+      return false;
+    }
+  }
+}
+
+```
