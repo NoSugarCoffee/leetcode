@@ -1,9 +1,9 @@
-package com.dll.lrucache_146;
+package com.dll.leetcode;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LRUCache {
+public class LRUCache146 {
 
   class DoubleLinkedList {
     private Map<Integer, Node> map;
@@ -77,7 +77,7 @@ public class LRUCache {
   private DoubleLinkedList list = new DoubleLinkedList();
   private int capacity;
 
-  public LRUCache(int capacity) {
+  public LRUCache146(int capacity) {
     if (capacity <= 0) {
       throw new RuntimeException();
     }

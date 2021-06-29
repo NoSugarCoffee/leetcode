@@ -1,4 +1,4 @@
-package com.dll.swardmeansoffer;
+package com.dll.offer;
 
 import org.junit.Assert;
 import org.junit.Test;
