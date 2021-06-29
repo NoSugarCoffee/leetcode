@@ -11,7 +11,7 @@ You can visit [here](https://nosugarcoffee.github.io/leetcode) for a happy readi
     // ../../../../src/lrucache_146/LRUCache.java
     ```
 
-2. Run `npm embedme README.md`
+2. Run `npx embedme README.md`
 
 3. Run `hugo server` under web directory
 

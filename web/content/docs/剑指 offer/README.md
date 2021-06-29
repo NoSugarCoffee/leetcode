@@ -1,3 +1,14 @@
+---
+weight: 3
+title: "剑指 offer"
+---
+
+## [04. 二维数组中的查找](https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/)
+
+
+```java
+// ../../../../src/swardmeansoffer/Offer04.java
+
 package swardmeansoffer;
 
 public class Offer04 {
@@ -25,3 +36,5 @@ public class Offer04 {
     }
   }
 }
+
+```
