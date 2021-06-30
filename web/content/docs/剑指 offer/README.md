@@ -3,8 +3,9 @@ weight: 3
 title: "剑指 offer"
 ---
 
-## [04. 二维数组中的查找](https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/)
+## 04. 二维数组中的查找
 
+[leetcode](https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/)
 
 ```java
 // ../../../../src/main/java/com/dll/offer/Offer04.java
@@ -40,5 +41,33 @@ public class Offer04 {
 ```
 
 
-## [05. 替换空格](https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/)
+## 05. 替换空格
+[leetcode](https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/)
+```java
+// ../../../../src/main/java/com/dll/offer/Offer05.java
+
+package com.dll.offer;
+
+import java.util.stream.Stream;
+
+public class Offer05 {
+  class Solution {
+    public String replaceSpace(String s) {
+      if (s == null) {
+        return "";
+      }
+      StringBuilder sb = new StringBuilder();
+      Stream.of(s.split("")).forEach(ss -> {
+        if (" ".equals(ss)) {
+          sb.append("%20");
+        } else {
+          sb.append(ss);
+        }
+      });
+      return sb.toString();
+    }
+  }
+}
+
+```
 
