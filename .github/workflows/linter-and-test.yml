@@ -26,9 +26,6 @@ jobs:
         FILTER_REGEX_EXCLUDE: .*src/.*/.*Test.java
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Test with Maven
-      run: mvn --batch-mode clean test
-
   test:
     name: Maven Test
     runs-on: ubuntu-latest
