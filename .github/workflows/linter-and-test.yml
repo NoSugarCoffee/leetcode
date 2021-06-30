@@ -34,3 +34,13 @@ jobs:
 
     - name: Test with Maven
       run: mvn --batch-mode clean test
+
+  lint:
+    name: lint and test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
