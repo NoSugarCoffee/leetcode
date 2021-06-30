@@ -1,4 +1,4 @@
-name: maven-test
+name: Maven Test
 
 on: [push]
 
