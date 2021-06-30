@@ -10,7 +10,6 @@ public class Offer05 {
       }
       StringBuilder sb = new StringBuilder();
       Stream.of(s.split("")).forEach(ss -> {
-        System.out.println(ss);
         if (" ".equals(ss)) {
           sb.append("%20");
         } else {
