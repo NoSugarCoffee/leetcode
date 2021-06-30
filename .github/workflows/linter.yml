@@ -8,8 +8,7 @@ name: Lint Code Base
 on: [push]
 
 jobs:
-  build:
-    name: Lint Code Base
+  Lint Code Base:
     runs-on: ubuntu-latest
 
     steps:
