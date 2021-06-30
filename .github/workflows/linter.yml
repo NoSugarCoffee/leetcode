@@ -5,9 +5,7 @@ name: Lint Code Base
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
 #
 
-on:
-  push:
-    branches: [main]
+on: [push]
 
 jobs:
   build:
