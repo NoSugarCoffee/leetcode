@@ -21,7 +21,11 @@ You can visit [here](https://nosugarcoffee.github.io/leetcode) for a happy readi
 
 - Use [super-linter](https://github.com/github/super-linter) for code lint
 
+- Use [setup-java](https://docs.github.com/en/actions/guides/building-and-testing-java-with-maven) for maven test
+
 - Use [actions-hugo](https://github.com/peaceiris/actions-hugo) for pages deploy
+
+
 
 ## Q&A
 

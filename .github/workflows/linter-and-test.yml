@@ -5,7 +5,10 @@ name: lint and test
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
 #
 
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - "main"
 
 jobs:
   lint:
