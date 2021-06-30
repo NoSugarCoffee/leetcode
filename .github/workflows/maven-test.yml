@@ -3,7 +3,8 @@ name: Maven Test
 on: [push]
 
 jobs:
-  Maven Test:
+  build:
+    name: Maven Test
     runs-on: ubuntu-latest
 
     steps:
