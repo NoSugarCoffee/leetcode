@@ -29,6 +29,6 @@ You can visit [here](https://nosugarcoffee.github.io/leetcode) for a happy readi
 
 ## Q&A
 
-- How to embed source code by link rather than COPY&PASTE in README.
+Q: How to embed source code by link rather than COPY&PASTE in README ?
 
-  You can use this [tool](https://github.com/zakhenry/embedme) written by js.
+A: You can use this [tool](https://github.com/zakhenry/embedme) written by js.
