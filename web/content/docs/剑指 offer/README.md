@@ -297,3 +297,53 @@ public class Offer07 {
 }
 
 ```
+
+## 09. 用两个栈实现队列
+[leetcode](https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/)
+
+利用两个栈, deQueueStack 以及 enQueueStack
+
+- 入队只从 enQueueStack 进
+- 出队只从 deQueueStack 出，deQueueStack 内有元素时直接出队, 无元素时转移全部 enQueueStack 到 deQueueStack
+
+```java
+// ../../../../src/main/java/com/dll/offer/Offer09.java
+
+package com.dll.offer;
+
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
+
+public class Offer09 {
+  class CQueue {
+    Deque<Integer> inQueueStack = new LinkedList<>();
+    Deque<Integer> deQueueStack = new LinkedList<>();
+
+    public CQueue() {
+    }
+
+    public void appendTail(int value) {
+      inQueueStack.push(value);
+    }
+
+    private int popWrapper() {
+      try {
+        return deQueueStack.pop();
+      } catch (NoSuchElementException e) {
+        return -1;
+      }
+    }
+
+    public int deleteHead() {
+      if (deQueueStack.isEmpty()) {
+        while (!inQueueStack.isEmpty()) {
+          deQueueStack.push(inQueueStack.pop());
+        }
+      }
+      return popWrapper();
+    }
+  }
+}
+
+```

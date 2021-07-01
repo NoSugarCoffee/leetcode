@@ -88,6 +88,7 @@ public class Offer07 {
       return new int[][]{left, right};
     }
 
+    // this also can solve problem https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
     public List<List<Integer>> levelOrder(TreeNode root) {
       // map key is level, map value is the list of node value
       if (root == null) {
