@@ -71,3 +71,227 @@ public class Offer05 {
 
 ```
 
+
+## 06. 从尾到头打印链表
+[leetcode](https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/)
+
+### 递归法
+```java
+// ../../../../src/main/java/com/dll/offer/Offer06.java
+
+package com.dll.offer;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Offer06 {
+  class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) { val = x; }
+  }
+
+  class Solution {
+    public int[] reversePrint(ListNode head) {
+      return this.recursion(head).stream().mapToInt(i -> i).toArray();
+    }
+
+    private List<Integer> recursion(ListNode node) {
+      if (node == null) {
+        return new ArrayList<>();
+      }
+      List<Integer> list = this.recursion(node.next);
+      list.add(node.val);
+      return list;
+    }
+  }
+}
+
+
+```
+
+## 07. 重建二叉树
+
+根据前序和中序遍历的规则，前序遍历总是将树分割成 `{根 [左子树] [右子树]}`，中序遍历则将树分割成 `{[左子树] 根 [右子树]}`，两者左右子树的成员应该保持一致。
+
+具体的，当还原前序遍历为 `{1,2,4,7,3,5,6,8}`，中序遍历为 `{4,7,2,1,5,3,8,6}` 的树时，需要经历以下步骤:
+
+- 根据前序遍历 `{1,2,4,7,3,5,6,8}` 可得 `1` 是树的根结点
+
+- 结合中序遍历可知左子树中序结果为 `{4,7,2}`, 前序结果为 `{2,4,7}`, 右子树中序结果为 `{5,3,8,6}`, 前序结果为 `{3,5,6,8}` 
+
+- 对子树重复上述步骤
+ 
+
+伪代码表示一个流程如下：
+
+```
+preorder = [1,2,4,7,3,5,6,8]
+inorder = [4,7,2,1,5,3,8,6]
+
+root = preorder[0]
+
+# 拆分成两颗子树
+subLeftTreeInorder, subRightTreeInorder = splitInorder(root)
+
+subLeftTreeInorderlength = subLeftTreeInorder.length()
+subRightTreeInorderlength = subRightTreeInorder.length()
+
+subLeftTreePreorder = preorder[1:subLeftTreeInorderlength]
+subRightTreePreorder = preorder[subLeftTreeInorderlength:subRightTreeInorderlength]
+
+subLeftTreeRoot = subLeftTreePreorder[0]
+subRightTreeRoot = subRightTreePreorder[0]
+
+root.left = subLeftTreeRoot
+root.right = subRightTreeRoot
+```
+
+经过上述直叙的方式，可以抽象成如下递归体：
+
+```
+func Node rec(preorder, inorder) {
+  root = preorder[0]
+  subLeftTreeInorder, subRightTreeInorder = splitInorder(preorder[0])
+  
+  subLeftTreeInorderlength = subLeftTreeInorder.length()
+  subRightTreeInorderlength = subRightTreeInorder.length()
+  
+  subLeftTreePreorder = preorder[1:subLeftTreeInorderlength]
+  subRightTreePreorder = preorder[subLeftTreeInorderlength:subRightTreeInorderlength]
+  
+  left = rec(subLeftTreePreorder, subLeftTreeInorder)
+  right = rec(subRightTreePreorder, subRightTreeInorder)
+  
+  root.left = left
+  root.right = right
+  return root
+}
+  
+```
+   
+```java
+// ../../../../src/main/java/com/dll/offer/Offer07.java
+
+package com.dll.offer;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Deque;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+public class Offer07 {
+  class LevelTreeNode {
+    TreeNode node;
+    int level;
+    public LevelTreeNode(TreeNode node, int level) {
+      this.node = node;
+      this.level = level;
+    }
+  }
+
+  class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int val) {
+      this.val = val;
+    }
+  }
+
+  class Solution {
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+      if (preorder == null || inorder == null || preorder.length == 0 || inorder.length == 0) {
+        return null;
+      }
+      if (preorder.length != inorder.length) {
+        throw new RuntimeException(
+            String.format("internal error, preorder:%s inorder:%s",
+                Arrays.toString(preorder), Arrays.toString(inorder)));
+      }
+      int rootValue = preorder[0];
+      int[][] subTreeInorder = this.splitInorder(inorder, rootValue);
+
+      int[] leftInorder = subTreeInorder[0];
+      int[] rightInorder = subTreeInorder[1];
+
+      int leftTreeLength = leftInorder.length;
+      int rightTreeLength = rightInorder.length;
+
+      int[] leftPreorder = new int[]{};
+      int[] rightPreorder = new int[]{};
+
+      if (leftTreeLength > 0) {
+        leftPreorder = Arrays.copyOfRange(preorder, 1, 1 + leftTreeLength);
+
+      }
+      if (rightTreeLength > 0) {
+        rightPreorder = Arrays.copyOfRange(preorder,  1 + leftTreeLength, preorder.length);
+      }
+
+      TreeNode left = buildTree(leftPreorder, leftInorder);
+      TreeNode right = buildTree(rightPreorder, rightInorder);
+
+      TreeNode root = new TreeNode(rootValue);
+      root.left = left;
+      root.right = right;
+      return root;
+    }
+
+    private int findIndexInArray(int[] array, int root) {
+      int index = 0;
+      for (int value: array) {
+        if (value == root) {
+          return index;
+        }
+        index++;
+      }
+      return -1;
+    }
+
+    int[][] splitInorder(int[] inorder, int root) {
+      int rootIndex = this.findIndexInArray(inorder, root);
+      if (rootIndex == -1) {
+        return new int[][]{{},{}};
+      }
+      int[] left = Arrays.copyOfRange(inorder, 0, rootIndex);
+      int[] right = Arrays.copyOfRange(inorder, rootIndex + 1, inorder.length);
+      return new int[][]{left, right};
+    }
+      
+    // this also can solve problem https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
+    public List<List<Integer>> levelOrder(TreeNode root) {
+      // map key is level, map value is the list of node value
+      if (root == null) {
+        return new ArrayList<>(new ArrayList<>());
+      }
+      Map<Integer, List<Integer>> map =
+          new TreeMap<>(Comparator.comparingInt(Integer::valueOf));
+
+      Deque<LevelTreeNode> queue = new ArrayDeque<>();
+      queue.offer(new LevelTreeNode(root, 0));
+
+      while (!queue.isEmpty()) {
+        LevelTreeNode n = queue.poll();
+        List<Integer> list = map.getOrDefault(n.level, new ArrayList<>());
+        map.put(n.level, list);
+        list.add(n.node.val);
+
+        if (n.node.left != null) {
+          queue.offer(new LevelTreeNode(n.node.left, n.level + 1));
+        }
+        if (n.node.right != null) {
+          queue.offer(new LevelTreeNode(n.node.right, n.level + 1));
+        }
+      }
+      return new ArrayList<>(map.values());
+    }
+  }
+}
+
+```
