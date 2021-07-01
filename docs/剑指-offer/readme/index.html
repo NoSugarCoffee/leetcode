@@ -1,9 +1,9 @@
-<!doctype html><html lang=en dir=ltr><head><meta name=generator content="Hugo 0.84.2"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="04. 二维数组中的查找 #  leetcode
+<!doctype html><html lang=en dir=ltr><head><meta name=generator content="Hugo 0.84.3"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="04. 二维数组中的查找 #  leetcode
 // ../../../../src/main/java/com/dll/offer/Offer04.java  package com.dll.offer; public class Offer04 { class Solution { public boolean findNumberIn2DArray(int[][] matrix, int target) { int rows; if (matrix == null || (rows = matrix.length) < 1) { return false; } int cols = matrix[0].length; int i = 0; int j = cols - 1; while (i < rows && j > -1) { int upperRightCorner = matrix[i][j]; if (upperRightCorner == target) { return true; } else if (upperRightCorner > target) { j--; } else { i++; } } return false; } } } 05."><meta name=theme-color content="#FFFFFF"><meta property="og:title" content="剑指 offer"><meta property="og:description" content="04. 二维数组中的查找 #  leetcode
-// ../../../../src/main/java/com/dll/offer/Offer04.java  package com.dll.offer; public class Offer04 { class Solution { public boolean findNumberIn2DArray(int[][] matrix, int target) { int rows; if (matrix == null || (rows = matrix.length) < 1) { return false; } int cols = matrix[0].length; int i = 0; int j = cols - 1; while (i < rows && j > -1) { int upperRightCorner = matrix[i][j]; if (upperRightCorner == target) { return true; } else if (upperRightCorner > target) { j--; } else { i++; } } return false; } } } 05."><meta property="og:type" content="article"><meta property="og:url" content="https://nosugarcoffee.github.io/leetcode/docs/%E5%89%91%E6%8C%87-offer/readme/"><meta property="article:section" content="docs"><title>剑指 offer | LeetCode solutions</title><link rel=manifest href=/leetcode/manifest.json><link rel=icon href=/leetcode/favicon.png type=image/x-icon><link rel=stylesheet href=/leetcode/book.min.2bc2364a4a4b31f0ec1debecf0a8f90a840821f143dfe1ac6a0f7cbcbdcf64ac.css integrity="sha256-K8I2SkpLMfDsHevs8Kj5CoQIIfFD3+Gsag98vL3PZKw="><script defer src=/leetcode/en.search.min.4a67ef24021287c68cdd851722ffd566ed692580c222c8d8721afb30f24c7fc0.js integrity="sha256-SmfvJAISh8aM3YUXIv/VZu1pJYDCIsjYchr7MPJMf8A="></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+// ../../../../src/main/java/com/dll/offer/Offer04.java  package com.dll.offer; public class Offer04 { class Solution { public boolean findNumberIn2DArray(int[][] matrix, int target) { int rows; if (matrix == null || (rows = matrix.length) < 1) { return false; } int cols = matrix[0].length; int i = 0; int j = cols - 1; while (i < rows && j > -1) { int upperRightCorner = matrix[i][j]; if (upperRightCorner == target) { return true; } else if (upperRightCorner > target) { j--; } else { i++; } } return false; } } } 05."><meta property="og:type" content="article"><meta property="og:url" content="https://nosugarcoffee.github.io/leetcode/docs/%E5%89%91%E6%8C%87-offer/readme/"><meta property="article:section" content="docs"><title>剑指 offer | LeetCode solutions</title><link rel=manifest href=/leetcode/manifest.json><link rel=icon href=/leetcode/favicon.png type=image/x-icon><link rel=stylesheet href=/leetcode/book.min.2bc2364a4a4b31f0ec1debecf0a8f90a840821f143dfe1ac6a0f7cbcbdcf64ac.css integrity="sha256-K8I2SkpLMfDsHevs8Kj5CoQIIfFD3+Gsag98vL3PZKw="><script defer src=/leetcode/en.search.min.ed39d5e95de5621c0f442443bd1be1a435991d9a8479de46d167d8bf97dcbe1a.js integrity="sha256-7TnV6V3lYhwPRCRDvRvhpDWZHZqEed5G0WfYv5fcvho="></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
 <input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a href=/leetcode><span>LeetCode solutions</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><span>算法分类</span><ul><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E8%B4%AA%E5%BF%83/readme/>贪心</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%8F%8C%E6%8C%87%E9%92%88/readme/>双指针</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/lru%E7%BC%93%E5%AD%98/readme/>LRU 缓存</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/readme/>二分查找</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%89%91%E6%8C%87-offer/readme/ class=active>剑指 offer</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E6%8E%92%E5%BA%8F/readme/>排序</a></li></ul></li></ul></nav><script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/leetcode/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>剑指 offer</strong>
-<label for=toc-control><img src=/leetcode/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#04-二维数组中的查找>04. 二维数组中的查找</a></li><li><a href=#05-替换空格>05. 替换空格</a></li></ul></nav></aside></header><article class=markdown><h2 id=04-二维数组中的查找>04. 二维数组中的查找
+<label for=toc-control><img src=/leetcode/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#04-二维数组中的查找>04. 二维数组中的查找</a></li><li><a href=#05-替换空格>05. 替换空格</a></li><li><a href=#06-从尾到头打印链表>06. 从尾到头打印链表</a><ul><li><a href=#递归法>递归法</a></li></ul></li><li><a href=#07-重建二叉树>07. 重建二叉树</a></li></ul></nav></aside></header><article class=markdown><h2 id=04-二维数组中的查找>04. 二维数组中的查找
 <a class=anchor href=#04-%e4%ba%8c%e7%bb%b4%e6%95%b0%e7%bb%84%e4%b8%ad%e7%9a%84%e6%9f%a5%e6%89%be>#</a></h2><p><a href=https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/>leetcode</a></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/offer/Offer04.java
 </span><span style=color:#75715e></span>
 <span style=color:#f92672>package</span> com.dll.offer<span style=color:#f92672>;</span>
@@ -60,4 +60,198 @@
   <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
-</code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#04-二维数组中的查找>04. 二维数组中的查找</a></li><li><a href=#05-替换空格>05. 替换空格</a></li></ul></nav></div></aside></main></body></html>
+</code></pre></div><h2 id=06-从尾到头打印链表>06. 从尾到头打印链表
+<a class=anchor href=#06-%e4%bb%8e%e5%b0%be%e5%88%b0%e5%a4%b4%e6%89%93%e5%8d%b0%e9%93%be%e8%a1%a8>#</a></h2><p><a href=https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/>leetcode</a></p><h3 id=递归法>递归法
+<a class=anchor href=#%e9%80%92%e5%bd%92%e6%b3%95>#</a></h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/offer/Offer06.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.offer<span style=color:#f92672>;</span>
+
+
+<span style=color:#f92672>import</span> java.util.ArrayList<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.List<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Offer06</span> <span style=color:#f92672>{</span>
+  <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ListNode</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>int</span> val<span style=color:#f92672>;</span>
+    ListNode next<span style=color:#f92672>;</span>
+    ListNode<span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> x<span style=color:#f92672>)</span> <span style=color:#f92672>{</span> val <span style=color:#f92672>=</span> x<span style=color:#f92672>;</span> <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+
+  <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>reversePrint</span><span style=color:#f92672>(</span>ListNode head<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span>head<span style=color:#f92672>).</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>().</span><span style=color:#a6e22e>mapToInt</span><span style=color:#f92672>(</span>i <span style=color:#f92672>-&gt;</span> i<span style=color:#f92672>).</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>();</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span>ListNode node<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>node <span style=color:#f92672>==</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
+      <span style=color:#f92672>}</span>
+      List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> list <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span>node<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>);</span>
+      list<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>node<span style=color:#f92672>.</span><span style=color:#a6e22e>val</span><span style=color:#f92672>);</span>
+      <span style=color:#66d9ef>return</span> list<span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+
+</code></pre></div><h2 id=07-重建二叉树>07. 重建二叉树
+<a class=anchor href=#07-%e9%87%8d%e5%bb%ba%e4%ba%8c%e5%8f%89%e6%a0%91>#</a></h2><p>根据前序和中序遍历的规则，前序遍历总是将树分割成 <code>{根 [左子树] [右子树]}</code>，中序遍历则将树分割成 <code>{[左子树] 根 [右子树]}</code>，两者左右子树的成员应该保持一致。</p><p>具体的，当还原前序遍历为 <code>{1,2,4,7,3,5,6,8}</code>，中序遍历为 <code>{4,7,2,1,5,3,8,6}</code> 的树时，需要经历以下步骤:</p><ul><li><p>根据前序遍历 <code>{1,2,4,7,3,5,6,8}</code> 可得 <code>1</code> 是树的根结点</p></li><li><p>结合中序遍历可知左子树中序结果为 <code>{4,7,2}</code>, 前序结果为 <code>{2,4,7}</code>, 右子树中序结果为 <code>{5,3,8,6}</code>, 前序结果为 <code>{3,5,6,8}</code></p></li><li><p>对子树重复上述步骤</p></li></ul><p>伪代码表示一个流程如下：</p><pre><code>preorder = [1,2,4,7,3,5,6,8]
+inorder = [4,7,2,1,5,3,8,6]
+
+root = preorder[0]
+
+# 拆分成两颗子树
+subLeftTreeInorder, subRightTreeInorder = splitInorder(root)
+
+subLeftTreeInorderlength = subLeftTreeInorder.length()
+subRightTreeInorderlength = subRightTreeInorder.length()
+
+subLeftTreePreorder = preorder[1:subLeftTreeInorderlength]
+subRightTreePreorder = preorder[subLeftTreeInorderlength:subRightTreeInorderlength]
+
+subLeftTreeRoot = subLeftTreePreorder[0]
+subRightTreeRoot = subRightTreePreorder[0]
+
+root.left = subLeftTreeRoot
+root.right = subRightTreeRoot
+</code></pre><p>经过上述直叙的方式，可以抽象成如下递归体：</p><pre><code>func Node rec(preorder, inorder) {
+  root = preorder[0]
+  subLeftTreeInorder, subRightTreeInorder = splitInorder(preorder[0])
+  
+  subLeftTreeInorderlength = subLeftTreeInorder.length()
+  subRightTreeInorderlength = subRightTreeInorder.length()
+  
+  subLeftTreePreorder = preorder[1:subLeftTreeInorderlength]
+  subRightTreePreorder = preorder[subLeftTreeInorderlength:subRightTreeInorderlength]
+  
+  left = rec(subLeftTreePreorder, subLeftTreeInorder)
+  right = rec(subRightTreePreorder, subRightTreeInorder)
+  
+  root.left = left
+  root.right = right
+  return root
+}
+  
+</code></pre><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/offer/Offer07.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.offer<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.ArrayDeque<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.ArrayList<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Arrays<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Comparator<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Deque<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.List<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Map<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.TreeMap<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Offer07</span> <span style=color:#f92672>{</span>
+  <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>LevelTreeNode</span> <span style=color:#f92672>{</span>
+    TreeNode node<span style=color:#f92672>;</span>
+    <span style=color:#66d9ef>int</span> level<span style=color:#f92672>;</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>LevelTreeNode</span><span style=color:#f92672>(</span>TreeNode node<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> level<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>node</span> <span style=color:#f92672>=</span> node<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>level</span> <span style=color:#f92672>=</span> level<span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+
+  <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>TreeNode</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>int</span> val<span style=color:#f92672>;</span>
+    TreeNode left<span style=color:#f92672>;</span>
+    TreeNode right<span style=color:#f92672>;</span>
+    TreeNode<span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> val<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>val</span> <span style=color:#f92672>=</span> val<span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+
+  <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>public</span> TreeNode <span style=color:#a6e22e>buildTree</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> preorder<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> inorder<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>preorder <span style=color:#f92672>==</span> <span style=color:#66d9ef>null</span> <span style=color:#f92672>||</span> inorder <span style=color:#f92672>==</span> <span style=color:#66d9ef>null</span> <span style=color:#f92672>||</span> preorder<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>==</span> 0 <span style=color:#f92672>||</span> inorder<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>==</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>preorder<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>!=</span> inorder<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> RuntimeException<span style=color:#f92672>(</span>
+            String<span style=color:#f92672>.</span><span style=color:#a6e22e>format</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;internal error, preorder:%s inorder:%s&#34;</span><span style=color:#f92672>,</span>
+                Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>toString</span><span style=color:#f92672>(</span>preorder<span style=color:#f92672>),</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>toString</span><span style=color:#f92672>(</span>inorder<span style=color:#f92672>)));</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#66d9ef>int</span> rootValue <span style=color:#f92672>=</span> preorder<span style=color:#f92672>[</span>0<span style=color:#f92672>];</span>
+      <span style=color:#66d9ef>int</span><span style=color:#f92672>[][]</span> subTreeInorder <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>splitInorder</span><span style=color:#f92672>(</span>inorder<span style=color:#f92672>,</span> rootValue<span style=color:#f92672>);</span>
+
+      <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> leftInorder <span style=color:#f92672>=</span> subTreeInorder<span style=color:#f92672>[</span>0<span style=color:#f92672>];</span>
+      <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> rightInorder <span style=color:#f92672>=</span> subTreeInorder<span style=color:#f92672>[</span>1<span style=color:#f92672>];</span>
+
+      <span style=color:#66d9ef>int</span> leftTreeLength <span style=color:#f92672>=</span> leftInorder<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>int</span> rightTreeLength <span style=color:#f92672>=</span> rightInorder<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span>
+
+      <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> leftPreorder <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{};</span>
+      <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> rightPreorder <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{};</span>
+
+      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>leftTreeLength <span style=color:#f92672>&gt;</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        leftPreorder <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>copyOfRange</span><span style=color:#f92672>(</span>preorder<span style=color:#f92672>,</span> 1<span style=color:#f92672>,</span> 1 <span style=color:#f92672>+</span> leftTreeLength<span style=color:#f92672>);</span>
+
+      <span style=color:#f92672>}</span>
+      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>rightTreeLength <span style=color:#f92672>&gt;</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        rightPreorder <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>copyOfRange</span><span style=color:#f92672>(</span>preorder<span style=color:#f92672>,</span>  1 <span style=color:#f92672>+</span> leftTreeLength<span style=color:#f92672>,</span> preorder<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>);</span>
+      <span style=color:#f92672>}</span>
+
+      TreeNode left <span style=color:#f92672>=</span> buildTree<span style=color:#f92672>(</span>leftPreorder<span style=color:#f92672>,</span> leftInorder<span style=color:#f92672>);</span>
+      TreeNode right <span style=color:#f92672>=</span> buildTree<span style=color:#f92672>(</span>rightPreorder<span style=color:#f92672>,</span> rightInorder<span style=color:#f92672>);</span>
+
+      TreeNode root <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> TreeNode<span style=color:#f92672>(</span>rootValue<span style=color:#f92672>);</span>
+      root<span style=color:#f92672>.</span><span style=color:#a6e22e>left</span> <span style=color:#f92672>=</span> left<span style=color:#f92672>;</span>
+      root<span style=color:#f92672>.</span><span style=color:#a6e22e>right</span> <span style=color:#f92672>=</span> right<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>return</span> root<span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>findIndexInArray</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> array<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> root<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>int</span> index <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> value<span style=color:#f92672>:</span> array<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>value <span style=color:#f92672>==</span> root<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          <span style=color:#66d9ef>return</span> index<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+        index<span style=color:#f92672>++;</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#66d9ef>return</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>;</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>int</span><span style=color:#f92672>[][]</span> <span style=color:#a6e22e>splitInorder</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> inorder<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> root<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>int</span> rootIndex <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>findIndexInArray</span><span style=color:#f92672>(</span>inorder<span style=color:#f92672>,</span> root<span style=color:#f92672>);</span>
+      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>rootIndex <span style=color:#f92672>==</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[][]{{},{}};</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> left <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>copyOfRange</span><span style=color:#f92672>(</span>inorder<span style=color:#f92672>,</span> 0<span style=color:#f92672>,</span> rootIndex<span style=color:#f92672>);</span>
+      <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> right <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>copyOfRange</span><span style=color:#f92672>(</span>inorder<span style=color:#f92672>,</span> rootIndex <span style=color:#f92672>+</span> 1<span style=color:#f92672>,</span> inorder<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>);</span>
+      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[][]{</span>left<span style=color:#f92672>,</span> right<span style=color:#f92672>};</span>
+    <span style=color:#f92672>}</span>
+      
+    <span style=color:#75715e>// this also can solve problem https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> <span style=color:#a6e22e>levelOrder</span><span style=color:#f92672>(</span>TreeNode root<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#75715e>// map key is level, map value is the list of node value
+</span><span style=color:#75715e></span>      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>root <span style=color:#f92672>==</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;(</span><span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;());</span>
+      <span style=color:#f92672>}</span>
+      Map<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>,</span> List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> map <span style=color:#f92672>=</span>
+          <span style=color:#66d9ef>new</span> TreeMap<span style=color:#f92672>&lt;&gt;(</span>Comparator<span style=color:#f92672>.</span><span style=color:#a6e22e>comparingInt</span><span style=color:#f92672>(</span>Integer<span style=color:#f92672>::</span>valueOf<span style=color:#f92672>));</span>
+
+      Deque<span style=color:#f92672>&lt;</span>LevelTreeNode<span style=color:#f92672>&gt;</span> queue <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayDeque<span style=color:#f92672>&lt;&gt;();</span>
+      queue<span style=color:#f92672>.</span><span style=color:#a6e22e>offer</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> LevelTreeNode<span style=color:#f92672>(</span>root<span style=color:#f92672>,</span> 0<span style=color:#f92672>));</span>
+
+      <span style=color:#66d9ef>while</span> <span style=color:#f92672>(!</span>queue<span style=color:#f92672>.</span><span style=color:#a6e22e>isEmpty</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+        LevelTreeNode n <span style=color:#f92672>=</span> queue<span style=color:#f92672>.</span><span style=color:#a6e22e>poll</span><span style=color:#f92672>();</span>
+        List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> list <span style=color:#f92672>=</span> map<span style=color:#f92672>.</span><span style=color:#a6e22e>getOrDefault</span><span style=color:#f92672>(</span>n<span style=color:#f92672>.</span><span style=color:#a6e22e>level</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;());</span>
+        map<span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>n<span style=color:#f92672>.</span><span style=color:#a6e22e>level</span><span style=color:#f92672>,</span> list<span style=color:#f92672>);</span>
+        list<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>n<span style=color:#f92672>.</span><span style=color:#a6e22e>node</span><span style=color:#f92672>.</span><span style=color:#a6e22e>val</span><span style=color:#f92672>);</span>
+
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>n<span style=color:#f92672>.</span><span style=color:#a6e22e>node</span><span style=color:#f92672>.</span><span style=color:#a6e22e>left</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          queue<span style=color:#f92672>.</span><span style=color:#a6e22e>offer</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> LevelTreeNode<span style=color:#f92672>(</span>n<span style=color:#f92672>.</span><span style=color:#a6e22e>node</span><span style=color:#f92672>.</span><span style=color:#a6e22e>left</span><span style=color:#f92672>,</span> n<span style=color:#f92672>.</span><span style=color:#a6e22e>level</span> <span style=color:#f92672>+</span> 1<span style=color:#f92672>));</span>
+        <span style=color:#f92672>}</span>
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>n<span style=color:#f92672>.</span><span style=color:#a6e22e>node</span><span style=color:#f92672>.</span><span style=color:#a6e22e>right</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          queue<span style=color:#f92672>.</span><span style=color:#a6e22e>offer</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> LevelTreeNode<span style=color:#f92672>(</span>n<span style=color:#f92672>.</span><span style=color:#a6e22e>node</span><span style=color:#f92672>.</span><span style=color:#a6e22e>right</span><span style=color:#f92672>,</span> n<span style=color:#f92672>.</span><span style=color:#a6e22e>level</span> <span style=color:#f92672>+</span> 1<span style=color:#f92672>));</span>
+        <span style=color:#f92672>}</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;(</span>map<span style=color:#f92672>.</span><span style=color:#a6e22e>values</span><span style=color:#f92672>());</span>
+    <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+</code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#04-二维数组中的查找>04. 二维数组中的查找</a></li><li><a href=#05-替换空格>05. 替换空格</a></li><li><a href=#06-从尾到头打印链表>06. 从尾到头打印链表</a><ul><li><a href=#递归法>递归法</a></li></ul></li><li><a href=#07-重建二叉树>07. 重建二叉树</a></li></ul></nav></div></aside></main></body></html>
