@@ -265,7 +265,7 @@ public class Offer07 {
       int[] right = Arrays.copyOfRange(inorder, rootIndex + 1, inorder.length);
       return new int[][]{left, right};
     }
-      
+
     // this also can solve problem https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
     public List<List<Integer>> levelOrder(TreeNode root) {
       // map key is level, map value is the list of node value
@@ -343,6 +343,40 @@ public class Offer09 {
       }
       return popWrapper();
     }
+  }
+}
+
+```
+
+## 10- I. 斐波那契数列
+[leetcode](https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof/)
+
+直接递归会超时，所以加了个简易的 cache
+```java
+// ../../../../src/main/java/com/dll/offer/Offer10I.java
+
+
+package com.dll.offer;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Offer10I {
+  class Solution {
+    Map<Integer, Integer> cache = new HashMap<>();
+
+    public int fib(int n) {
+      if (cache.containsKey(n)) {
+        return cache.get(n);
+      }
+      if (n < 2) {
+        return n;
+      }
+      int val = (fib(n - 1) + fib(n - 2)) % 1000000007;
+      cache.put(n, val);
+      return val;
+    }
+
   }
 }
 
