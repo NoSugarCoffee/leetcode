@@ -381,3 +381,42 @@ public class Offer10I {
 }
 
 ```
+
+## 10- II. 青蛙跳台阶问题
+[leetcode](https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/)
+
+斐波那契数列包了一层背景，原理一样
+
+```java
+// ../../../../src/main/java/com/dll/offer/Offer10II.java
+
+
+package com.dll.offer;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Offer10II {
+  class Solution {
+
+    Map<Integer, Integer> cache = new HashMap<>();
+
+    private int recu(int n) {
+      if (cache.containsKey(n)) {
+        return cache.get(n);
+      }
+      if (n == 0 || n == 1) {
+        return 1;
+      }
+      int val = (recu(n - 1) + recu(n - 2)) % 1000000007;
+      cache.put(n, val);
+      return val;
+    }
+
+    public int numWays(int n) {
+      return recu(n);
+    }
+  }
+}
+
+```
