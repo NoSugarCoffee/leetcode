@@ -420,3 +420,32 @@ public class Offer10II {
 }
 
 ```
+
+## 11. 旋转数组的最小数字
+这题直接用暴力法解了，因为个人觉得题目没什么太大实际意义
+
+```java
+// ../../../../src/main/java/com/dll/offer/Offer11.java
+
+
+package com.dll.offer;
+
+public class Offer11 {
+  class Solution {
+    public int minArray(int[] numbers) {
+      if (numbers == null || numbers.length < 1) {
+        throw new RuntimeException();
+      }
+      int min = numbers[0];
+      for (int i = 1; i < numbers.length; i++) {
+        if (numbers[i] < numbers[i - 1]) {
+          min = numbers[i];
+          break;
+        }
+      }
+      return min;
+    }
+  }
+}
+
+```
