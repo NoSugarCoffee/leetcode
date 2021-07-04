@@ -425,33 +425,25 @@ public class Offer10II {
 这题直接用暴力法解了，因为个人觉得题目没什么太大实际意义
 
 ```java
-// ../../../../src/main/java/com/dll/offer/Offer10II.java
+// ../../../../src/main/java/com/dll/offer/Offer11.java
 
 
 package com.dll.offer;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class Offer10II {
+public class Offer11 {
   class Solution {
-
-    Map<Integer, Integer> cache = new HashMap<>();
-
-    private int recu(int n) {
-      if (cache.containsKey(n)) {
-        return cache.get(n);
+    public int minArray(int[] numbers) {
+      if (numbers == null || numbers.length < 1) {
+        throw new RuntimeException();
       }
-      if (n == 0 || n == 1) {
-        return 1;
+      int min = numbers[0];
+      for (int i = 1; i < numbers.length; i++) {
+        if (numbers[i] < numbers[i - 1]) {
+          min = numbers[i];
+          break;
+        }
       }
-      int val = (recu(n - 1) + recu(n - 2)) % 1000000007;
-      cache.put(n, val);
-      return val;
-    }
-
-    public int numWays(int n) {
-      return recu(n);
+      return min;
     }
   }
 }
