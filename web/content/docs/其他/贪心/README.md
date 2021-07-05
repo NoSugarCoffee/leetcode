@@ -5,16 +5,16 @@ title: "贪心"
 
 # 贪心
 
-## [AssignCookies](https://leetcode-cn.com/problems/assign-cookies/submissions/)
+## 455. 分发饼干
+[leetcode](https://leetcode-cn.com/problems/assign-cookies/)
 
-### 我的思路
-1. 对每块饼干都去匹配一下胃口，满足饼干>= 胃口，即满足
-2. 为了不出现如大的饼干被小的胃口占用，即应该使大的饼干分配给大胃口，对饼干和胃口进行升序排列
+- 对每块饼干都去匹配一下胃口，满足饼干 >= 胃口，即满足
+- 为了不出现如大的饼干被小的胃口占用，即应该使大的饼干分配给大胃口，对饼干和胃口进行升序排列
 
 ```java
-// ../../../../src/greedy/AssignCookies.java
+// ../../../../../src/main/java/com/dll/greedy/AssignCookies.java
 
-package greedy;
+package com.dll.greedy;
 
 import java.util.Arrays;
 
@@ -47,7 +47,8 @@ public class AssignCookies {
 
 ```
 
-## [Candy](https://leetcode-cn.com/problems/candy/)
+## 135. 分发糖果
+[leetcode](https://leetcode-cn.com/problems/candy/)
 
 ### 我的思路
 1. 把所有孩子的糖果数初始化为 1
@@ -72,9 +73,9 @@ public class AssignCookies {
 3. 从右往左遍历一遍，如果左边孩子的评分比右边的高，且左边孩子当前的糖果数不大于右边孩子的糖果数，则左边孩子的糖果数更新为右边孩子的糖果数加 1
 
 ```java
-// ../../../../src/greedy/Candy.java
+// ../../../../../src/main/java/com/dll/greedy/Candy.java
 
-package greedy;
+package com.dll.greedy;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public class Candy {
 
 ```
 
-## [无重叠区间](https://leetcode-cn.com/problems/non-overlapping-intervals/) 
+## 435. 无重叠区间
+[leetcode](https://leetcode-cn.com/problems/non-overlapping-intervals/) 
+
 ### 我的思路
 错误思路: 原本想的是优先选择区间小的，但是如下情况就不满足：
 ```
@@ -163,9 +166,9 @@ public class Candy {
 按照区间右端点升序排列，且一直维护当前右端点为不重复区间的最大右端点
 
 ```java
-// ../../../../src/greedy/NonOverlappingIntervals.java
+// ../../../../../src/main/java/com/dll/greedy/NonOverlappingIntervals.java
 
-package greedy;
+package com.dll.greedy;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -194,7 +197,8 @@ public class NonOverlappingIntervals {
 }
 ```
 
-## [CanPlaceFlowers](https://leetcode-cn.com/problems/can-place-flowers/)
+## 605. 种花问题
+[leetcode](https://leetcode-cn.com/problems/can-place-flowers/)
 
 ### 我的思路
 在 1 的左右侧设置'障碍物', 用 2 代表, 根据连续多少个 0, 能发现如下规律:
@@ -206,9 +210,9 @@ public class NonOverlappingIntervals {
 ```
 
 ```java
-// ../../../../src/greedy/CanPlaceFlowers.java
+// ../../../../../src/main/java/com/dll/greedy/CanPlaceFlowers.java
 
-package greedy;
+package com.dll.greedy;
 
 public class CanPlaceFlowers {
 
@@ -247,7 +251,8 @@ public class CanPlaceFlowers {
 ### 贪心策略 (TODO)
 遍历，能种就种（在可种的时候不种都不会得到更优解）
 
-## [minimum-number-of-arrows-to-burst-balloons](https://leetcode-cn.com/problems/minimum-number-of-arrows-to-burst-balloons/)
+## 452. 用最少数量的箭引爆气球
+[leetcode](https://leetcode-cn.com/problems/minimum-number-of-arrows-to-burst-balloons/)
 ```
    |----| A
 |---| B 
@@ -281,9 +286,9 @@ public class CanPlaceFlowers {
 
 
 ```java
-// ../../../../src/greedy/MinimumNumberOfArrowsToBurstBalloons.java
+// ../../../../../src/main/java/com/dll/greedy/MinimumNumberOfArrowsToBurstBalloons.java
 
-package greedy;
+package com.dll.greedy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
