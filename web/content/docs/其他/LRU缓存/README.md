@@ -3,11 +3,11 @@ weight: 4
 title: "LRU 缓存"
 ---
 
-## LRU 缓存
+## 146. LRU 缓存机制
 [leetcode](https://leetcode-cn.com/problems/lru-cache)
 
 ```java
-// ../../../../src/main/java/com/dll/leetcode/LRUCache146.java
+// ../../../../../src/main/java/com/dll/leetcode/LRUCache146.java
 
 package com.dll.leetcode;
 
