@@ -1,5 +1,5 @@
 ---
-weight: 3
+weight: 1
 title: "剑指 offer"
 ---
 

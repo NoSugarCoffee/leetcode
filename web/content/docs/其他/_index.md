@@ -1,5 +1,5 @@
 ---
-weight: 1
+weight: 2
 bookFlatSection: false
-title: "类别"
+title: "其他"
 ---

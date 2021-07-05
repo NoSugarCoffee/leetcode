@@ -1,5 +1,5 @@
 ---
-weight: 3
+weight: 4
 title: "LRU 缓存"
 ---
 
