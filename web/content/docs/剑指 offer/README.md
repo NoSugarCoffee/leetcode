@@ -423,6 +423,7 @@ public class Offer10II {
 
 ## 11. 旋转数组的最小数字
 这题直接用暴力法解了，因为个人觉得题目没什么太大实际意义
+[leetcode](https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/)
 
 ```java
 // ../../../../src/main/java/com/dll/offer/Offer11.java
@@ -451,6 +452,8 @@ public class Offer11 {
 ```
 
 ## 24. 反转链表
+[leetcode](https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/)
+
 ```java
 // ../../../../src/main/java/com/dll/offer/Offer24.java
 
