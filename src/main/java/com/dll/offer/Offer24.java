@@ -1,7 +1,5 @@
 package com.dll.offer;
 
-import javax.print.attribute.standard.NumberUp;
-
 public class Offer24 {
     class ListNode {
         int val;
