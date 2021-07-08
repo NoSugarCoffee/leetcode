@@ -487,6 +487,8 @@ public class Offer24 {
 ```
 
 ## 25. 合并两个排序的链表
+[leetcode](https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/)
+
 ```java
 // ../../../../src/main/java/com/dll/offer/Offer25.java
 
