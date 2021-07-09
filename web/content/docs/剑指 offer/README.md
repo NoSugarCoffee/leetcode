@@ -451,6 +451,45 @@ public class Offer11 {
 
 ```
 
+## 18. 删除链表的节点
+[leetcode](https://leetcode-cn.com/problems/shan-chu-lian-biao-de-jie-dian-lcof/)
+
+```java
+// ../../../../src/main/java/com/dll/offer/Offer18.java
+
+package com.dll.offer;
+
+public class Offer18 {
+    class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
+    }
+    class Solution {
+        public ListNode deleteNode(ListNode head, int val) {
+            ListNode pre = null;
+            ListNode cur = head;
+            while (cur != null) {
+                if (cur.val == val) {
+                    if (pre == null) {
+                        cur = cur.next;
+                        head = cur;
+                    } else {
+                        pre.next = cur.next;
+                        cur = cur.next;
+                    }
+                } else {
+                    pre = cur;
+                    cur = cur.next;
+                }
+            }
+            return head;
+        }
+    }
+}
+
+```
+
 ## 24. 反转链表
 [leetcode](https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/)
 
