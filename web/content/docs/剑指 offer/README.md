@@ -569,3 +569,65 @@ public class Offer25 {
 }
 
 ```
+
+## 52. 两个链表的第一个公共节点
+[leetcode](https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/submissions/)
+
+- 要比较的是 node 是否相等，而不是 value 是否相等。
+- 由于是单向链表，即重合后一定是 “Y” 型，而不是 “X” 型，尾部长度一致。
+- 使链表 A 和链表 B 末尾对齐，同时遍历，出现相同结点则直接返回，直到遍历至末尾都没有相同结点则返回 null。
+
+**时空复杂度**
+- 时间复杂度: O(len(A) + len(B)))
+- 空间复杂度：O(1)
+
+```java
+// ../../../../src/main/java/com/dll/offer/Offer52.java
+
+package com.dll.offer;
+
+public class Offer52 {
+    class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) {
+            this.val = x;
+        }
+    }
+    class Solution {
+        public ListNode getIntersectionNOde(ListNode headA, ListNode headB) {
+                ListNode pa = headA;
+                ListNode pb = headB;
+                int lenA = 0;
+                int lenB = 0;
+                while(pa != null) {
+                    lenA++;
+                    pa = pa.next;
+                }
+                while(pb != null) {
+                    lenB++;
+                    pb = pb.next;
+                }
+                int distance = Math.abs(lenA - lenB);
+                ListNode pLong = headA;
+                ListNode pShort = headB;
+                if (lenB > lenA) {
+                    pLong = headB;
+                    pShort = headA;
+                }
+                while(distance-- > 0) {
+                    pLong = pLong.next;
+                }
+                while(pLong != null) {
+                    if (pLong == pShort) {
+                        return pLong;
+                    }
+                    pLong = pLong.next;
+                    pShort = pShort.next;
+                }
+                return null;
+        }
+    }
+}
+
+```
