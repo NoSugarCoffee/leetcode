@@ -28,4 +28,6 @@ func main() {
         }
     }()
     wg.Wait()
+    close(chFor)
+    close(chBar)
 }
