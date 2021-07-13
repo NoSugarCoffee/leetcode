@@ -109,3 +109,43 @@ public class RemoveDuplicatesFromSortedList83 {
 }
 
 ```
+
+## 203. 移除链表元素
+- 增加一个 dummy 结点使删除头结点和中间结点的逻辑一致
+- p 总是指向当前需要做逻辑判断的结点， pre 则为 p 的前一个结点
+- p 指向的结点 val 与给定一致时，删除 p 结点，即 pre.next = p.next
+- pre 与 p 的维护：当结点删除，下一轮的 pre 不需要变动，p = p.next，否则一直保持 pre 和 p 的前进
+
+```java
+// ../../../../../src/main/java/com/dll/linkedList/RemoveLinkedListElements203.java
+
+package com.dll.linkedList;
+
+public class RemoveLinkedListElements203 {
+    class ListNode {
+        int val;
+        ListNode next;
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
+
+    class Solution {
+        public ListNode removeElements(ListNode head, int val) {
+            ListNode dummy = new ListNode(-1, head);
+            ListNode pre = dummy;
+            ListNode p = head;
+            while(p != null) {
+                if(p.val == val) {
+                    pre.next = p.next;
+                } else {
+                    pre = p;
+                }
+                p = p.next;
+            }
+            return dummy.next;
+        }
+    }
+}
+
+```
