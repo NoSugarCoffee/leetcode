@@ -111,6 +111,8 @@ public class RemoveDuplicatesFromSortedList83 {
 ```
 
 ## 203. 移除链表元素
+[leetcode](https://leetcode-cn.com/problems/remove-linked-list-elements/)
+
 - 增加一个 dummy 结点使删除头结点和中间结点的逻辑一致
 - p 总是指向当前需要做逻辑判断的结点， pre 则为 p 的前一个结点
 - p 指向的结点 val 与给定一致时，删除 p 结点，即 pre.next = p.next
