@@ -151,3 +151,141 @@ public class RemoveLinkedListElements203 {
 }
 
 ```
+
+## 206. 反转链表
+
+
+## 707. 设计链表
+- 维护 dummy 为链表的初始结点，维护 tail 指针指向链表末尾非 null 结点（初始化时 tail = dummy），维护 len 代表当前链表的长度（不计 dummy）
+- 何时更新 tail 指针？
+    - addAtHead(val) 或 addAtIndex(-1, val) 且插入的结点为头结点，更新 tail 为当前插入的结点
+    - deleteAtIndex(index) index 为链表的尾结点，更新 tail 为删除结点的 previous 结点
+
+```java
+// ../../../../../src/main/java/com/dll/linkedList/DesignLinkedList707.java
+
+package com.dll.linkedList;
+
+public class DesignLinkedList707 {
+    class MyLinkedList {
+        private Node dummy;
+        // tail refs to last one of the list
+        private Node tail;
+        private int len;
+        class Node {
+            private int val;
+            private Node next;
+
+            public Node(int val) {
+                this(val, null);
+            }
+            public Node(int val, Node next) {
+                this.val = val;
+                this.next = next;
+            }
+        }
+
+        /** Initialize your data structure here. */
+        public MyLinkedList() {
+            dummy = new Node(-1);
+            tail = dummy;
+        }
+
+        /** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */
+        public int get(int index) {
+            Node p = dummy.next;
+            if (index < 0 || index >= len) {
+                return -1;
+            }
+            while(index > 0) {
+                p = p.next;
+                index--;
+            }
+            return p.val;
+        }
+
+        /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
+        public void addAtHead(int val) {
+            Node pre = dummy;
+            Node p = dummy.next;
+            pre.next = new Node(val, p);
+            len++;
+            if(p == null) {
+                tail = pre.next;
+            }
+        }
+
+        /** Append a node of value val to the last element of the linked list. */
+        public void addAtTail(int val) {
+            Node node = new Node(val);
+            tail.next = node;
+            tail = node;
+            len++;
+        }
+
+        /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */
+        public void addAtIndex(int index, int val) {
+            Node pre = dummy;
+            Node p = dummy.next;
+
+            if(index < 0) {
+                this.addAtHead(val);
+                return;
+            }
+            if (index > len) {
+                return;
+            }
+            if (index == len) {
+                this.addAtTail(val);
+                return;
+            }
+
+            while(index > 0) {
+                index --;
+                pre = p;
+                p = p.next;
+            }
+            pre.next = new Node(val, p);
+            len++;
+        }
+
+        /** Delete the index-th node in the linked list, if the index is valid. */
+        public void deleteAtIndex(int index) {
+            Node p = dummy.next;
+            Node pre = dummy;
+            if (index < 0 || index >= len) {
+                return;
+            }
+            while(index > 0) {
+                index--;
+                pre = p;
+                p = p.next;
+            }
+
+            pre.next = p.next;
+            len--;
+            if (p.next == null) {
+                tail = pre;
+            }
+        }
+
+        @Override
+        public String toString() {
+            Node p = this.dummy.next;
+            StringBuilder sb = new StringBuilder();
+            sb.append("[");
+            while( p != null) {
+                sb.append(p.val + "->");
+                p = p.next;
+            }
+            if (tail == null) {
+                sb.append("null] tail: null");
+            } else {
+                sb.append("null] tail:" + tail.val);
+            }
+            return sb.toString();
+        }
+    }
+}
+
+```    
