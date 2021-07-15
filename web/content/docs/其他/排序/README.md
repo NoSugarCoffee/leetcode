@@ -4,14 +4,12 @@ title: "排序"
 ---
 # 排序
 
-## 快速排序
-
 ## 冒泡排序
 
 ```java
-// ../../../../src/sort/BubbleSort.java
+// ../../../../../src/main/java/com/dll/sort/BubbleSort.java
 
-package sort;
+package com.dll.sort;
 
 public class BubbleSort {
 
@@ -38,56 +36,71 @@ public class BubbleSort {
 }
 
 ```
-
 ## 选择排序
+```java
+// ../../../../../src/main/java/com/dll/sort/SelectionSort.java
+
+package com.dll.sort;
+
+public class SelectionSort {
+    private void swap(int[] arr, int first, int second) {
+        int temp = arr[first];
+        arr[first] = arr[second];
+        arr[second] = temp;
+    }
+
+    public void sort(int[] arr) {
+        for (int i=0; i < arr.length-1; i++) {
+            int minIndex = i;
+            for (int j=i+1; j < arr.length; j++) {
+                if(arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            this.swap(arr, i, minIndex);
+        }
+    }
+}
+
+```
+
+## 快速排序
 
 ```java
-// ../../../../src/sort/QuickSelect.java
+// ../../../../../src/main/java/com/dll/sort/QuickSort.java
 
-package sort;
+package com.dll.sort;
 
-public class QuickSelect {
-  class Solution {
-    private void swap(int[] nums, int first, int second) {
-      int temp = nums[first];
-      nums[first] = nums[second];
-      nums[second] = temp;
+public class QuickSort {
+
+  private void swap(int[] arr, int first, int second) {
+    int temp = arr[first];
+    arr[first] = arr[second];
+    arr[second] = temp;
+  }
+
+  private void sort_recursion(int[] arr, int start, int end) {
+    if (start >= end) {
+      return;
     }
-    private int recursion(int[] nums, int l, int r, int k) {
-      int pivot = l;
-      int start = l;
-      int end = r;
-      while(start < end) {
-        while (start < end && nums[end] >= nums[pivot] ) {
-          end--;
-        }
-        while (start < end && nums[start] <= nums[pivot]) {
-          start++;
-        }
-        this.swap(nums, start, end);
+    int pivot = arr[start];
+    int l = start, r = end;
+    while (l < r) {
+      while (arr[r] >= pivot && l < r) {
+        r--;
       }
-      this.swap(nums, start, pivot);
-
-      int topN = nums.length - pivot;
-
-      if (topN == k) {
-        return nums[pivot];
-      } else if (topN < k) {
-        int result = this.recursion(nums, l, pivot - 1, k);
-        if(result != -1) {
-          return result;
-        }
-      } else {
-        int result = this.recursion(nums, pivot + 1, r, k);
-        if(result != -1) {
-          return result;
-        }
+      while (arr[l] <= pivot && l < r) {
+        l++;
       }
-      return -1;
+      this.swap(arr, l, r);
     }
-    public int findKthLargest(int[] nums, int k) {
-      return this.recursion(nums, 0, nums.length - 1, k);
-    }
+    this.swap(arr, start, l);
+    this.sort_recursion(arr, start, l - 1);
+    this.sort_recursion(arr, l + 1, end);
+  }
+
+  public void sort(int[] arr) {
+    this.sort_recursion(arr, 0, arr.length - 1);
   }
 }
 
@@ -96,9 +109,9 @@ public class QuickSelect {
 ## 归并排序
 
 ```java
-// ../../../../src/sort/MergeSort.java
+// ../../../../../src/main/java/com/dll/sort/MergeSort.java
 
-package sort;
+package com.dll.sort;
 
 import java.util.Arrays;
 
@@ -156,9 +169,9 @@ public class MergeSort {
 ## 插入排序
 
 ```java
-// ../../../../src/sort/InsertSort.java
+// ../../../../../src/main/java/com/dll/sort/InsertSort.java
 
-package sort;
+package com.dll.sort;
 
 /**
  * 插入排序将数组分为两个部分:有序部分和待排序部分
