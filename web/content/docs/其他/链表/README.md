@@ -5,6 +5,51 @@ title: "链表"
 
 # 链表
 
+## 19. 删除链表的倒数第 N 个结点
+[leetcode](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
+- 使用双指针，cur 指向当前结点，pren 指向 cur 的第前 n 个结点，当 cur 走到 null 时，pren 即为需要删除的结点
+
+```java
+// ../../../../../src/main/java/com/dll/linkedList/RemoveNthNodeFromEndOfList19.java
+
+package com.dll.linkedList;
+
+public class RemoveNthNodeFromEndOfList19 {
+    public class ListNode {
+        int val;
+        ListNode next;
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
+    class Solution {
+        public ListNode removeNthFromEnd(ListNode head, int n) {
+            ListNode dummy = new ListNode(-1, head);
+            ListNode p = head;
+            ListNode preOfPren = null;
+            ListNode pren = null;
+            while(p != null && n > 0) {
+                n--;
+                p = p.next;
+            }
+            if (n > 0) {
+                return null;
+            }
+            preOfPren = dummy;
+            pren = head;
+            while(p != null) {
+                preOfPren = pren;
+                pren = pren.next;
+                p = p.next;
+            }
+            preOfPren.next = pren.next;
+            return dummy.next;
+        }
+    }
+}
+
+```
+
 ## 82. 删除排序链表中的重复元素 II
 [leetcode](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)
 ```java
