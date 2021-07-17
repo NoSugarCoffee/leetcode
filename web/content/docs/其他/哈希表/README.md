@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class ValidAnagram {
     class Solution {
-        private Map<Character, Integer> countChars(String s) {
+        private Map<Character, Integer> toCharMap(String s) {
             Map<Character, Integer>  map = new HashMap<>();
             char[] chars = s.toCharArray();
             for (char c: chars) {
@@ -28,7 +28,10 @@ public class ValidAnagram {
             return map;
         }
         public boolean isAnagram(String s, String t) {
-            return this.countChars(s).equals(this.countChars(t));
+            if (s.length() != t.length()) {
+                return false;
+            }
+            return this.toCharMap(s).equals(this.toCharMap(t));
         }
     }
 }
