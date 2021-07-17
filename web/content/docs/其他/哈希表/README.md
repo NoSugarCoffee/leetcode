@@ -7,7 +7,6 @@ title: "哈希表"
 ## 242. 有效的字母异位词
 [leetcode](https://leetcode-cn.com/problems/valid-anagram/)
 - 分别用 map 存储两个字符串的字符词频
-- 比较两个 map 是否相等
 
 ```java
 // ../../../../../src/main/java/com/dll/hashtable/ValidAnagram.java
