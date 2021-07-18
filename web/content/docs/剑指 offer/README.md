@@ -451,36 +451,36 @@ public class Offer11 {
 
 ```
 
-### 13. 机器人的运动范围
-[leetcode]()https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/
+## 13. 机器人的运动范围
+[leetcode](https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof)
 
-这题有坑，开始以为按照如下代码可解，提交后一直不能 ac。
+这题有坑，开始以为按照如下代码可解，提交后一直不能 ac
 
 ```java
-    class Solution {
-        int calc(int num) {
-            int sum = 0;
-            while(num != 0) {
-                sum += num % 10;
-                num /= 10;
-            }
-            return sum;
+class Solution {
+    int calc(int num) {
+        int sum = 0;
+        while(num != 0) {
+            sum += num % 10;
+            num /= 10;
         }
-        public int movingCount(int m, int n, int k) {
-            int counter = 0;
-            for(int i = 0; i < m; i++) {
-                for (int j = 0; j < n; j++) {
-                    if ((calc(i) + calc(j)) <= k ) {
-                        counter++;
-                    }
+        return sum;
+    }
+    public int movingCount(int m, int n, int k) {
+        int counter = 0;
+        for(int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if ((calc(i) + calc(j)) <= k ) {
+                    counter++;
                 }
             }
-            return counter;
         }
+        return counter;
     }
+}
 ```
 
-翻看评论才知道，当有如下二维数组，当 k = 8 时，机器人无法从第九行或者第九列跨过去
+翻看评论才知道，有如下二维数组，当 k = 8 时，机器人无法从第九行或者第九列跨过去
 ```
   0  1  2  3  4  5  6 7  8  9 10
 0 可 可 可 可 可 可 可 可 可 不 可
@@ -498,6 +498,7 @@ public class Offer11 {
 （可为可到达的，不为不可到达的）
 ```
 
+正确解：
 ```java
 // ../../../../src/main/java/com/dll/offer/Offer13.java
 
