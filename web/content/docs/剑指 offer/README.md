@@ -451,6 +451,105 @@ public class Offer11 {
 
 ```
 
+### 13. 机器人的运动范围
+[leetcode]()https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/
+
+这题有坑，开始以为按照如下代码可解，提交后一直不能 ac。
+
+```java
+    class Solution {
+        int calc(int num) {
+            int sum = 0;
+            while(num != 0) {
+                sum += num % 10;
+                num /= 10;
+            }
+            return sum;
+        }
+        public int movingCount(int m, int n, int k) {
+            int counter = 0;
+            for(int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    if ((calc(i) + calc(j)) <= k ) {
+                        counter++;
+                    }
+                }
+            }
+            return counter;
+        }
+    }
+```
+
+翻看评论才知道，当有如下二维数组，当 k = 8 时，机器人无法从第九行或者第九列跨过去
+```
+  0  1  2  3  4  5  6 7  8  9 10
+0 可 可 可 可 可 可 可 可 可 不 可
+1 可 可 可 可 可 可 可 可 不 不 可
+2 可 可 可 可 可 可 可 不 不 不 可
+3 可 可 可 可 可 可 不 不 不 不 可
+4 可 可 可 可 可 不 不 不 不 不 可
+5 可 可 可 可 不 不 不 不 不 不 可
+6 可 可 可 不 不 不 不 不 不 不 可                      
+7 可 可 不 不 不 不 不 不 不 不 可  
+8 可 不 不 不 不 不 不 不 不 不 不  
+9 不 不 不 不 不 不 不 不 不 不 不  
+10可 可 可 可 可 可 可 可 可 可 不
+
+（可为可到达的，不为不可到达的）
+```
+
+```java
+// ../../../../src/main/java/com/dll/offer/Offer13.java
+
+package com.dll.offer;
+
+public class Offer13 {
+    class Solution {
+        int mLen;
+        int nLen;
+        int k;
+        int[][] visited;
+
+        private int calc(int num) {
+            int sum = 0;
+            while(num != 0) {
+                sum += num % 10;
+                num /= 10;
+            }
+            return sum;
+        }
+
+        public int dfs(int i, int j) {
+            if ( i >= mLen || j >= nLen) {
+                return 0;
+            }
+            if (visited[i][j] == 1) {
+                return 0;
+            }
+            visited[i][j] = 1;
+            if (calc(i) + calc(j) > this.k) {
+                return 0;
+            }
+            return  1 + this.dfs(i + 1, j) + this.dfs(i, j + 1);
+        }
+
+        private void init(int m, int n, int k) {
+            this.mLen = m;
+            this.nLen = n;
+            this.k = k;
+            this.visited = new int[m][n];
+        }
+
+        public int movingCount(int m, int n, int k) {
+            this.init(m, n, k);
+            return this.dfs(0, 0);
+        }
+    }
+}
+
+```
+
+
 ## 18. 删除链表的节点
 [leetcode](https://leetcode-cn.com/problems/shan-chu-lian-biao-de-jie-dian-lcof/)
 
