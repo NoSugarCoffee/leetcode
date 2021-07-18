@@ -16,18 +16,18 @@ public class Offer13 {
             return sum;
         }
 
-        public int dfs(int m, int n, int k) {
-            if ( m >= mLen || n >= nLen) {
+        public int dfs(int i, int j) {
+            if ( i >= mLen || j >= nLen) {
                 return 0;
             }
-            if (visited[m][n] == 1) {
+            if (visited[i][j] == 1) {
                 return 0;
             }
-            visited[m][n] = 1;
-            if (calc(m) + calc(n) > k) {
+            visited[i][j] = 1;
+            if (calc(i) + calc(j) > this.k) {
                 return 0;
             }
-            return  1 + this.dfs(m + 1, n, k) + this.dfs(m, n + 1, k);
+            return  1 + this.dfs(i + 1, j) + this.dfs(i, j + 1);
         }
 
         private void init(int m, int n, int k) {
@@ -39,7 +39,7 @@ public class Offer13 {
 
         public int movingCount(int m, int n, int k) {
             this.init(m, n, k);
-            return this.dfs(m, n, k);
+            return this.dfs(m, n);
         }
     }
 }
