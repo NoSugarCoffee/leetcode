@@ -39,7 +39,7 @@ public class Offer13 {
 
         public int movingCount(int m, int n, int k) {
             this.init(m, n, k);
-            return this.dfs(m, n);
+            return this.dfs(0, 0);
         }
     }
 }
