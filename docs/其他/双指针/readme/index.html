@@ -2,10 +2,10 @@
 由于数组升序, 分别使用指针 ps 指向数组开头, 指针 pe 指向数组末尾, 当 array[ps] + array[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target
 // ../../../../../src/main/java/com/dll/doublePoint/TwoSumIIInputArrayIsSorted.java  package com.dll.doublePoint; public class TwoSumIIInputArrayIsSorted { class Solution { public int[] twoSum(int[] numbers, int target) { int ps = 0; int pe = numbers.length - 1; while (ps < pe) { if (numbers[ps] + numbers[pe] == target) { return new int[]{ps + 1, pe + 1}; } else if (numbers[ps] + numbers[pe] > target) { pe--; } else { ps++; } } return new int[]{-1, -1}; } } } 88."><meta name=theme-color content="#FFFFFF"><meta property="og:title" content="双指针"><meta property="og:description" content="双指针 #  167. 两数之和 II - 输入有序数组 #  leetcode
 由于数组升序, 分别使用指针 ps 指向数组开头, 指针 pe 指向数组末尾, 当 array[ps] + array[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target
-// ../../../../../src/main/java/com/dll/doublePoint/TwoSumIIInputArrayIsSorted.java  package com.dll.doublePoint; public class TwoSumIIInputArrayIsSorted { class Solution { public int[] twoSum(int[] numbers, int target) { int ps = 0; int pe = numbers.length - 1; while (ps < pe) { if (numbers[ps] + numbers[pe] == target) { return new int[]{ps + 1, pe + 1}; } else if (numbers[ps] + numbers[pe] > target) { pe--; } else { ps++; } } return new int[]{-1, -1}; } } } 88."><meta property="og:type" content="article"><meta property="og:url" content="https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E5%8F%8C%E6%8C%87%E9%92%88/readme/"><meta property="article:section" content="docs"><title>双指针 | LeetCode solutions</title><link rel=manifest href=/leetcode/manifest.json><link rel=icon href=/leetcode/favicon.png type=image/x-icon><link rel=stylesheet href=/leetcode/book.min.2bc2364a4a4b31f0ec1debecf0a8f90a840821f143dfe1ac6a0f7cbcbdcf64ac.css integrity="sha256-K8I2SkpLMfDsHevs8Kj5CoQIIfFD3+Gsag98vL3PZKw="><script defer src=/leetcode/en.search.min.f0355e3e957c1f8a8ea86175912a174f399860a108117ddc99bc356015b3b95e.js integrity="sha256-8DVePpV8H4qOqGF1kSoXTzmYYKEIEX3cmbw1YBWzuV4="></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a href=/leetcode><span>LeetCode solutions</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><span>类别</span><ul><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%89%91%E6%8C%87-offer/readme/>剑指 offer</a></li><li><span>其他</span><ul><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E5%8F%8C%E6%8C%87%E9%92%88/readme/ class=active>双指针</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E6%8E%92%E5%BA%8F/readme/>排序</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E8%B4%AA%E5%BF%83/readme/>贪心</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E9%93%BE%E8%A1%A8/readme/>链表</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/readme/>二分查找</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/lru%E7%BC%93%E5%AD%98/readme/>LRU 缓存</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E5%93%88%E5%B8%8C%E8%A1%A8/readme/>哈希表</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E5%A4%9A%E7%BA%BF%E7%A8%8B/readme/>多线程</a></li></ul></li></ul></li></ul></nav><script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/leetcode/svg/menu.svg class=book-icon alt=Menu></label>
+// ../../../../../src/main/java/com/dll/doublePoint/TwoSumIIInputArrayIsSorted.java  package com.dll.doublePoint; public class TwoSumIIInputArrayIsSorted { class Solution { public int[] twoSum(int[] numbers, int target) { int ps = 0; int pe = numbers.length - 1; while (ps < pe) { if (numbers[ps] + numbers[pe] == target) { return new int[]{ps + 1, pe + 1}; } else if (numbers[ps] + numbers[pe] > target) { pe--; } else { ps++; } } return new int[]{-1, -1}; } } } 88."><meta property="og:type" content="article"><meta property="og:url" content="https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E5%8F%8C%E6%8C%87%E9%92%88/readme/"><meta property="article:section" content="docs"><title>双指针 | LeetCode solutions</title><link rel=manifest href=/leetcode/manifest.json><link rel=icon href=/leetcode/favicon.png type=image/x-icon><link rel=stylesheet href=/leetcode/book.min.2bc2364a4a4b31f0ec1debecf0a8f90a840821f143dfe1ac6a0f7cbcbdcf64ac.css integrity="sha256-K8I2SkpLMfDsHevs8Kj5CoQIIfFD3+Gsag98vL3PZKw="><script defer src=/leetcode/en.search.min.4909fd4c271e5c2d033ec54a1b8a82b32fbe8fd2179b6900875dc653a567d917.js integrity="sha256-SQn9TCceXC0DPsVKG4qCsy++j9IXm2kAh13GU6Vn2Rc="></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a href=/leetcode><span>LeetCode solutions</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><span>类别</span><ul><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%89%91%E6%8C%87-offer/readme/>剑指 offer</a></li><li><span>其他</span><ul><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E5%8F%8C%E6%8C%87%E9%92%88/readme/ class=active>双指针</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E6%8E%92%E5%BA%8F/readme/>排序</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E8%B4%AA%E5%BF%83/readme/>贪心</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E9%93%BE%E8%A1%A8/readme/>链表</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/readme/>二分查找</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/lru%E7%BC%93%E5%AD%98/readme/>LRU 缓存</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E5%93%88%E5%B8%8C%E8%A1%A8/readme/>哈希表</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E5%A4%9A%E7%BA%BF%E7%A8%8B/readme/>多线程</a></li><li><a href=https://nosugarcoffee.github.io/leetcode/docs/%E5%85%B6%E4%BB%96/%E5%AD%97%E7%AC%A6%E4%B8%B2/readme/>字符串</a></li></ul></li></ul></li></ul></nav><script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/leetcode/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>双指针</strong>
-<label for=toc-control><img src=/leetcode/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#167-两数之和-ii---输入有序数组>167. 两数之和 II - 输入有序数组</a></li><li><a href=#88-合并两个有序数组>88. 合并两个有序数组</a></li><li><a href=#142-环形链表-ii>142. 环形链表 II</a><ul><li><a href=#哈希法>哈希法</a></li><li><a href=#快慢指针>快慢指针</a></li></ul></li><li><a href=#76-最小覆盖子串>76. 最小覆盖子串</a><ul><li><a href=#滑动窗口>滑动窗口</a></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=双指针>双指针
+<label for=toc-control><img src=/leetcode/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#167-两数之和-ii---输入有序数组>167. 两数之和 II - 输入有序数组</a></li><li><a href=#88-合并两个有序数组>88. 合并两个有序数组</a></li><li><a href=#76-最小覆盖子串>76. 最小覆盖子串</a><ul><li><a href=#滑动窗口>滑动窗口</a></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=双指针>双指针
 <a class=anchor href=#%e5%8f%8c%e6%8c%87%e9%92%88>#</a></h1><h2 id=167-两数之和-ii---输入有序数组>167. 两数之和 II - 输入有序数组
 <a class=anchor href=#167-%e4%b8%a4%e6%95%b0%e4%b9%8b%e5%92%8c-ii---%e8%be%93%e5%85%a5%e6%9c%89%e5%ba%8f%e6%95%b0%e7%bb%84>#</a></h2><p><a href=https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/>leetcode</a></p><p>由于数组升序, 分别使用指针 ps 指向数组开头, 指针 pe 指向数组末尾, 当 array[ps] + array[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../../src/main/java/com/dll/doublePoint/TwoSumIIInputArrayIsSorted.java
 </span><span style=color:#75715e></span>
@@ -64,66 +64,6 @@
         nums3<span style=color:#f92672>[</span>index<span style=color:#f92672>++]</span> <span style=color:#f92672>=</span> nums2<span style=color:#f92672>[</span>p2<span style=color:#f92672>];</span>
       <span style=color:#f92672>}</span>
       System<span style=color:#f92672>.</span><span style=color:#a6e22e>arraycopy</span><span style=color:#f92672>(</span>nums3<span style=color:#f92672>,</span> 0<span style=color:#f92672>,</span> nums1<span style=color:#f92672>,</span> 0<span style=color:#f92672>,</span> m <span style=color:#f92672>+</span> n<span style=color:#f92672>);</span>
-    <span style=color:#f92672>}</span>
-  <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h2 id=142-环形链表-ii>142. 环形链表 II
-<a class=anchor href=#142-%e7%8e%af%e5%bd%a2%e9%93%be%e8%a1%a8-ii>#</a></h2><p><a href=https://leetcode-cn.com/problems/linked-list-cycle-ii/>leetcode</a></p><h3 id=哈希法>哈希法
-<a class=anchor href=#%e5%93%88%e5%b8%8c%e6%b3%95>#</a></h3><p>该思路比较直接, 后续在补充</p><h3 id=快慢指针>快慢指针
-<a class=anchor href=#%e5%bf%ab%e6%85%a2%e6%8c%87%e9%92%88>#</a></h3><p>该思路比较有趣, 具体如下: 若存在环时, 遍历永不结束。慢指针每次走 1 步, 快指针每次走 2 步, 成环时快指针总是能追上慢指针。那么如何知道入口点, 由已知关系得:</p><p><img src=https://assets.leetcode-cn.com/solution-static/142/142_fig1.png alt></p><pre><code>  快指针路径长 = 2 倍慢指针的路径 = n 圈路径长 + a + b
-  
-  2(a+b) = a+b+(b+c)*n 
-     a+b = (b+c)n
-       a = (b+c)n-b
-       a = (b+c)(n-1)+c
-     
-  从相遇点到入环点的距离加上 n-1 圈的环长，恰好等于从链表头部到入环点的距离
-</code></pre><p>在表头新建指针与 slow 同步移动, 相交处即为入口点</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../../src/main/java/com/dll/doublePoint/LinkedListCycleII.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.doublePoint<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ListNode</span> <span style=color:#f92672>{</span>
-
-  <span style=color:#66d9ef>int</span> val<span style=color:#f92672>;</span>
-  ListNode next<span style=color:#f92672>;</span>
-
-  ListNode<span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> x<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    val <span style=color:#f92672>=</span> x<span style=color:#f92672>;</span>
-    next <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
-  <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>LinkedListCycleII</span> <span style=color:#f92672>{</span>
-
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-
-    <span style=color:#66d9ef>public</span> ListNode <span style=color:#a6e22e>detectCycle</span><span style=color:#f92672>(</span>ListNode head<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-      ListNode slow<span style=color:#f92672>,</span> fast<span style=color:#f92672>,</span> find<span style=color:#f92672>;</span>
-      <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
-        find <span style=color:#f92672>=</span> head<span style=color:#f92672>;</span>
-        slow <span style=color:#f92672>=</span> head<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
-        fast <span style=color:#f92672>=</span> slow<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
-      <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>NullPointerException e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
-      <span style=color:#f92672>}</span>
-      <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>fast <span style=color:#f92672>!=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>fast <span style=color:#f92672>==</span> slow<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-          <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>find <span style=color:#f92672>!=</span> slow<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            find <span style=color:#f92672>=</span> find<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
-            slow <span style=color:#f92672>=</span> slow<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
-          <span style=color:#f92672>}</span>
-          <span style=color:#66d9ef>return</span> find<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-        fast <span style=color:#f92672>=</span> fast<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
-        slow <span style=color:#f92672>=</span> slow<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>fast <span style=color:#f92672>!=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-          fast <span style=color:#f92672>=</span> fast<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
-          <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-      <span style=color:#f92672>}</span>
-      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
     <span style=color:#f92672>}</span>
   <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
@@ -191,4 +131,4 @@
   <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
-</code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#167-两数之和-ii---输入有序数组>167. 两数之和 II - 输入有序数组</a></li><li><a href=#88-合并两个有序数组>88. 合并两个有序数组</a></li><li><a href=#142-环形链表-ii>142. 环形链表 II</a><ul><li><a href=#哈希法>哈希法</a></li><li><a href=#快慢指针>快慢指针</a></li></ul></li><li><a href=#76-最小覆盖子串>76. 最小覆盖子串</a><ul><li><a href=#滑动窗口>滑动窗口</a></li></ul></li></ul></nav></div></aside></main></body></html>
+</code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#167-两数之和-ii---输入有序数组>167. 两数之和 II - 输入有序数组</a></li><li><a href=#88-合并两个有序数组>88. 合并两个有序数组</a></li><li><a href=#76-最小覆盖子串>76. 最小覆盖子串</a><ul><li><a href=#滑动窗口>滑动窗口</a></li></ul></li></ul></nav></div></aside></main></body></html>
