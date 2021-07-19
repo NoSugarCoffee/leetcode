@@ -1,17 +1,15 @@
-package com.dll.doublePoint;
+package com.dll.linkedList;
 
-class ListNode {
+public class LinkedListCycleIIDoublePoint {
+  class ListNode {
+    int val;
+    ListNode next;
 
-  int val;
-  ListNode next;
-
-  ListNode(int x) {
-    val = x;
-    next = null;
+    ListNode(int x) {
+      val = x;
+      next = null;
+    }
   }
-}
-
-public class LinkedListCycleII {
 
   public class Solution {
 

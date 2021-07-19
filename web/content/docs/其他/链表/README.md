@@ -246,6 +246,115 @@ public class RemoveLinkedListElements203 {
 ```
 ## 206. 反转链表
 
+## 142. 环形链表 II
+[leetcode](https://leetcode-cn.com/problems/linked-list-cycle-ii/)
+
+### 哈希法
+
+```java
+// ../../../../../src/main/java/com/dll/linkedList/LinkedListCycleIIHash.java
+
+package com.dll.linkedList;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class LinkedListCycleIIHash {
+  class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) {
+      val = x;
+      next = null;
+    }
+  }
+
+  public class Solution {
+    private Set<ListNode> set = new HashSet<>();
+    public ListNode detectCycle(ListNode head) {
+      ListNode p = head;
+      while (p != null) {
+        if (set.contains(p)) {
+          return p;
+        }
+        set.add(p);
+        p = p.next;
+      }
+      return null;
+    }
+  }
+}
+
+```
+
+### 快慢指针
+    
+该思路比较有趣, 具体如下: 若存在环时, 遍历永不结束。慢指针每次走 1 步, 快指针每次走 2 步, 成环时快指针总是能追上慢指针。那么如何知道入口点, 由已知关系得:
+
+![](https://assets.leetcode-cn.com/solution-static/142/142_fig1.png)
+
+```
+  快指针路径长 = 2 倍慢指针的路径 = n 圈路径长 + a + b
+  
+  2(a+b) = a+b+(b+c)*n 
+     a+b = (b+c)n
+       a = (b+c)n-b
+       a = (b+c)(n-1)+c
+     
+  从相遇点到入环点的距离加上 n-1 圈的环长，恰好等于从链表头部到入环点的距离
+```
+在表头新建指针与 slow 同步移动, 相交处即为入口点
+
+```java
+// ../../../../../src/main/java/com/dll/linkedList/LinkedListCycleIIDoublePoint.java
+
+package com.dll.linkedList;
+
+public class LinkedListCycleIIDoublePoint {
+  class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int x) {
+      val = x;
+      next = null;
+    }
+  }
+
+  public class Solution {
+
+    public ListNode detectCycle(ListNode head) {
+      ListNode slow, fast, find;
+      try {
+        find = head;
+        slow = head.next;
+        fast = slow.next;
+      } catch (NullPointerException e) {
+        return null;
+      }
+      while (fast != null) {
+        if (fast == slow) {
+          while (find != slow) {
+            find = find.next;
+            slow = slow.next;
+          }
+          return find;
+        }
+        fast = fast.next;
+        slow = slow.next;
+        if (fast != null) {
+          fast = fast.next;
+        } else {
+          return null;
+        }
+      }
+      return null;
+    }
+  }
+}
+
+```
+
 ## 445. 两数相加 II
 [leetcode](https://leetcode-cn.com/problems/add-two-numbers-ii/)
 ```java
