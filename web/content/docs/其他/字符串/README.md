@@ -1,5 +1,5 @@
 ---
-weight: 10
+weight: 3
 title: "字符串"
 ---
 # 字符串
