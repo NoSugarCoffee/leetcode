@@ -46,6 +46,41 @@ public class TwoSum {
 }
 
 ```
+
+### 167. 两数之和 II - 输入有序数组
+[leetcode](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/) 
+
+- 使用指针 ps 指向数组开头, 指针 pe 指向数组末尾
+- 当 numbers[ps] + numbers[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target
+
+```java
+// ../../../../../src/main/java/com/dll/array/TwoSumIIInputArrayIsSorted.java
+
+package com.dll.array;
+
+public class TwoSumIIInputArrayIsSorted {
+
+  class Solution {
+    // 1. 双指针
+    public int[] twoSum(int[] numbers, int target) {
+      int ps = 0;
+      int pe = numbers.length - 1;
+      while (ps < pe) {
+        if (numbers[ps] + numbers[pe] == target) {
+          return new int[]{ps + 1, pe + 1};
+        } else if (numbers[ps] + numbers[pe] > target) {
+          pe--;
+        } else {
+          ps++;
+        }
+      }
+      return new int[]{-1, -1};
+    }
+  }
+}
+
+```
+
 ### 15. 三数之和
 [leetcode](https://leetcode-cn.com/problems/3sum/)
 ```java
