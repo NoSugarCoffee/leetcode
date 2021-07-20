@@ -1,9 +1,9 @@
-package com.dll.doublePoint;
+package com.dll.array;
 
 public class TwoSumIIInputArrayIsSorted {
 
   class Solution {
-
+    // 1. 双指针
     public int[] twoSum(int[] numbers, int target) {
       int ps = 0;
       int pe = numbers.length - 1;
