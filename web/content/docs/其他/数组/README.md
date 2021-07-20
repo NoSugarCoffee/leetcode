@@ -19,8 +19,8 @@ public class TwoSum {
     // 1. 暴力法
     class Solution {
         public int[] twoSum(int[] nums, int target) {
-            for(int i = 0; i < nums.length; i++) {
-                for (int j = i+1; j < nums.length; j++) {
+            for (int i = 0; i < nums.length; i++) {
+                for (int j = i + 1; j < nums.length; j++) {
                     if (nums[i] + nums[j] == target) {
                         return new int[]{i, j};
                     }
@@ -29,13 +29,14 @@ public class TwoSum {
             return new int[]{-1, -1};
         }
     }
+
     // 2. hash
     class Solution2 {
         public int[] twoSum(int[] nums, int target) {
             Map<Integer, Integer> map = new HashMap<>();
-            for(int i = 0; i < nums.length; i++) {
-                if(map.containsKey(target - nums[i])) {
-                    return new int[]{ map.get(target - nums[i]), i};
+            for (int i = 0; i < nums.length; i++) {
+                if (map.containsKey(target - nums[i])) {
+                    return new int[]{map.get(target - nums[i]), i};
                 }
                 map.put(nums[i], i);
             }
@@ -59,13 +60,13 @@ public class ThreeSum {
     class Solution {
         public List<List<Integer>> threeSum(int[] nums) {
             Map<Integer, Integer> map = new HashMap<>();
-            for (int i=0; i < nums.length; i++) {
+            for (int i = 0; i < nums.length; i++) {
                 map.put(nums[i], i);
             }
             Set<List<Integer>> set = new HashSet<>();
-            for (int i=0; i < nums.length; i++) {
-                for (int j=i+1; j < nums.length; j++) {
-                    int z = - nums[i] - nums[j];
+            for (int i = 0; i < nums.length; i++) {
+                for (int j = i + 1; j < nums.length; j++) {
+                    int z = -nums[i] - nums[j];
                     if (map.containsKey(z)
                             && map.get(z) != i
                             && map.get(z) != j) {
@@ -102,7 +103,7 @@ public class FourSum {
             }
             Set<List<Integer>> set = new HashSet<>();
             for (int i = 0; i < nums.length; i++) {
-                for(int j = i + 1; j < nums.length; j++) {
+                for (int j = i + 1; j < nums.length; j++) {
                     for (int k = j + 1; k < nums.length; k++) {
                         int z = target - nums[i] - nums[j] - nums[k];
                         if (map.containsKey(z)
