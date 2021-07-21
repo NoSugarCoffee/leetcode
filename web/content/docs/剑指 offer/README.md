@@ -498,7 +498,7 @@ class Solution {
 （可为可到达的，不为不可到达的）
 ```
 
-正确解：
+代码：
 ```java
 // ../../../../src/main/java/com/dll/offer/Offer13.java
 
