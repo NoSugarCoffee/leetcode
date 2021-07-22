@@ -1,5 +1,10 @@
 ---
 title: Introduction
+alwaysopen: true
+hide: 
+  - toc
+  - breadcrumb
+  - nextpage
 type: docs
 ---
 # Introduction
