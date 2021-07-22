@@ -1,6 +1,6 @@
 ---
-weight: 1
-title: "剑指 offer"
+title: 剑指 offer
+weight: 3
 ---
 
 ## 04. 二维数组中的查找
