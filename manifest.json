@@ -1,6 +1,6 @@
 {
-  "name": "LeetCode solutions",
-  "short_name": "LeetCode solutions",
+  "name": "LeetCode Cookbook",
+  "short_name": "LeetCode Cookbook",
   "start_url": "/leetcode/",
   "scope": "/leetcode/",
   "display": "standalone",
