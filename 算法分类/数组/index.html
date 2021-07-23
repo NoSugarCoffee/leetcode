@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-07-23T08:44:45 UTC">
+<meta name=revised content="2021-07-23T15:45:21 UTC">
 <meta name=description content>
 <title>数组 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -137,13 +137,14 @@ Jump to Section
 </span>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#n-数之和相关问题>N 数之和相关问题</a>
+<li><a href=#n-数之和>N 数之和</a>
 <ul>
 <li><a href=#两数之和>两数之和</a></li>
 <li><a href=#两数之和-ii---输入有序数组>两数之和 II - 输入有序数组</a></li>
 <li><a href=#三数之和>三数之和</a></li>
 <li><a href=#四数之和>四数之和</a></li>
 <li><a href=#组合>组合</a></li>
+<li><a href=#组合总和>组合总和</a></li>
 <li><a href=#组合总和-ii>组合总和 II</a></li>
 </ul>
 </li>
@@ -151,9 +152,9 @@ Jump to Section
 </nav>
 </div>
 <div class=content>
-<h2 ref=n-数之和相关问题>N 数之和相关问题</h2><a class=anchor id=n-数之和相关问题></a>
+<h2 ref=n-数之和>N 数之和</h2><a class=anchor id=n-数之和></a>
 <h3 ref=两数之和>两数之和</h3><a class=anchor id=两数之和></a>
-<p><a href=https://leetcode-cn.com/problems/two-sum/>1</a></p>
+<p><a href=https://leetcode-cn.com/problems/two-sum/>1. leetcode</a></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/TwoSum.java
 </span><span style=color:#75715e></span>
 <span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
@@ -192,7 +193,7 @@ Jump to Section
 <span style=color:#f92672>}</span>
 
 </code></pre></div><h3 ref=两数之和-ii---输入有序数组>两数之和 II - 输入有序数组</h3><a class=anchor id=两数之和-ii---输入有序数组></a>
-<p><a href=https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/>167</a></p>
+<p><a href=https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/>167. leetcode</a></p>
 <ul>
 <li>使用指针 ps 指向数组开头, 指针 pe 指向数组末尾</li>
 <li>当 numbers[ps] + numbers[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target</li>
@@ -223,7 +224,7 @@ Jump to Section
 <span style=color:#f92672>}</span>
 
 </code></pre></div><h3 ref=三数之和>三数之和</h3><a class=anchor id=三数之和></a>
-<p><a href=https://leetcode-cn.com/problems/3sum/>15</a></p>
+<p><a href=https://leetcode-cn.com/problems/3sum/>15. leetcode</a></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/ThreeSum.java
 </span><span style=color:#75715e></span>
 <span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
@@ -258,7 +259,7 @@ Jump to Section
 </span><span style=color:#75715e></span><span style=color:#f92672>}</span>
 
 </code></pre></div><h3 ref=四数之和>四数之和</h3><a class=anchor id=四数之和></a>
-<p><a href=https://leetcode-cn.com/problems/4sum/>18</a></p>
+<p><a href=https://leetcode-cn.com/problems/4sum/>18. leetcode</a></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/FourSum.java
 </span><span style=color:#75715e></span>
 <span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
@@ -295,7 +296,7 @@ Jump to Section
 <span style=color:#f92672>}</span>
 
 </code></pre></div><h3 ref=组合>组合</h3><a class=anchor id=组合></a>
-<p><a href=https://leetcode-cn.com/problems/combinations/>77</a></p>
+<p><a href=https://leetcode-cn.com/problems/combinations/>77. leetcode</a></p>
 <p>经过上面的 2、3、4 数之和问题的探索, 发现如果要求「N 个数之和为 target的全部组合」还是有点力不从心，本质上是需要求出给定数组的全部组合，所以先解此题</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/Combinations.java
 </span><span style=color:#75715e></span>
@@ -391,8 +392,67 @@ Jump to Section
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
+</code></pre></div><h3 ref=组合总和>组合总和</h3><a class=anchor id=组合总和></a>
+<p><a href=https://leetcode-cn.com/problems/combination-sum/>39. leetcode</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/CombinationSum.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.ArrayList<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Arrays<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.List<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>CombinationSum</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
+        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> path <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> sum<span style=color:#f92672>;</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>;</span>
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> data<span style=color:#f92672>;</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>init</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> data<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> data<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span> <span style=color:#f92672>=</span> target<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> array<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> index<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> result<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
+                result <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>copyOfRange</span><span style=color:#f92672>(</span>array<span style=color:#f92672>,</span> index<span style=color:#f92672>,</span> array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>);</span>
+            <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>Exception e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{};</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> array<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>==</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                result<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>));</span>
+                <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>&gt;</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>array<span style=color:#f92672>[</span>i<span style=color:#f92672>]);</span>
+                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>+=</span> array<span style=color:#f92672>[</span>i<span style=color:#f92672>];</span>
+                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span>array<span style=color:#f92672>,</span> i<span style=color:#f92672>));</span>
+                <span style=color:#66d9ef>int</span> remove <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remove</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>);</span>
+                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>-=</span> remove<span style=color:#f92672>;</span>
+            <span style=color:#f92672>}</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> <span style=color:#a6e22e>combinationSum</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> candidates<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>init</span><span style=color:#f92672>(</span>candidates<span style=color:#f92672>,</span> target<span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>data</span><span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
 </code></pre></div><h3 ref=组合总和-ii>组合总和 II</h3><a class=anchor id=组合总和-ii></a>
-<p><a href=https://leetcode-cn.com/problems/combination-sum-ii/>40</a></p>
+<p><a href=https://leetcode-cn.com/problems/combination-sum-ii/>40. leetcode</a></p>
 <p>该题就是 <a href=#%E7%BB%84%E5%90%88>组合</a> 提到的「N 数之和为 target 的全部组合问题」，思路同上</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/CombinationSumII.java
 </span><span style=color:#75715e></span>
@@ -477,13 +537,14 @@ Jump to Section
 </nav>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#n-数之和相关问题>N 数之和相关问题</a>
+<li><a href=#n-数之和>N 数之和</a>
 <ul>
 <li><a href=#两数之和>两数之和</a></li>
 <li><a href=#两数之和-ii---输入有序数组>两数之和 II - 输入有序数组</a></li>
 <li><a href=#三数之和>三数之和</a></li>
 <li><a href=#四数之和>四数之和</a></li>
 <li><a href=#组合>组合</a></li>
+<li><a href=#组合总和>组合总和</a></li>
 <li><a href=#组合总和-ii>组合总和 II</a></li>
 </ul>
 </li>
