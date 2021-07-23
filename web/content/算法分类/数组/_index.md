@@ -3,9 +3,9 @@ weight: 1
 title: "数组"
 ---
 
-## N 数之和相关问题
+## N 数之和
 ### 两数之和  
-[1](https://leetcode-cn.com/problems/two-sum/) 
+[1. leetcode](https://leetcode-cn.com/problems/two-sum/) 
 
 ```java
 // ../../../../src/main/java/com/dll/array/TwoSum.java
@@ -48,7 +48,7 @@ public class TwoSum {
 ```
 
 ### 两数之和 II - 输入有序数组 
-[167](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/) 
+[167. leetcode](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/) 
 
 - 使用指针 ps 指向数组开头, 指针 pe 指向数组末尾
 - 当 numbers[ps] + numbers[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target
@@ -82,7 +82,7 @@ public class TwoSumIIInputArrayIsSorted {
 ```
 
 ### 三数之和 
-[15](https://leetcode-cn.com/problems/3sum/)
+[15. leetcode](https://leetcode-cn.com/problems/3sum/)
 
 ```java
 // ../../../../src/main/java/com/dll/array/ThreeSum.java
@@ -121,7 +121,7 @@ public class ThreeSum {
 ```
 
 ### 四数之和 
-[18](https://leetcode-cn.com/problems/4sum/)
+[18. leetcode](https://leetcode-cn.com/problems/4sum/)
 
 ```java
 // ../../../../src/main/java/com/dll/array/FourSum.java
@@ -161,7 +161,7 @@ public class FourSum {
 
 ```
 ### 组合 
-[77](https://leetcode-cn.com/problems/combinations/)
+[77. leetcode](https://leetcode-cn.com/problems/combinations/)
 
 经过上面的 2、3、4 数之和问题的探索, 发现如果要求「N 个数之和为 target的全部组合」还是有点力不从心，本质上是需要求出给定数组的全部组合，所以先解此题
 
@@ -261,9 +261,71 @@ public class Combinations {
 }
 
 ```
+### 组合总和
+[39. leetcode](https://leetcode-cn.com/problems/combination-sum/)
+
+```java
+// ../../../../src/main/java/com/dll/array/CombinationSum.java
+
+package com.dll.array;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class CombinationSum {
+    class Solution {
+        private List<List<Integer>> result = new ArrayList<>();
+        private List<Integer> path = new ArrayList<>();
+        private int sum;
+
+        private int target;
+        private int[] data;
+
+        private void init(int[] data, int target) {
+            this.data = data;
+            this.target = target;
+        }
+
+        private int[] remain(int[] array, int index) {
+            int[] result;
+            try {
+                result = Arrays.copyOfRange(array, index, array.length);
+            } catch (Exception e) {
+                result = new int[]{};
+            }
+            return result;
+        }
+
+        private void recursion(int[] array) {
+            if (this.sum == this.target) {
+                result.add(new ArrayList<>(this.path));
+                return;
+            }
+            if (this.sum > this.target) {
+                return;
+            }
+            for (int i = 0; i < array.length; i++) {
+                this.path.add(array[i]);
+                this.sum += array[i];
+                this.recursion(this.remain(array, i));
+                int remove = this.path.remove(this.path.size() - 1);
+                this.sum -= remove;
+            }
+        }
+
+        public List<List<Integer>> combinationSum(int[] candidates, int target) {
+            this.init(candidates, target);
+            this.recursion(this.data);
+            return result;
+        }
+    }
+}
+
+```
 
 ### 组合总和 II 
-[40](https://leetcode-cn.com/problems/combination-sum-ii/)
+[40. leetcode](https://leetcode-cn.com/problems/combination-sum-ii/)
 
 该题就是 [组合](#组合) 提到的「N 数之和为 target 的全部组合问题」，思路同上
 
@@ -331,3 +393,4 @@ public class CombinationSumII {
 }
 
 ```
+
