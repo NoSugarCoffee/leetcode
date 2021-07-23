@@ -1,11 +1,9 @@
 ---
-weight: 3
+weight: 2
 title: "字符串"
 ---
-# 字符串
 
-## 344. 反转字符串
-[leetcode](https://leetcode-cn.com/problems/reverse-string/)
+## 反转字符串 [344](https://leetcode-cn.com/problems/reverse-string/)
 
 ```java
 // ../../../../../src/main/java/com/dll/string/ReverseString.java

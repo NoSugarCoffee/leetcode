@@ -1,12 +1,11 @@
 ---
-weight: 2
+weight: 1
 title: "数组"
 ---
-# 数组
 
 ## N 数之和相关问题
-### 1. 两数之和
-[leetcode](https://leetcode-cn.com/problems/two-sum/)
+### 两数之和  [1](https://leetcode-cn.com/problems/two-sum/) 
+
 ```java
 // ../../../../../src/main/java/com/dll/array/TwoSum.java
 
@@ -47,8 +46,7 @@ public class TwoSum {
 
 ```
 
-### 167. 两数之和 II - 输入有序数组
-[leetcode](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/) 
+### 两数之和 II - 输入有序数组 [167](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/) 
 
 - 使用指针 ps 指向数组开头, 指针 pe 指向数组末尾
 - 当 numbers[ps] + numbers[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target
@@ -81,8 +79,8 @@ public class TwoSumIIInputArrayIsSorted {
 
 ```
 
-### 15. 三数之和
-[leetcode](https://leetcode-cn.com/problems/3sum/)
+### 三数之和 [15](https://leetcode-cn.com/problems/3sum/)
+
 ```java
 // ../../../../../src/main/java/com/dll/array/ThreeSum.java
 
@@ -119,8 +117,8 @@ public class ThreeSum {
 
 ```
 
-### 18. 四数之和
-[leetcode](https://leetcode-cn.com/problems/4sum/)
+### 四数之和 [18](https://leetcode-cn.com/problems/4sum/)
+
 ```java
 // ../../../../../src/main/java/com/dll/array/FourSum.java
 
@@ -158,8 +156,8 @@ public class FourSum {
 }
 
 ```
-### 77. 组合
-[leetcode](https://leetcode-cn.com/problems/combinations/)
+### 组合 [77](https://leetcode-cn.com/problems/combinations/)
+
 
 经过上面的 2、3、4 数之和问题的探索，发现如果要求“ n 个数之和为 target 的全部组合”还是有点力不从心，本质上是需要求出给定数组的全部组合
 

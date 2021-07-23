@@ -1,9 +1,7 @@
 ---
-weight: 3
+weight: 10
 title: "二分查找"
 ---
-
-# 二分查找
 
 ## 69. x 的平方根
 [leetcode](https://leetcode-cn.com/problems/sqrtx/)

@@ -1,8 +1,7 @@
 ---
-weight: 2
+weight: 10
 title: "双指针"
 ---
-# 双指针
 
 ## 88. 合并两个有序数组
 [leetcode](https://leetcode.com/problems/merge-sorted-array/)
