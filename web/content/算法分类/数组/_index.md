@@ -163,7 +163,7 @@ public class FourSum {
 ### 组合 
 [77](https://leetcode-cn.com/problems/combinations/)
 
-经过上面的 2/3/4 数之和问题的探索，发现如果要求 "N 个数之和为 target 的全部组合" 还是有点力不从心，本质上是需要求出给定数组的全部组合，所以先解此题
+经过上面的 2、3、4 数之和问题的探索, 发现如果要求「N 个数之和为 target的全部组合」还是有点力不从心，本质上是需要求出给定数组的全部组合，所以先解此题
 
 ```java
 // ../../../../src/main/java/com/dll/array/Combinations.java
@@ -265,7 +265,7 @@ public class Combinations {
 ### 组合总和 II 
 [40](https://leetcode-cn.com/problems/combination-sum-ii/)
 
-该题就是 [组合](#组合) 提到的 "N 数之和为 target 的全部组合问题", 思路同上
+该题就是 [组合](#组合) 提到的「N 数之和为 target 的全部组合问题」，思路同上
 
 ```java
 // ../../../../src/main/java/com/dll/array/CombinationSumII.java

@@ -1,4 +1,4 @@
-# LeetCode
+# LeetCode solutions
 
 [![GitHub Super-Linter](https://github.com/NoSugarCoffee/leetcode/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
@@ -26,9 +26,11 @@ You can visit [here](https://nosugarcoffee.github.io/leetcode) for a happy readi
 - Use [actions-hugo](https://github.com/peaceiris/actions-hugo) for pages deploy
 
 
+## Copywriting
+
+- Following [chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)
 
 ## Q&A
 
-Q: How to embed source code by link rather than COPY&PASTE in README ?
-
-A: You can use this [tool](https://github.com/zakhenry/embedme) written by js.
+- How to embed source code by link rather than COPY&PASTE in README ?
+    - You can use this [tool](https://github.com/zakhenry/embedme) written by js.
