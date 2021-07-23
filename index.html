@@ -6,7 +6,7 @@ Introduction :: LeetCode Solutions
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-07-23T08:17:25 UTC">
+<meta name=revised content="2021-07-23T08:44:45 UTC">
 <meta name=description content>
 <title>Introduction :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -114,8 +114,45 @@ item_level_$level">
 <section class=page>
 <h1>Introduction</h1>
 <div class=content>
-<h1 ref=introduction>Introduction</h1><a class=anchor id=introduction></a>
-<p>LeetCode solutions writing in java. Rendered by hugo / github pages.</p>
+<p>LeetCode solutions writing in java. Rendered by hugo & github pages.
+You can visit <a href=https://nosugarcoffee.github.io/leetcode>here</a> for a happy reading.</p>
+<h2 ref=local-development-and-preview>Local Development And Preview</h2><a class=anchor id=local-development-and-preview></a>
+<ol>
+<li>
+<p>Add comment of relative file path in .md which you want to include, like following:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/lrucache_146/LRUCache.java
+</span></code></pre></div></li>
+<li>
+<p>Run <code>npx embedme README.md</code></p>
+</li>
+<li>
+<p>Run <code>hugo server</code> under web directory</p>
+</li>
+</ol>
+<h2 ref=github-actions>Github Actions</h2><a class=anchor id=github-actions></a>
+<ul>
+<li>
+<p>Use <a href=https://github.com/github/super-linter>super-linter</a> for code lint</p>
+</li>
+<li>
+<p>Use <a href=https://docs.github.com/en/actions/guides/building-and-testing-java-with-maven>setup-java</a> for maven test</p>
+</li>
+<li>
+<p>Use <a href=https://github.com/peaceiris/actions-hugo>actions-hugo</a> for pages deploy</p>
+</li>
+</ul>
+<h2 ref=copywriting>Copywriting</h2><a class=anchor id=copywriting></a>
+<ul>
+<li>Following <a href=https://github.com/sparanoid/chinese-copywriting-guidelines>chinese-copywriting-guidelines</a></li>
+</ul>
+<h2 ref=qa>Q&A</h2><a class=anchor id=qa></a>
+<ul>
+<li>How to embed source code by link rather than COPY&PASTE in README ?
+<ul>
+<li>You can use this <a href=https://github.com/zakhenry/embedme>tool</a> written by js.</li>
+</ul>
+</li>
+</ul>
 </div>
 </section>
 </article>
