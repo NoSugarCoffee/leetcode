@@ -2,10 +2,8 @@
 weight: 10
 title: "多线程"
 ---
-# 多线程
 
-## 1115. 交替打印FooBar
-[leetcode](https://leetcode-cn.com/problems/print-foobar-alternately/)
+## 交替打印FooBar [1115](https://leetcode-cn.com/problems/print-foobar-alternately/)
 
 利用 AtomicBoolean 来互斥的访问临界资源
 

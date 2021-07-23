@@ -1,11 +1,9 @@
 ---
-weight: 2
+weight: 10
 title: "双指针"
 ---
-# 双指针
 
-## 88. 合并两个有序数组
-[leetcode](https://leetcode.com/problems/merge-sorted-array/)
+## 合并两个有序数组 [88](https://leetcode.com/problems/merge-sorted-array/)
 
 开辟足够大的 nums3, p1、p2 分别指向两个有序数组初始位置, 存储当前指针指向的较小值至 nums3 且移动指针, 相等则任选
 
@@ -48,9 +46,7 @@ public class MergeSortedArray {
 ``` 
 
 
-## 76. 最小覆盖子串
-
-[leetcode](https://leetcode-cn.com/problems/minimum-window-substring/)
+## 最小覆盖子串 [76](https://leetcode-cn.com/problems/minimum-window-substring/)
  
 ### 滑动窗口
 

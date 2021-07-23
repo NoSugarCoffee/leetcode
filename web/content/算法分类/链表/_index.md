@@ -1,11 +1,8 @@
 ---
-weight: 2
+weight: 3
 title: "链表"
 ---
-
-# 链表
-## 2. 两数相加
-[leetcode](https://leetcode-cn.com/problems/add-two-numbers/)
+## 两数相加 [2](https://leetcode-cn.com/problems/add-two-numbers/)
 - 各个位置上的结点相加并需要考虑进位
 ```java
 // ../../../../../src/main/java/com/dll/linkedList/AddTwoNumbers2.java
@@ -53,8 +50,7 @@ public class AddTwoNumbers2 {
 ```
 
 
-## 19. 删除链表的倒数第 N 个结点
-[leetcode](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
+## 删除链表的倒数第 N 个结点 [19](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
 - 使用双指针，cur 指向当前结点，pren 指向 cur 的第前 n 个结点，当 cur 走到 null 时，pren 即为需要删除的结点
 
 ```java
@@ -98,8 +94,7 @@ public class RemoveNthNodeFromEndOfList19 {
 
 ```
 
-## 82. 删除排序链表中的重复元素 II
-[leetcode](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)
+## 删除排序链表中的重复元素 II  [82](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/) 
 ```java
 // ../../../../../src/main/java/com/dll/linkedList/RemoveDuplicatesFromSortedListII82.java
 
@@ -163,8 +158,7 @@ public class RemoveDuplicatesFromSortedListII82 {
 
 ```
 
-## 83. 删除排序链表中的重复元素
-[leetcode](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
+## 删除排序链表中的重复元素 [83](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
 
 ```java
 // ../../../../../src/main/java/com/dll/linkedList/RemoveDuplicatesFromSortedList83.java
@@ -203,8 +197,7 @@ public class RemoveDuplicatesFromSortedList83 {
 
 ```
 
-## 203. 移除链表元素
-[leetcode](https://leetcode-cn.com/problems/remove-linked-list-elements/)
+## 移除链表元素 [203](https://leetcode-cn.com/problems/remove-linked-list-elements/)
 
 - 增加一个 dummy 结点使删除头结点和中间结点的逻辑一致
 - p 总是指向当前需要做逻辑判断的结点， pre 则为 p 的前一个结点
@@ -244,10 +237,9 @@ public class RemoveLinkedListElements203 {
 }
 
 ```
-## 206. 反转链表
+## 反转链表 206
 
-## 142. 环形链表 II
-[leetcode](https://leetcode-cn.com/problems/linked-list-cycle-ii/)
+## 环形链表 II [142](https://leetcode-cn.com/problems/linked-list-cycle-ii/)
 
 ### 哈希法
 
@@ -355,8 +347,7 @@ public class LinkedListCycleIIDoublePoint {
 
 ```
 
-## 445. 两数相加 II
-[leetcode](https://leetcode-cn.com/problems/add-two-numbers-ii/)
+## 两数相加 II [445](https://leetcode-cn.com/problems/add-two-numbers-ii/)
 ```java
 // ../../../../../src/main/java/com/dll/linkedList/AddTwoNumbersII445.java
 
@@ -411,7 +402,7 @@ public class AddTwoNumbersII445 {
 ```
 
 
-## 707. 设计链表
+## 设计链表 [707](https://leetcode-cn.com/problems/design-linked-list/)
 - 维护 dummy 为链表的初始结点，维护 tail 指针指向链表末尾非 null 结点（初始化时 tail = dummy），维护 len 代表当前链表的长度（不计 dummy）
 - 何时更新 tail 指针？
     - addAtHead(val) 或 addAtIndex(-1, val) 且插入的结点为头结点，更新 tail 为当前插入的结点

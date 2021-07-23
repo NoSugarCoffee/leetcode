@@ -1,9 +1,7 @@
 ---
-weight: 2
+weight: 10
 title: "排序"
 ---
-# 排序
-
 ## 冒泡排序
 
 ```java
