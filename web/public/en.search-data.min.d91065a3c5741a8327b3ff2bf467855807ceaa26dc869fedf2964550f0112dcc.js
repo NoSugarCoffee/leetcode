@@ -1,1 +1,0 @@
-'use strict';(function(){const b={cache:!0};b.doc={id:'id',field:['title','content'],store:['title','href','section']};const a=FlexSearch.create('balance',b);window.bookSearchIndex=a,a.add({id:0,href:'/posts/test/',title:"Test",section:"Posts",content:"test #  "}),a.add({id:1,href:'/posts/readme/',title:"Readme",section:"Posts",content:"leetcode #   贪心算法 双指针 二分查找 排序  "})})()
