@@ -4,10 +4,11 @@ title: "数组"
 ---
 
 ## N 数之和相关问题
-### 两数之和  [1](https://leetcode-cn.com/problems/two-sum/) 
+### 两数之和  
+[1](https://leetcode-cn.com/problems/two-sum/) 
 
 ```java
-// ../../../../../src/main/java/com/dll/array/TwoSum.java
+// ../../../../src/main/java/com/dll/array/TwoSum.java
 
 package com.dll.array;
 
@@ -46,13 +47,14 @@ public class TwoSum {
 
 ```
 
-### 两数之和 II - 输入有序数组 [167](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/) 
+### 两数之和 II - 输入有序数组 
+[167](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/) 
 
 - 使用指针 ps 指向数组开头, 指针 pe 指向数组末尾
 - 当 numbers[ps] + numbers[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target
 
 ```java
-// ../../../../../src/main/java/com/dll/array/TwoSumIIInputArrayIsSorted.java
+// ../../../../src/main/java/com/dll/array/TwoSumIIInputArrayIsSorted.java
 
 package com.dll.array;
 
@@ -79,10 +81,11 @@ public class TwoSumIIInputArrayIsSorted {
 
 ```
 
-### 三数之和 [15](https://leetcode-cn.com/problems/3sum/)
+### 三数之和 
+[15](https://leetcode-cn.com/problems/3sum/)
 
 ```java
-// ../../../../../src/main/java/com/dll/array/ThreeSum.java
+// ../../../../src/main/java/com/dll/array/ThreeSum.java
 
 package com.dll.array;
 
@@ -117,10 +120,11 @@ public class ThreeSum {
 
 ```
 
-### 四数之和 [18](https://leetcode-cn.com/problems/4sum/)
+### 四数之和 
+[18](https://leetcode-cn.com/problems/4sum/)
 
 ```java
-// ../../../../../src/main/java/com/dll/array/FourSum.java
+// ../../../../src/main/java/com/dll/array/FourSum.java
 
 package com.dll.array;
 
@@ -156,13 +160,13 @@ public class FourSum {
 }
 
 ```
-### 组合 [77](https://leetcode-cn.com/problems/combinations/)
+### 组合 
+[77](https://leetcode-cn.com/problems/combinations/)
 
-
-经过上面的 2、3、4 数之和问题的探索，发现如果要求“ n 个数之和为 target 的全部组合”还是有点力不从心，本质上是需要求出给定数组的全部组合
+经过上面的 2/3/4 数之和问题的探索，发现如果要求 "N 个数之和为 target 的全部组合" 还是有点力不从心，本质上是需要求出给定数组的全部组合，所以先解此题
 
 ```java
-// ../../../../../src/main/java/com/dll/array/Combinations.java
+// ../../../../src/main/java/com/dll/array/Combinations.java
 
 package com.dll.array;
 
@@ -258,3 +262,72 @@ public class Combinations {
 
 ```
 
+### 组合总和 II 
+[40](https://leetcode-cn.com/problems/combination-sum-ii/)
+
+该题就是 [组合](#组合) 提到的 "N 数之和为 target 的全部组合问题", 思路同上
+
+```java
+// ../../../../src/main/java/com/dll/array/CombinationSumII.java
+
+package com.dll.array;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class CombinationSumII {
+    class Solution {
+        private List<Integer> path = new ArrayList<>();
+        private int[] sorted_candidates;
+        private int[] candidates;
+        private int target;
+        private List<List<Integer>> result = new ArrayList<>();
+        private int sum = 0;
+
+        private void init(int[] candidates, int target) {
+            this.candidates = candidates;
+            int[] candidatesCopy = Arrays.copyOf(candidates, candidates.length);
+            Arrays.sort(candidatesCopy);
+            this.sorted_candidates = candidatesCopy;
+            this.target = target;
+        }
+        private int[] remain(int[] array, int index) {
+            int[] result;
+            try {
+                result = Arrays.copyOfRange(array, index + 1, array.length);
+            } catch (Exception e) {
+                result = new int[]{};
+            }
+            return result;
+        }
+        private boolean ifSkipOnContinuesEqual(int[] remain, int index) {
+            return index - 1 >= 0 && remain[index] == remain[index - 1];
+        }
+        private void recursion(int[] remain) {
+            if (sum == this.target) {
+                result.add(new ArrayList<>(path));
+                return;
+            } else if (sum > this.target) {
+                return;
+            }
+            for (int i = 0; i < remain.length; i++) {
+                if (this.ifSkipOnContinuesEqual(remain, i)) {
+                    continue;
+                }
+                path.add(remain[i]);
+                sum += remain[i];
+                this.recursion(this.remain(remain, i));
+                int val = path.remove(path.size() - 1);
+                sum -= val;
+            }
+        }
+        public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+            this.init(candidates, target);
+            this.recursion(this.sorted_candidates);
+            return result;
+        }
+    }
+}
+
+```
