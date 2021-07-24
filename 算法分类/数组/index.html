@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-07-23T15:45:21 UTC">
+<meta name=revised content="2021-07-24T12:21:24 UTC">
 <meta name=description content>
 <title>数组 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -146,6 +146,7 @@ Jump to Section
 <li><a href=#组合>组合</a></li>
 <li><a href=#组合总和>组合总和</a></li>
 <li><a href=#组合总和-ii>组合总和 II</a></li>
+<li><a href=#组合总和-iii>组合总和 III</a></li>
 </ul>
 </li>
 </ul>
@@ -516,6 +517,67 @@ Jump to Section
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
+</code></pre></div><h3 ref=组合总和-iii>组合总和 III</h3><a class=anchor id=组合总和-iii></a>
+<p><a href=https://leetcode-cn.com/problems/combination-sum-iii/>216. leetcode</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/CombinationSumIII.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.ArrayList<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Arrays<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.List<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.stream.IntStream<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>CombinationSumIII</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
+        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> path <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> sum<span style=color:#f92672>;</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> data<span style=color:#f92672>;</span>
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>;</span>
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> k<span style=color:#f92672>;</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>init</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> data<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> k<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> data<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span> <span style=color:#f92672>=</span> target<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>k</span> <span style=color:#f92672>=</span> k<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> array<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> index<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> result<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
+                result <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>copyOfRange</span><span style=color:#f92672>(</span>array<span style=color:#f92672>,</span> index <span style=color:#f92672>+</span> 1<span style=color:#f92672>,</span> array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>);</span>
+            <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>Exception e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{};</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> remain<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>==</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>==</span> k<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>result</span><span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>));</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>&gt;</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span> <span style=color:#f92672>||</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>&gt;</span> k<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> remain<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>remain<span style=color:#f92672>[</span>i<span style=color:#f92672>]);</span>
+                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>+=</span> remain<span style=color:#f92672>[</span>i<span style=color:#f92672>];</span>
+                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span>remain<span style=color:#f92672>,</span> i<span style=color:#f92672>));</span>
+                <span style=color:#66d9ef>int</span> remove <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remove</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>);</span>
+                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>-=</span> remove<span style=color:#f92672>;</span>
+            <span style=color:#f92672>}</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> <span style=color:#a6e22e>combinationSum3</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> k<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> n<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>init</span><span style=color:#f92672>(</span>IntStream<span style=color:#f92672>.</span><span style=color:#a6e22e>rangeClosed</span><span style=color:#f92672>(</span>1<span style=color:#f92672>,</span> 9<span style=color:#f92672>).</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>(),</span> n<span style=color:#f92672>,</span> k<span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>data</span><span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
 </code></pre></div>
 </div>
 <div class=chevrons>
@@ -546,6 +608,7 @@ Jump to Section
 <li><a href=#组合>组合</a></li>
 <li><a href=#组合总和>组合总和</a></li>
 <li><a href=#组合总和-ii>组合总和 II</a></li>
+<li><a href=#组合总和-iii>组合总和 III</a></li>
 </ul>
 </li>
 </ul>
