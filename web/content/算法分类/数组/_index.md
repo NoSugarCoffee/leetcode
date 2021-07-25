@@ -2,6 +2,39 @@
 weight: 1
 title: "数组"
 ---
+## 二分查找
+使用二分法需要满足以下条件：
+- 有序
+- 无重复（不强制，重复会导致下标不唯一）
+
+### 二分查找
+[704. leetcode](https://leetcode-cn.com/problems/binary-search/)
+
+```java
+// ../../../../src/main/java/com/dll/array/BinarySearch.java
+
+package com.dll.array;
+
+public class BinarySearch {
+    class Solution {
+        public int search(int[] nums, int target) {
+            int leftIndex = 0;
+            int rightIndex = nums.length - 1;
+            int midIndex = (leftIndex + rightIndex) / 2;
+            while (target != nums[midIndex] && leftIndex <= rightIndex) {
+                if (nums[midIndex] > target) {
+                    rightIndex = midIndex - 1;
+                } else {
+                    leftIndex = midIndex + 1;
+                }
+                midIndex = (leftIndex + rightIndex) / 2;
+            }
+            return leftIndex > rightIndex ? -1 : midIndex;
+        }
+    }
+}
+
+```
 
 ## N 数之和
 ### 两数之和  
