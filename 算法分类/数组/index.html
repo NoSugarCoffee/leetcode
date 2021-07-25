@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-07-24T12:21:24 UTC">
+<meta name=revised content="2021-07-25T13:54:03 UTC">
 <meta name=description content>
 <title>数组 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -137,6 +137,11 @@ Jump to Section
 </span>
 <nav id=TableOfContents>
 <ul>
+<li><a href=#二分查找>二分查找</a>
+<ul>
+<li><a href=#二分查找-1>二分查找</a></li>
+</ul>
+</li>
 <li><a href=#n-数之和>N 数之和</a>
 <ul>
 <li><a href=#两数之和>两数之和</a></li>
@@ -153,7 +158,38 @@ Jump to Section
 </nav>
 </div>
 <div class=content>
-<h2 ref=n-数之和>N 数之和</h2><a class=anchor id=n-数之和></a>
+<h2 ref=二分查找>二分查找</h2><a class=anchor id=二分查找></a>
+<p>使用二分法需要满足以下条件：</p>
+<ul>
+<li>有序</li>
+<li>无重复（不强制，重复会导致下标不唯一）</li>
+</ul>
+<h3 ref=二分查找-1>二分查找</h3><a class=anchor id=二分查找-1></a>
+<p><a href=https://leetcode-cn.com/problems/binary-search/>704. leetcode</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/BinarySearch.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>BinarySearch</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>search</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>int</span> leftIndex <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>int</span> rightIndex <span style=color:#f92672>=</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>int</span> midIndex <span style=color:#f92672>=</span> <span style=color:#f92672>(</span>leftIndex <span style=color:#f92672>+</span> rightIndex<span style=color:#f92672>)</span> <span style=color:#f92672>/</span> 2<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>target <span style=color:#f92672>!=</span> nums<span style=color:#f92672>[</span>midIndex<span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> leftIndex <span style=color:#f92672>&lt;=</span> rightIndex<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>midIndex<span style=color:#f92672>]</span> <span style=color:#f92672>&gt;</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    rightIndex <span style=color:#f92672>=</span> midIndex <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
+                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+                    leftIndex <span style=color:#f92672>=</span> midIndex <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span>
+                <span style=color:#f92672>}</span>
+                midIndex <span style=color:#f92672>=</span> <span style=color:#f92672>(</span>leftIndex <span style=color:#f92672>+</span> rightIndex<span style=color:#f92672>)</span> <span style=color:#f92672>/</span> 2<span style=color:#f92672>;</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> leftIndex <span style=color:#f92672>&gt;</span> rightIndex <span style=color:#f92672>?</span> <span style=color:#f92672>-</span>1 <span style=color:#f92672>:</span> midIndex<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+</code></pre></div><h2 ref=n-数之和>N 数之和</h2><a class=anchor id=n-数之和></a>
 <h3 ref=两数之和>两数之和</h3><a class=anchor id=两数之和></a>
 <p><a href=https://leetcode-cn.com/problems/two-sum/>1. leetcode</a></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/TwoSum.java
@@ -599,6 +635,11 @@ Jump to Section
 </nav>
 <nav id=TableOfContents>
 <ul>
+<li><a href=#二分查找>二分查找</a>
+<ul>
+<li><a href=#二分查找-1>二分查找</a></li>
+</ul>
+</li>
 <li><a href=#n-数之和>N 数之和</a>
 <ul>
 <li><a href=#两数之和>两数之和</a></li>
