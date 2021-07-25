@@ -2,6 +2,13 @@
 weight: 1
 title: "数组"
 ---
+## 二分查找
+使用二分法需要满足以下条件：
+- 有序
+- 无重复（不强制，重复会导致下标不唯一）
+
+### 二分查找
+[704. leetcode](https://leetcode-cn.com/problems/binary-search/)
 
 ## N 数之和
 ### 两数之和  
