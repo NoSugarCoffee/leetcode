@@ -568,7 +568,7 @@ public class CombinationSumIII {
 }
 
 ```
-## 常规
+## 双指针
 ### 移除元素
 [27. leetcode](https://leetcode-cn.com/problems/remove-element/)
 
@@ -594,5 +594,41 @@ public class RemoveElement {
     }
 }
 
+
+```
+
+### 有序数组的平方
+[977. leetcode](https://leetcode-cn.com/problems/squares-of-a-sorted-array/)
+- 数组非递减排序，故当前数组的平方后的较大值总是出现在数组的两端
+- 新建同等大小的数组用于存储结果，总是把较大值按照从尾部到头部存入
+
+```java
+// ../../../../src/main/java/com/dll/array/SquaresOfASortedArray.java
+
+package com.dll.array;
+
+public class SquaresOfASortedArray {
+    class Solution {
+        public int[] sortedSquares(int[] nums) {
+            int[] newNums = new int[nums.length];
+            int p = newNums.length - 1;
+            int p1 = 0;
+            int p2 = nums.length - 1;
+            for (int i = 0; i < nums.length; i++) {
+                int p1Square = nums[p1] * nums[p1];
+                int p2Square = nums[p2] * nums[p2];
+                if (p1Square < p2Square) {
+                    newNums[p] = p2Square;
+                    p2--;
+                } else {
+                    newNums[p] = p1Square;
+                    p1++;
+                }
+                p--;
+            }
+            return newNums;
+        }
+    }
+}
 
 ```
