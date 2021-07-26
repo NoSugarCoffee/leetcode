@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-07-26T14:21:12 UTC">
+<meta name=revised content="2021-07-26T14:53:35 UTC">
 <meta name=description content>
 <title>算法分类 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -156,6 +156,11 @@ Jump to Section
 <ul>
 <li><a href=#移除元素>移除元素</a></li>
 <li><a href=#有序数组的平方>有序数组的平方</a></li>
+</ul>
+</li>
+<li><a href=#滑动窗口>滑动窗口</a>
+<ul>
+<li><a href=#长度最小的子数组>长度最小的子数组</a></li>
 </ul>
 </li>
 </ul>
@@ -742,6 +747,40 @@ Jump to Section
                 p<span style=color:#f92672>--;</span>
             <span style=color:#f92672>}</span>
             <span style=color:#66d9ef>return</span> newNums<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+</code></pre></div><h2 ref=滑动窗口>滑动窗口</h2><a class=anchor id=滑动窗口></a>
+<h3 ref=长度最小的子数组>长度最小的子数组</h3><a class=anchor id=长度最小的子数组></a>
+<p><a href=https://leetcode-cn.com/problems/minimum-size-subarray-sum/>209. leetcode</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/MinimumSizeSubArraySum.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.ArrayDeque<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Deque<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MinimumSizeSubArraySum</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>minSubArrayLen</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> target<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>int</span> res <span style=color:#f92672>=</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span>
+            Deque<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> window <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayDeque<span style=color:#f92672>&lt;&gt;();</span>
+            <span style=color:#66d9ef>int</span> windowSum <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>windowSum <span style=color:#f92672>&lt;</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    window<span style=color:#f92672>.</span><span style=color:#a6e22e>offer</span><span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>i<span style=color:#f92672>]);</span>
+                    windowSum <span style=color:#f92672>+=</span> nums<span style=color:#f92672>[</span>i<span style=color:#f92672>];</span>
+                <span style=color:#f92672>}</span>
+                <span style=color:#66d9ef>while</span><span style=color:#f92672>(</span>windowSum <span style=color:#f92672>&gt;=</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>window<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>&lt;</span> res<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                        res <span style=color:#f92672>=</span> window<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>();</span>
+                    <span style=color:#f92672>}</span>
+                    <span style=color:#66d9ef>int</span> pop <span style=color:#f92672>=</span> window<span style=color:#f92672>.</span><span style=color:#a6e22e>remove</span><span style=color:#f92672>();</span>
+                    windowSum <span style=color:#f92672>-=</span> pop<span style=color:#f92672>;</span>
+                <span style=color:#f92672>}</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> res <span style=color:#f92672>==</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>+</span> 1<span style=color:#f92672>?</span> 0<span style=color:#f92672>:</span> res<span style=color:#f92672>;</span>
         <span style=color:#f92672>}</span>
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
