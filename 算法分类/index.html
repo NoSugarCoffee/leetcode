@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-07-25T15:30:41 UTC">
+<meta name=revised content="2021-07-26T09:59:54 UTC">
 <meta name=description content>
 <title>算法分类 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -150,6 +150,11 @@ Jump to Section
 <li><a href=#组合总和>组合总和</a></li>
 <li><a href=#组合总和-ii>组合总和 II</a></li>
 <li><a href=#组合总和-iii>组合总和 III</a></li>
+</ul>
+</li>
+<li><a href=#常规>常规</a>
+<ul>
+<li><a href=#移除元素>移除元素</a></li>
 </ul>
 </li>
 </ul>
@@ -680,6 +685,31 @@ Jump to Section
         <span style=color:#f92672>}</span>
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
+
+</code></pre></div><h2 ref=常规>常规</h2><a class=anchor id=常规></a>
+<h3 ref=移除元素>移除元素</h3><a class=anchor id=移除元素></a>
+<p><a href=https://leetcode-cn.com/problems/remove-element/>27. leetcode</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/RemoveElement.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>RemoveElement</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>removeElement</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> val<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>int</span> p1 <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>int</span> p2 <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>!=</span> val<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    nums<span style=color:#f92672>[</span>p1<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> nums<span style=color:#f92672>[</span>p2<span style=color:#f92672>];</span>
+                    p1<span style=color:#f92672>++;</span>
+                <span style=color:#f92672>}</span>
+                p2<span style=color:#f92672>++;</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> p1<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
 
 </code></pre></div>
 </div>
