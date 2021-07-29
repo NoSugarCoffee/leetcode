@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-07-26T18:34:36 UTC">
+<meta name=revised content="2021-07-29T15:47:20 UTC">
 <meta name=description content>
 <title>字符串 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -133,13 +133,15 @@ Jump to Section
 </span>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#反转字符串-344httpsleetcode-cncomproblemsreverse-string>反转字符串 <a href=https://leetcode-cn.com/problems/reverse-string/>344</a></a></li>
+<li><a href=#反转字符串>反转字符串</a></li>
+<li><a href=#查找常用字符>查找常用字符</a></li>
 </ul>
 </nav>
 </div>
 <div class=content>
-<h2 ref=反转字符串-344httpsleetcode-cncomproblemsreverse-string>反转字符串 <a href=https://leetcode-cn.com/problems/reverse-string/>344</a></h2><a class=anchor id=反转字符串-344httpsleetcode-cncomproblemsreverse-string></a>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../../src/main/java/com/dll/string/ReverseString.java
+<h2 ref=反转字符串>反转字符串</h2><a class=anchor id=反转字符串></a>
+<p><a href=https://leetcode-cn.com/problems/reverse-string/>leetcode. 344</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/string/ReverseString.java
 </span><span style=color:#75715e></span>
 <span style=color:#f92672>package</span> com.dll.string<span style=color:#f92672>;</span>
 
@@ -159,6 +161,49 @@ Jump to Section
                 <span style=color:#66d9ef>int</span> q <span style=color:#f92672>=</span> s<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span>1 <span style=color:#f92672>-</span> i<span style=color:#f92672>;</span>
                 swap<span style=color:#f92672>(</span>s<span style=color:#f92672>,</span> p<span style=color:#f92672>,</span> q<span style=color:#f92672>);</span>
             <span style=color:#f92672>}</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+</code></pre></div><h2 ref=查找常用字符>查找常用字符</h2><a class=anchor id=查找常用字符></a>
+<p><a href=https://leetcode-cn.com/problems/find-common-characters/>1002. leetcode</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/string/FindCommonCharacters.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.string<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.stream.Collectors<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.stream.IntStream<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.stream.Stream<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>FindCommonCharacters</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>private</span> Map<span style=color:#f92672>&lt;</span>String <span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>countWord</span><span style=color:#f92672>(</span>String word<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>return</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>(</span>word<span style=color:#f92672>.</span><span style=color:#a6e22e>split</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;&#34;</span><span style=color:#f92672>)).</span>
+                    collect<span style=color:#f92672>(</span>Collectors<span style=color:#f92672>.</span><span style=color:#a6e22e>toMap</span><span style=color:#f92672>((</span>w<span style=color:#f92672>)</span> <span style=color:#f92672>-&gt;</span> w<span style=color:#f92672>,</span> <span style=color:#f92672>(</span>w<span style=color:#f92672>)</span> <span style=color:#f92672>-&gt;</span> 1<span style=color:#f92672>,</span> <span style=color:#f92672>(</span>oldValue<span style=color:#f92672>,</span> newValue<span style=color:#f92672>)-&gt;</span> oldValue <span style=color:#f92672>+</span> 1<span style=color:#f92672>));</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>commonChars</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> words<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            List<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>&gt;</span> result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
+            List<span style=color:#f92672>&lt;</span>Map<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;&gt;</span> info <span style=color:#f92672>=</span>
+                    Stream<span style=color:#f92672>.</span><span style=color:#a6e22e>of</span><span style=color:#f92672>(</span>words<span style=color:#f92672>).</span><span style=color:#a6e22e>map</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>::</span>countWord<span style=color:#f92672>).</span><span style=color:#a6e22e>collect</span><span style=color:#f92672>(</span>Collectors<span style=color:#f92672>.</span><span style=color:#a6e22e>toList</span><span style=color:#f92672>());</span>
+            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>info<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>==</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
+            <span style=color:#f92672>}</span>
+            Map<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> firstMap <span style=color:#f92672>=</span> info<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>0<span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span>String c <span style=color:#f92672>:</span> firstMap<span style=color:#f92672>.</span><span style=color:#a6e22e>keySet</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>int</span> commonCount <span style=color:#f92672>=</span> firstMap<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>c<span style=color:#f92672>);</span>
+                <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 1<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> info<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>();</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                    <span style=color:#66d9ef>int</span> val <span style=color:#f92672>=</span> info<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>i<span style=color:#f92672>).</span><span style=color:#a6e22e>getOrDefault</span><span style=color:#f92672>(</span>c<span style=color:#f92672>,</span> 0<span style=color:#f92672>);</span>
+                    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>val <span style=color:#f92672>&lt;</span> commonCount<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                        commonCount <span style=color:#f92672>=</span> val<span style=color:#f92672>;</span>
+                    <span style=color:#f92672>}</span>
+
+                <span style=color:#f92672>}</span>
+                result<span style=color:#f92672>.</span><span style=color:#a6e22e>addAll</span><span style=color:#f92672>(</span>IntStream<span style=color:#f92672>.</span><span style=color:#a6e22e>range</span><span style=color:#f92672>(</span>0<span style=color:#f92672>,</span> commonCount<span style=color:#f92672>).</span><span style=color:#a6e22e>mapToObj</span><span style=color:#f92672>(</span>v <span style=color:#f92672>-&gt;</span> c<span style=color:#f92672>)</span>
+                        <span style=color:#f92672>.</span><span style=color:#a6e22e>collect</span><span style=color:#f92672>(</span>Collectors<span style=color:#f92672>.</span><span style=color:#a6e22e>toList</span><span style=color:#f92672>()));</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
         <span style=color:#f92672>}</span>
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
@@ -184,7 +229,8 @@ Jump to Section
 </nav>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#反转字符串-344httpsleetcode-cncomproblemsreverse-string>反转字符串 <a href=https://leetcode-cn.com/problems/reverse-string/>344</a></a></li>
+<li><a href=#反转字符串>反转字符串</a></li>
+<li><a href=#查找常用字符>查找常用字符</a></li>
 </ul>
 </nav>
 </div>
