@@ -596,6 +596,47 @@ public class RemoveElement {
 
 
 ```
+### 两个数组的交集
+[349. leetcode](https://leetcode-cn.com/problems/intersection-of-two-arrays/)
+- 两个数组去重且从小到大排列
+- 依次比较两个数组的每个元素，其中 p1，p2 分别为 arr1，arr2 的下标，按照如下逻辑：
+    - arr1[p1] = arr[p2]，存储结果，p1 + 1，p2 + 1
+    - arr1[p1] > arr[p2]，p2 + 1 ，反之
+```java
+// ../../../../src/main/java/com/dll/array/IntersectionOfTwoArrays.java
+
+package com.dll.array;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class IntersectionOfTwoArrays {
+    class Solution {
+        public int[] intersection(int[] nums1, int[] nums2) {
+            int[] n1 = Arrays.stream(nums1).sorted().distinct().toArray();
+            int[] n2 = Arrays.stream(nums2).sorted().distinct().toArray();
+            List<Integer> result = new ArrayList<>();
+            int p1 = 0;
+            int p2 = 0;
+            while(p1 < n1.length && p2 < n2.length) {
+                if (n1[p1] == n2[p2]) {
+                    result.add(n1[p1]);
+                    p1++;
+                    p2++;
+                } else if (n1[p1] > n2[p2]) {
+                    p2++;
+                } else {
+                    p1++;
+                }
+            }
+            return result.stream().mapToInt( v -> v).toArray();
+        }
+    }
+}
+
+```
+
 
 ### 有序数组的平方
 [977. leetcode](https://leetcode-cn.com/problems/squares-of-a-sorted-array/)
