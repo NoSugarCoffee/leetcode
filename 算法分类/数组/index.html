@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-07-29T15:47:20 UTC">
+<meta name=revised content="2021-07-30T15:27:51 UTC">
 <meta name=description content>
 <title>数组 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -155,6 +155,7 @@ Jump to Section
 <li><a href=#双指针>双指针</a>
 <ul>
 <li><a href=#移除元素>移除元素</a></li>
+<li><a href=#两个数组的交集>两个数组的交集</a></li>
 <li><a href=#有序数组的平方>有序数组的平方</a></li>
 </ul>
 </li>
@@ -722,6 +723,49 @@ Jump to Section
 <span style=color:#f92672>}</span>
 
 
+</code></pre></div><h3 ref=两个数组的交集>两个数组的交集</h3><a class=anchor id=两个数组的交集></a>
+<p><a href=https://leetcode-cn.com/problems/intersection-of-two-arrays/>349. leetcode</a></p>
+<ul>
+<li>两个数组去重且从小到大排列</li>
+<li>依次比较两个数组的每个元素，其中 p1，p2 分别为 arr1，arr2 的下标，按照如下逻辑：
+<ul>
+<li>arr1[p1] = arr[p2]，存储结果，p1 + 1，p2 + 1</li>
+<li>arr1[p1] > arr[p2]，p2 + 1 ，反之</li>
+</ul>
+</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/IntersectionOfTwoArrays.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.ArrayList<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Arrays<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.List<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IntersectionOfTwoArrays</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>intersection</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums1<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums2<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> n1 <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>(</span>nums1<span style=color:#f92672>).</span><span style=color:#a6e22e>sorted</span><span style=color:#f92672>().</span><span style=color:#a6e22e>distinct</span><span style=color:#f92672>().</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>();</span>
+            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> n2 <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>(</span>nums2<span style=color:#f92672>).</span><span style=color:#a6e22e>sorted</span><span style=color:#f92672>().</span><span style=color:#a6e22e>distinct</span><span style=color:#f92672>().</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>();</span>
+            List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
+            <span style=color:#66d9ef>int</span> p1 <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>int</span> p2 <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>while</span><span style=color:#f92672>(</span>p1 <span style=color:#f92672>&lt;</span> n1<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>&amp;&amp;</span> p2 <span style=color:#f92672>&lt;</span> n2<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>n1<span style=color:#f92672>[</span>p1<span style=color:#f92672>]</span> <span style=color:#f92672>==</span> n2<span style=color:#f92672>[</span>p2<span style=color:#f92672>])</span> <span style=color:#f92672>{</span>
+                    result<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>n1<span style=color:#f92672>[</span>p1<span style=color:#f92672>]);</span>
+                    p1<span style=color:#f92672>++;</span>
+                    p2<span style=color:#f92672>++;</span>
+                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>n1<span style=color:#f92672>[</span>p1<span style=color:#f92672>]</span> <span style=color:#f92672>&gt;</span> n2<span style=color:#f92672>[</span>p2<span style=color:#f92672>])</span> <span style=color:#f92672>{</span>
+                    p2<span style=color:#f92672>++;</span>
+                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+                    p1<span style=color:#f92672>++;</span>
+                <span style=color:#f92672>}</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>.</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>().</span><span style=color:#a6e22e>mapToInt</span><span style=color:#f92672>(</span> v <span style=color:#f92672>-&gt;</span> v<span style=color:#f92672>).</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>();</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
 </code></pre></div><h3 ref=有序数组的平方>有序数组的平方</h3><a class=anchor id=有序数组的平方></a>
 <p><a href=https://leetcode-cn.com/problems/squares-of-a-sorted-array/>977. leetcode</a></p>
 <ul>
@@ -873,6 +917,7 @@ Jump to Section
 <li><a href=#双指针>双指针</a>
 <ul>
 <li><a href=#移除元素>移除元素</a></li>
+<li><a href=#两个数组的交集>两个数组的交集</a></li>
 <li><a href=#有序数组的平方>有序数组的平方</a></li>
 </ul>
 </li>
