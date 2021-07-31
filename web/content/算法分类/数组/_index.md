@@ -596,6 +596,52 @@ public class RemoveElement {
 
 
 ```
+
+### 合并两个有序数组 
+[88. leetcode](https://leetcode.com/problems/merge-sorted-array/)
+
+- 开辟长度为 nums1.length + nums2.length 的空数组 result
+- p1、p2 分别指向两个有序数组起始 index，当任一数组未遍历到末尾时，循环处理以下逻辑：
+    - 总是存储当前指针指向的较小值至 result 并维护指针，相等则任选
+- 任一数组遍历完成，把剩余数组存入 result
+```java
+// ../../../../src/main/java/com/dll/array/MergeSortedArray.java
+
+package com.dll.array;
+
+public class MergeSortedArray {
+
+    class Solution {
+
+        public void merge(int[] nums1, int m, int[] nums2, int n) {
+            int[] result = new int[m + n];
+            int p1 = 0;
+            int p2 = 0;
+            int index = 0;
+
+            while (p1 < m && p2 < n) {
+                if (nums1[p1] <= nums2[p2]) {
+                    result[index] = nums1[p1];
+                    p1++;
+                } else {
+                    result[index] = nums2[p2];
+                    p2++;
+                }
+                index++;
+            }
+            for (; p1 < m; p1++) {
+                result[index++] = nums1[p1];
+            }
+            for (; p2 < n; p2++) {
+                result[index++] = nums2[p2];
+            }
+            System.arraycopy(result, 0, nums1, 0, m + n);
+        }
+    }
+}
+
+``` 
+
 ### 两个数组的交集
 [349. leetcode](https://leetcode-cn.com/problems/intersection-of-two-arrays/)
 - 两个数组去重且从小到大排列

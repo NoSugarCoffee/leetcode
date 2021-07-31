@@ -1,5 +1,6 @@
 package com.dll.doublePoint;
 
+import com.dll.array.MergeSortedArray;
 import org.junit.Assert;
 import org.junit.Test;
 
