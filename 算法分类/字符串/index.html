@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-07-31T04:51:11 UTC">
+<meta name=revised content="2021-07-31T05:28:59 UTC">
 <meta name=description content>
 <title>字符串 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -82,10 +82,6 @@ item_level_$level">
 item_level_$level">
 <a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/lru%E7%BC%93%E5%AD%98/>LRU 缓存</a>
 </li>
-<li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%8F%8C%E6%8C%87%E9%92%88/ class="dd-item
-item_level_$level">
-<a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%8F%8C%E6%8C%87%E9%92%88/>双指针</a>
-</li>
 <li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%A4%9A%E7%BA%BF%E7%A8%8B/ class="dd-item
 item_level_$level">
 <a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%A4%9A%E7%BA%BF%E7%A8%8B/>多线程</a>
@@ -136,6 +132,7 @@ Jump to Section
 <li><a href=#哈希表>哈希表</a>
 <ul>
 <li><a href=#有效的字母异位词>有效的字母异位词</a></li>
+<li><a href=#查找常用字符>查找常用字符</a></li>
 </ul>
 </li>
 <li><a href=#双指针>双指针</a>
@@ -143,7 +140,11 @@ Jump to Section
 <li><a href=#反转字符串>反转字符串</a></li>
 </ul>
 </li>
-<li><a href=#查找常用字符>查找常用字符</a></li>
+<li><a href=#滑动窗口>滑动窗口</a>
+<ul>
+<li><a href=#最小覆盖子串>最小覆盖子串</a></li>
+</ul>
+</li>
 </ul>
 </nav>
 </div>
@@ -179,34 +180,7 @@ Jump to Section
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
-</code></pre></div><h2 ref=双指针>双指针</h2><a class=anchor id=双指针></a>
-<h3 ref=反转字符串>反转字符串</h3><a class=anchor id=反转字符串></a>
-<p><a href=https://leetcode-cn.com/problems/reverse-string/>leetcode. 344</a></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/string/ReverseString.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.string<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ReverseString</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>swap</span><span style=color:#f92672>(</span><span style=color:#66d9ef>char</span><span style=color:#f92672>[]</span> s<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> p<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> q<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>char</span> temp <span style=color:#f92672>=</span> s<span style=color:#f92672>[</span>p<span style=color:#f92672>];</span>
-            s<span style=color:#f92672>[</span>p<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> s<span style=color:#f92672>[</span>q<span style=color:#f92672>];</span>
-            s<span style=color:#f92672>[</span>q<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> temp<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>reverseString</span><span style=color:#f92672>(</span><span style=color:#66d9ef>char</span><span style=color:#f92672>[]</span> s<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>s<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>&lt;=</span> 1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> s<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>/</span> 2<span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>int</span> p <span style=color:#f92672>=</span> i<span style=color:#f92672>;</span>
-                <span style=color:#66d9ef>int</span> q <span style=color:#f92672>=</span> s<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span>1 <span style=color:#f92672>-</span> i<span style=color:#f92672>;</span>
-                swap<span style=color:#f92672>(</span>s<span style=color:#f92672>,</span> p<span style=color:#f92672>,</span> q<span style=color:#f92672>);</span>
-            <span style=color:#f92672>}</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h2 ref=查找常用字符>查找常用字符</h2><a class=anchor id=查找常用字符></a>
+</code></pre></div><h3 ref=查找常用字符>查找常用字符</h3><a class=anchor id=查找常用字符></a>
 <p><a href=https://leetcode-cn.com/problems/find-common-characters/>1002. leetcode</a></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/string/FindCommonCharacters.java
 </span><span style=color:#75715e></span>
@@ -249,6 +223,98 @@ Jump to Section
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
+</code></pre></div><h2 ref=双指针>双指针</h2><a class=anchor id=双指针></a>
+<h3 ref=反转字符串>反转字符串</h3><a class=anchor id=反转字符串></a>
+<p><a href=https://leetcode-cn.com/problems/reverse-string/>leetcode. 344</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/string/ReverseString.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.string<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ReverseString</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>swap</span><span style=color:#f92672>(</span><span style=color:#66d9ef>char</span><span style=color:#f92672>[]</span> s<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> p<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> q<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>char</span> temp <span style=color:#f92672>=</span> s<span style=color:#f92672>[</span>p<span style=color:#f92672>];</span>
+            s<span style=color:#f92672>[</span>p<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> s<span style=color:#f92672>[</span>q<span style=color:#f92672>];</span>
+            s<span style=color:#f92672>[</span>q<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> temp<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>reverseString</span><span style=color:#f92672>(</span><span style=color:#66d9ef>char</span><span style=color:#f92672>[]</span> s<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>s<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>&lt;=</span> 1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> s<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>/</span> 2<span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>int</span> p <span style=color:#f92672>=</span> i<span style=color:#f92672>;</span>
+                <span style=color:#66d9ef>int</span> q <span style=color:#f92672>=</span> s<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span>1 <span style=color:#f92672>-</span> i<span style=color:#f92672>;</span>
+                swap<span style=color:#f92672>(</span>s<span style=color:#f92672>,</span> p<span style=color:#f92672>,</span> q<span style=color:#f92672>);</span>
+            <span style=color:#f92672>}</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+</code></pre></div><h2 ref=滑动窗口>滑动窗口</h2><a class=anchor id=滑动窗口></a>
+<h3 ref=最小覆盖子串>最小覆盖子串</h3><a class=anchor id=最小覆盖子串></a>
+<p><a href=https://leetcode-cn.com/problems/minimum-window-substring/>76. leetcode</a></p>
+<p>原字符 ori（s），以及需要包含的字符串 need（t），[l,r) 代表当前窗口，r 右滑直至满足条件，此时通过 l 右滑，可能找到最优解，重复直到结束。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/string/MinimumWindowSubstring.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.string<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.HashMap<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Iterator<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Map<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Map.Entry<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MinimumWindowSubstring</span> <span style=color:#f92672>{</span>
+
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+
+        <span style=color:#66d9ef>public</span> Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>calc_freq</span><span style=color:#f92672>(</span>String s<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> freq <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;();</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> s<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>();</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                freq<span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>s<span style=color:#f92672>.</span><span style=color:#a6e22e>charAt</span><span style=color:#f92672>(</span>i<span style=color:#f92672>),</span> freq<span style=color:#f92672>.</span><span style=color:#a6e22e>getOrDefault</span><span style=color:#f92672>(</span>s<span style=color:#f92672>.</span><span style=color:#a6e22e>charAt</span><span style=color:#f92672>(</span>i<span style=color:#f92672>),</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>+</span> 1<span style=color:#f92672>);</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> freq<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>check</span><span style=color:#f92672>(</span>Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> window_freq<span style=color:#f92672>,</span> Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> need_freq<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            Iterator<span style=color:#f92672>&lt;</span>Entry<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;&gt;</span> iterator <span style=color:#f92672>=</span> need_freq<span style=color:#f92672>.</span><span style=color:#a6e22e>entrySet</span><span style=color:#f92672>().</span><span style=color:#a6e22e>iterator</span><span style=color:#f92672>();</span>
+            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>iterator<span style=color:#f92672>.</span><span style=color:#a6e22e>hasNext</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+                Entry<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> next <span style=color:#f92672>=</span> iterator<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>();</span>
+                Character key <span style=color:#f92672>=</span> next<span style=color:#f92672>.</span><span style=color:#a6e22e>getKey</span><span style=color:#f92672>();</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(!(</span>window_freq<span style=color:#f92672>.</span><span style=color:#a6e22e>containsKey</span><span style=color:#f92672>(</span>key<span style=color:#f92672>)</span> <span style=color:#f92672>&amp;&amp;</span> window_freq<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>key<span style=color:#f92672>)</span> <span style=color:#f92672>&gt;=</span> next<span style=color:#f92672>.</span><span style=color:#a6e22e>getValue</span><span style=color:#f92672>()))</span> <span style=color:#f92672>{</span>
+                    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span><span style=color:#f92672>;</span>
+                <span style=color:#f92672>}</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span><span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>minWindow</span><span style=color:#f92672>(</span>String s<span style=color:#f92672>,</span> String t<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            String ori <span style=color:#f92672>=</span> s<span style=color:#f92672>;</span>
+            String need <span style=color:#f92672>=</span> t<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>int</span> l <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>int</span> r <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+            String result <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&#34;</span><span style=color:#f92672>;</span>
+            Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> needFreq <span style=color:#f92672>=</span> calc_freq<span style=color:#f92672>(</span>need<span style=color:#f92672>);</span>
+            Map<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> window_frep <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;();</span>
+            <span style=color:#66d9ef>int</span> endIndex <span style=color:#f92672>=</span> ori<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>()</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>r <span style=color:#f92672>&lt;=</span> endIndex<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                window_frep<span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>ori<span style=color:#f92672>.</span><span style=color:#a6e22e>charAt</span><span style=color:#f92672>(</span>r<span style=color:#f92672>),</span> window_frep<span style=color:#f92672>.</span><span style=color:#a6e22e>getOrDefault</span><span style=color:#f92672>(</span>ori<span style=color:#f92672>.</span><span style=color:#a6e22e>charAt</span><span style=color:#f92672>(</span>r<span style=color:#f92672>),</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>+</span> 1<span style=color:#f92672>);</span>
+                <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>check<span style=color:#f92672>(</span>window_frep<span style=color:#f92672>,</span> needFreq<span style=color:#f92672>)</span> <span style=color:#f92672>&amp;&amp;</span> l <span style=color:#f92672>&lt;=</span> r<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span><span style=color:#e6db74>&#34;&#34;</span><span style=color:#f92672>.</span><span style=color:#a6e22e>equals</span><span style=color:#f92672>(</span>result<span style=color:#f92672>))</span> <span style=color:#f92672>{</span>
+                        result <span style=color:#f92672>=</span> ori<span style=color:#f92672>.</span><span style=color:#a6e22e>substring</span><span style=color:#f92672>(</span>l<span style=color:#f92672>,</span> r <span style=color:#f92672>+</span> 1<span style=color:#f92672>);</span>
+                    <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+                        result <span style=color:#f92672>=</span> ori<span style=color:#f92672>.</span><span style=color:#a6e22e>substring</span><span style=color:#f92672>(</span>l<span style=color:#f92672>,</span> r <span style=color:#f92672>+</span> 1<span style=color:#f92672>).</span><span style=color:#a6e22e>length</span><span style=color:#f92672>()</span> <span style=color:#f92672>&lt;</span> result<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>()</span> <span style=color:#f92672>?</span> ori<span style=color:#f92672>.</span><span style=color:#a6e22e>substring</span><span style=color:#f92672>(</span>l<span style=color:#f92672>,</span> r <span style=color:#f92672>+</span> 1<span style=color:#f92672>)</span>
+                                <span style=color:#f92672>:</span> result<span style=color:#f92672>;</span>
+                    <span style=color:#f92672>}</span>
+                    window_frep<span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>ori<span style=color:#f92672>.</span><span style=color:#a6e22e>charAt</span><span style=color:#f92672>(</span>l<span style=color:#f92672>),</span> window_frep<span style=color:#f92672>.</span><span style=color:#a6e22e>getOrDefault</span><span style=color:#f92672>(</span>ori<span style=color:#f92672>.</span><span style=color:#a6e22e>charAt</span><span style=color:#f92672>(</span>l<span style=color:#f92672>),</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>);</span>
+                    l<span style=color:#f92672>++;</span>
+                <span style=color:#f92672>}</span>
+                r<span style=color:#f92672>++;</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
 </code></pre></div>
 </div>
 <div class=chevrons>
@@ -273,6 +339,7 @@ Jump to Section
 <li><a href=#哈希表>哈希表</a>
 <ul>
 <li><a href=#有效的字母异位词>有效的字母异位词</a></li>
+<li><a href=#查找常用字符>查找常用字符</a></li>
 </ul>
 </li>
 <li><a href=#双指针>双指针</a>
@@ -280,7 +347,11 @@ Jump to Section
 <li><a href=#反转字符串>反转字符串</a></li>
 </ul>
 </li>
-<li><a href=#查找常用字符>查找常用字符</a></li>
+<li><a href=#滑动窗口>滑动窗口</a>
+<ul>
+<li><a href=#最小覆盖子串>最小覆盖子串</a></li>
+</ul>
+</li>
 </ul>
 </nav>
 </div>
