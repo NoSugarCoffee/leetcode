@@ -3,7 +3,42 @@ weight: 2
 title: "字符串"
 ---
 
-## 反转字符串 
+## 哈希表
+### 有效的字母异位词 
+[242. leetcode](https://leetcode-cn.com/problems/valid-anagram/)
+
+```java
+// ../../../../src/main/java/com/dll/string/ValidAnagram.java
+
+package com.dll.string;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ValidAnagram {
+    class Solution {
+        private Map<Character, Integer> toCharMap(String s) {
+            Map<Character, Integer> map = new HashMap<>();
+            char[] chars = s.toCharArray();
+            for (char c : chars) {
+                int val = map.getOrDefault(c, 0);
+                map.put(c, val + 1);
+            }
+            return map;
+        }
+
+        public boolean isAnagram(String s, String t) {
+            if (s.length() != t.length()) {
+                return false;
+            }
+            return this.toCharMap(s).equals(this.toCharMap(t));
+        }
+    }
+}
+
+```
+## 双指针
+### 反转字符串 
 [leetcode. 344](https://leetcode-cn.com/problems/reverse-string/)
 
 ```java
@@ -47,9 +82,9 @@ import java.util.stream.Stream;
 
 public class FindCommonCharacters {
     class Solution {
-        private Map<String , Integer> countWord(String word) {
+        private Map<String, Integer> countWord(String word) {
             return Arrays.stream(word.split("")).
-                    collect(Collectors.toMap((w) -> w, (w) -> 1, (oldValue, newValue)-> oldValue + 1));
+                    collect(Collectors.toMap((w) -> w, (w) -> 1, (oldValue, newValue) -> oldValue + 1));
         }
 
         public List<String> commonChars(String[] words) {
