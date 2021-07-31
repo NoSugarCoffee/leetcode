@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-07-30T15:27:51 UTC">
+<meta name=revised content="2021-07-31T04:32:59 UTC">
 <meta name=description content>
 <title>算法分类 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -62,6 +62,10 @@ item_level_$level">
 <i class="fas fa-chevron-down ddexp"></i>
 <a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/>算法分类</a>
 <ul>
+<li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E5%AD%A6/ class="dd-item
+item_level_$level">
+<a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E5%AD%A6/>数学</a>
+</li>
 <li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E7%BB%84/ class="dd-item
 item_level_$level">
 <a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E7%BB%84/>数组</a>
@@ -120,11 +124,11 @@ Home
 </a>
 </li>
 <li class=active>
-数组
+数学
 </li>
 </ol>
 </nav>
-<h1>数组</h1>
+<h1>数学</h1>
 <div class=jump-to-section>
 <span onclick="$h=$(this),$h.next('nav').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('nav').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <span class="fas fa-align-right"></span>
@@ -133,743 +137,51 @@ Jump to Section
 </span>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#二分查找>二分查找</a>
+<li><a href=#哈希表>哈希表</a>
 <ul>
-<li><a href=#二分查找-1>二分查找</a></li>
-<li><a href=#x-的平方根>x 的平方根</a></li>
-<li><a href=#在排序数组中查找元素的第一个和最后一个位置>在排序数组中查找元素的第一个和最后一个位置</a></li>
-</ul>
-</li>
-<li><a href=#n-数之和>N 数之和</a>
-<ul>
-<li><a href=#两数之和>两数之和</a></li>
-<li><a href=#两数之和-ii---输入有序数组>两数之和 II - 输入有序数组</a></li>
-<li><a href=#三数之和>三数之和</a></li>
-<li><a href=#四数之和>四数之和</a></li>
-<li><a href=#组合>组合</a></li>
-<li><a href=#组合总和>组合总和</a></li>
-<li><a href=#组合总和-ii>组合总和 II</a></li>
-<li><a href=#组合总和-iii>组合总和 III</a></li>
-</ul>
-</li>
-<li><a href=#双指针>双指针</a>
-<ul>
-<li><a href=#移除元素>移除元素</a></li>
-<li><a href=#两个数组的交集>两个数组的交集</a></li>
-<li><a href=#有序数组的平方>有序数组的平方</a></li>
-</ul>
-</li>
-<li><a href=#滑动窗口>滑动窗口</a>
-<ul>
-<li><a href=#长度最小的子数组>长度最小的子数组</a></li>
-</ul>
-</li>
-<li><a href=#常规题>常规题</a>
-<ul>
-<li><a href=#螺旋矩阵-ii>螺旋矩阵 II</a></li>
+<li><a href=#快乐数>快乐数</a></li>
 </ul>
 </li>
 </ul>
 </nav>
 </div>
 <div class=content>
-<h2 ref=二分查找>二分查找</h2><a class=anchor id=二分查找></a>
-<p>使用二分法需要满足以下条件：</p>
+<h2 ref=哈希表>哈希表</h2><a class=anchor id=哈希表></a>
+<h3 ref=快乐数>快乐数</h3><a class=anchor id=快乐数></a>
+<p><a href=https://leetcode-cn.com/problems/happy-number/>202. leetcode</a></p>
 <ul>
-<li>有序</li>
-<li>无重复（不强制，重复会导致查找到的 index 不唯一）</li>
+<li>squareSumPerPosition 函数计算给定数字的各位置平方和</li>
+<li>set 记录每次数字，如果出现重复，则表明一定是无限循环，否则一直在「进步」</li>
 </ul>
-<h3 ref=二分查找-1>二分查找</h3><a class=anchor id=二分查找-1></a>
-<p><a href=https://leetcode-cn.com/problems/binary-search/>704. leetcode</a></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/BinarySearch.java
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/math/HappyNumber.java
 </span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
+<span style=color:#f92672>package</span> com.dll.math<span style=color:#f92672>;</span>
 
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>BinarySearch</span> <span style=color:#f92672>{</span>
+<span style=color:#f92672>import</span> java.util.HashSet<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Set<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>HappyNumber</span> <span style=color:#f92672>{</span>
     <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>search</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>int</span> leftIndex <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>int</span> rightIndex <span style=color:#f92672>=</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>leftIndex <span style=color:#f92672>&lt;=</span> rightIndex<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>int</span> midIndex <span style=color:#f92672>=</span> <span style=color:#f92672>(</span>leftIndex <span style=color:#f92672>+</span> rightIndex<span style=color:#f92672>)</span> <span style=color:#f92672>/</span> 2<span style=color:#f92672>;</span>
-                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>target <span style=color:#f92672>==</span> nums<span style=color:#f92672>[</span>midIndex<span style=color:#f92672>])</span> <span style=color:#f92672>{</span>
-                    <span style=color:#66d9ef>return</span> midIndex<span style=color:#f92672>;</span>
-                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>midIndex<span style=color:#f92672>]</span> <span style=color:#f92672>&gt;</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                    rightIndex <span style=color:#f92672>=</span> midIndex <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
-                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
-                    leftIndex <span style=color:#f92672>=</span> midIndex <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span>
-                <span style=color:#f92672>}</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h3 ref=x-的平方根>x 的平方根</h3><a class=anchor id=x-的平方根></a>
-<p><a href=https://leetcode-cn.com/problems/sqrtx/>69. leetcode</a></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/MySqrt.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MySqrt</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>mySqrt</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> x<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>int</span> l <span style=color:#f92672>=</span> 1<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>int</span> r <span style=color:#f92672>=</span> x<span style=color:#f92672>;</span>
+        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>squareSumPerPosition</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> number<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
             <span style=color:#66d9ef>int</span> result <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>l <span style=color:#f92672>&lt;=</span> r<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>int</span> mid <span style=color:#f92672>=</span> l <span style=color:#f92672>+</span> <span style=color:#f92672>(</span>r <span style=color:#f92672>-</span> l<span style=color:#f92672>)</span> <span style=color:#f92672>/</span> 2<span style=color:#f92672>;</span>
-                <span style=color:#66d9ef>if</span> <span style=color:#f92672>((</span><span style=color:#66d9ef>long</span><span style=color:#f92672>)</span> mid <span style=color:#f92672>*</span> mid <span style=color:#f92672>&lt;=</span> x<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                    result <span style=color:#f92672>=</span> mid<span style=color:#f92672>;</span>
-                    l <span style=color:#f92672>=</span> mid <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span>
-                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
-                    r <span style=color:#f92672>=</span> mid <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
-                <span style=color:#f92672>}</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h3 ref=在排序数组中查找元素的第一个和最后一个位置>在排序数组中查找元素的第一个和最后一个位置</h3><a class=anchor id=在排序数组中查找元素的第一个和最后一个位置></a>
-<p><a href=https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/>34. leetcode</a></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/FindFirstAndLastPositionOfElementInSortedArray.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>FindFirstAndLastPositionOfElementInSortedArray</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>searchRange</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>int</span> l <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>int</span> r <span style=color:#f92672>=</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>int</span> res1 <span style=color:#f92672>=</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>l <span style=color:#f92672>&lt;=</span> r<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>int</span> mid <span style=color:#f92672>=</span> l <span style=color:#f92672>+</span> <span style=color:#f92672>(</span>r <span style=color:#f92672>-</span> l<span style=color:#f92672>)</span> <span style=color:#f92672>/</span> 2<span style=color:#f92672>;</span>
-                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>mid<span style=color:#f92672>]</span> <span style=color:#f92672>&lt;</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                    l <span style=color:#f92672>=</span> mid <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span>
-                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
-                    r <span style=color:#f92672>=</span> mid <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
-                    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>mid<span style=color:#f92672>]</span> <span style=color:#f92672>==</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                        res1 <span style=color:#f92672>=</span> mid<span style=color:#f92672>;</span>
-                    <span style=color:#f92672>}</span>
-                <span style=color:#f92672>}</span>
-            <span style=color:#f92672>}</span>
-            l <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-            r <span style=color:#f92672>=</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>int</span> res2 <span style=color:#f92672>=</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>l <span style=color:#f92672>&lt;=</span> r<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>int</span> mid <span style=color:#f92672>=</span> l <span style=color:#f92672>+</span> <span style=color:#f92672>(</span>r <span style=color:#f92672>-</span> l<span style=color:#f92672>)</span> <span style=color:#f92672>/</span> 2<span style=color:#f92672>;</span>
-                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>mid<span style=color:#f92672>]</span> <span style=color:#f92672>&gt;</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                    r <span style=color:#f92672>=</span> mid <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
-                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
-                    l <span style=color:#f92672>=</span> mid <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span>
-                    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>mid<span style=color:#f92672>]</span> <span style=color:#f92672>==</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                        res2 <span style=color:#f92672>=</span> mid<span style=color:#f92672>;</span>
-                    <span style=color:#f92672>}</span>
-                <span style=color:#f92672>}</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{</span>res1<span style=color:#f92672>,</span> res2<span style=color:#f92672>};</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h2 ref=n-数之和>N 数之和</h2><a class=anchor id=n-数之和></a>
-<h3 ref=两数之和>两数之和</h3><a class=anchor id=两数之和></a>
-<p><a href=https://leetcode-cn.com/problems/two-sum/>1. leetcode</a></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/TwoSum.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#f92672>import</span> java.util.HashMap<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.util.Map<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>TwoSum</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// 1. 暴力法
-</span><span style=color:#75715e></span>    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>twoSum</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> j <span style=color:#f92672>=</span> i <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span> j <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> j<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>+</span> nums<span style=color:#f92672>[</span>j<span style=color:#f92672>]</span> <span style=color:#f92672>==</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{</span>i<span style=color:#f92672>,</span> j<span style=color:#f92672>};</span>
-                    <span style=color:#f92672>}</span>
-                <span style=color:#f92672>}</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{-</span>1<span style=color:#f92672>,</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>};</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-
-    <span style=color:#75715e>// 2. hash
-</span><span style=color:#75715e></span>    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution2</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>twoSum</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            Map<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> map <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;();</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>map<span style=color:#f92672>.</span><span style=color:#a6e22e>containsKey</span><span style=color:#f92672>(</span>target <span style=color:#f92672>-</span> nums<span style=color:#f92672>[</span>i<span style=color:#f92672>]))</span> <span style=color:#f92672>{</span>
-                    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{</span>map<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>target <span style=color:#f92672>-</span> nums<span style=color:#f92672>[</span>i<span style=color:#f92672>]),</span> i<span style=color:#f92672>};</span>
-                <span style=color:#f92672>}</span>
-                map<span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>i<span style=color:#f92672>],</span> i<span style=color:#f92672>);</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{-</span>1<span style=color:#f92672>,</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>};</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h3 ref=两数之和-ii---输入有序数组>两数之和 II - 输入有序数组</h3><a class=anchor id=两数之和-ii---输入有序数组></a>
-<p><a href=https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/>167. leetcode</a></p>
-<ul>
-<li>使用指针 ps 指向数组开头, 指针 pe 指向数组末尾</li>
-<li>当 numbers[ps] + numbers[pe] > target, 则 pe 向前移动, 否则 ps 向后移动, 直到 = target</li>
-</ul>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/TwoSumIIInputArrayIsSorted.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>TwoSumIIInputArrayIsSorted</span> <span style=color:#f92672>{</span>
-
-  <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// 1. 双指针
-</span><span style=color:#75715e></span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>twoSum</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> numbers<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-      <span style=color:#66d9ef>int</span> ps <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-      <span style=color:#66d9ef>int</span> pe <span style=color:#f92672>=</span> numbers<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
-      <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>ps <span style=color:#f92672>&lt;</span> pe<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>numbers<span style=color:#f92672>[</span>ps<span style=color:#f92672>]</span> <span style=color:#f92672>+</span> numbers<span style=color:#f92672>[</span>pe<span style=color:#f92672>]</span> <span style=color:#f92672>==</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-          <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{</span>ps <span style=color:#f92672>+</span> 1<span style=color:#f92672>,</span> pe <span style=color:#f92672>+</span> 1<span style=color:#f92672>};</span>
-        <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>numbers<span style=color:#f92672>[</span>ps<span style=color:#f92672>]</span> <span style=color:#f92672>+</span> numbers<span style=color:#f92672>[</span>pe<span style=color:#f92672>]</span> <span style=color:#f92672>&gt;</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-          pe<span style=color:#f92672>--;</span>
-        <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
-          ps<span style=color:#f92672>++;</span>
-        <span style=color:#f92672>}</span>
-      <span style=color:#f92672>}</span>
-      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{-</span>1<span style=color:#f92672>,</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>};</span>
-    <span style=color:#f92672>}</span>
-  <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h3 ref=三数之和>三数之和</h3><a class=anchor id=三数之和></a>
-<p><a href=https://leetcode-cn.com/problems/3sum/>15. leetcode</a></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/ThreeSum.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ThreeSum</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// 1. 双重循环 + hash 法
-</span><span style=color:#75715e></span>    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> <span style=color:#a6e22e>threeSum</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            Map<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> map <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;();</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                map<span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>i<span style=color:#f92672>],</span> i<span style=color:#f92672>);</span>
-            <span style=color:#f92672>}</span>
-            Set<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> set <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashSet<span style=color:#f92672>&lt;&gt;();</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> j <span style=color:#f92672>=</span> i <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span> j <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> j<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                    <span style=color:#66d9ef>int</span> z <span style=color:#f92672>=</span> <span style=color:#f92672>-</span>nums<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>-</span> nums<span style=color:#f92672>[</span>j<span style=color:#f92672>];</span>
-                    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>map<span style=color:#f92672>.</span><span style=color:#a6e22e>containsKey</span><span style=color:#f92672>(</span>z<span style=color:#f92672>)</span>
-                            <span style=color:#f92672>&amp;&amp;</span> map<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>z<span style=color:#f92672>)</span> <span style=color:#f92672>!=</span> i
-                            <span style=color:#f92672>&amp;&amp;</span> map<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>z<span style=color:#f92672>)</span> <span style=color:#f92672>!=</span> j<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                        Integer<span style=color:#f92672>[]</span> array <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Integer<span style=color:#f92672>[]{</span>nums<span style=color:#f92672>[</span>i<span style=color:#f92672>],</span> nums<span style=color:#f92672>[</span>j<span style=color:#f92672>],</span> z<span style=color:#f92672>};</span>
-                        Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>sort</span><span style=color:#f92672>(</span>array<span style=color:#f92672>);</span>
-                        set<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>asList</span><span style=color:#f92672>(</span>array<span style=color:#f92672>));</span>
-                    <span style=color:#f92672>}</span>
-                <span style=color:#f92672>}</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;(</span>set<span style=color:#f92672>);</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-    <span style=color:#75715e>// 2.
-</span><span style=color:#75715e></span><span style=color:#f92672>}</span>
-
-</code></pre></div><h3 ref=四数之和>四数之和</h3><a class=anchor id=四数之和></a>
-<p><a href=https://leetcode-cn.com/problems/4sum/>18. leetcode</a></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/FourSum.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>FourSum</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// 三重循坏 + hash
-</span><span style=color:#75715e></span>    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> <span style=color:#a6e22e>fourSum</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            Map<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> map <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;();</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                map<span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>i<span style=color:#f92672>],</span> i<span style=color:#f92672>);</span>
-            <span style=color:#f92672>}</span>
-            Set<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> set <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashSet<span style=color:#f92672>&lt;&gt;();</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> j <span style=color:#f92672>=</span> i <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span> j <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> j<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                    <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> k <span style=color:#f92672>=</span> j <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span> k <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> k<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                        <span style=color:#66d9ef>int</span> z <span style=color:#f92672>=</span> target <span style=color:#f92672>-</span> nums<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>-</span> nums<span style=color:#f92672>[</span>j<span style=color:#f92672>]</span> <span style=color:#f92672>-</span> nums<span style=color:#f92672>[</span>k<span style=color:#f92672>];</span>
-                        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>map<span style=color:#f92672>.</span><span style=color:#a6e22e>containsKey</span><span style=color:#f92672>(</span>z<span style=color:#f92672>)</span>
-                                <span style=color:#f92672>&amp;&amp;</span> map<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>z<span style=color:#f92672>)</span> <span style=color:#f92672>!=</span> i
-                                <span style=color:#f92672>&amp;&amp;</span> map<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>z<span style=color:#f92672>)</span> <span style=color:#f92672>!=</span> j
-                                <span style=color:#f92672>&amp;&amp;</span> map<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>z<span style=color:#f92672>)</span> <span style=color:#f92672>!=</span> k<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                            Integer<span style=color:#f92672>[]</span> array <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Integer<span style=color:#f92672>[]{</span>nums<span style=color:#f92672>[</span>i<span style=color:#f92672>],</span> nums<span style=color:#f92672>[</span>j<span style=color:#f92672>],</span> nums<span style=color:#f92672>[</span>k<span style=color:#f92672>],</span> z<span style=color:#f92672>};</span>
-                            Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>sort</span><span style=color:#f92672>(</span>array<span style=color:#f92672>);</span>
-                            set<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>asList</span><span style=color:#f92672>(</span>array<span style=color:#f92672>));</span>
-                        <span style=color:#f92672>}</span>
-                    <span style=color:#f92672>}</span>
-                <span style=color:#f92672>}</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;(</span>set<span style=color:#f92672>);</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h3 ref=组合>组合</h3><a class=anchor id=组合></a>
-<p><a href=https://leetcode-cn.com/problems/combinations/>77. leetcode</a></p>
-<p>经过上面的 2、3、4 数之和问题的探索, 发现如果要求「N 个数之和为 target的全部组合」还是有点力不从心，本质上是需要求出给定数组的全部组合，所以先解此题</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/Combinations.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.util.stream.IntStream<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Combinations</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// 1. 递归
-</span><span style=color:#75715e></span>    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> k<span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> data<span style=color:#f92672>;</span>
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>init</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> data<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> k<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> data<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>k</span> <span style=color:#f92672>=</span> k<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> array<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> index<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> result<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
-                result <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>copyOfRange</span><span style=color:#f92672>(</span>array<span style=color:#f92672>,</span> index <span style=color:#f92672>+</span> 1<span style=color:#f92672>,</span> array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>);</span>
-            <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>Exception e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{};</span>
+            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>number <span style=color:#f92672>!=</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                result <span style=color:#f92672>+=</span> Math<span style=color:#f92672>.</span><span style=color:#a6e22e>pow</span><span style=color:#f92672>(</span>number <span style=color:#f92672>%</span> 10<span style=color:#f92672>,</span> 2<span style=color:#f92672>);</span>
+                number <span style=color:#f92672>/=</span> 10<span style=color:#f92672>;</span>
             <span style=color:#f92672>}</span>
             <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
         <span style=color:#f92672>}</span>
 
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> remain<span style=color:#f92672>,</span> List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> prevPath<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>prevPath<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>==</span> k<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                result<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>prevPath<span style=color:#f92672>);</span>
-                <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> remain<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> curPath <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;(</span>prevPath<span style=color:#f92672>);</span>
-                curPath<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>remain<span style=color:#f92672>[</span>i<span style=color:#f92672>]);</span>
-                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span>remain<span style=color:#f92672>,</span> i<span style=color:#f92672>),</span> curPath<span style=color:#f92672>);</span>
-            <span style=color:#f92672>}</span>
-        <span style=color:#f92672>}</span>
-
-        <span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> <span style=color:#a6e22e>combine</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> n<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> k<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>init</span><span style=color:#f92672>(</span>IntStream<span style=color:#f92672>.</span><span style=color:#a6e22e>rangeClosed</span><span style=color:#f92672>(</span>1<span style=color:#f92672>,</span> n<span style=color:#f92672>).</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>(),</span> k<span style=color:#f92672>);</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>data</span><span style=color:#f92672>,</span> Collections<span style=color:#f92672>.</span><span style=color:#a6e22e>emptyList</span><span style=color:#f92672>());</span>
-            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-
-    <span style=color:#75715e>// 2. 递归（回溯）
-</span><span style=color:#75715e></span>    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution2</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
-        <span style=color:#75715e>// 遍历过程中的实时路径
-</span><span style=color:#75715e></span>        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> path <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> k<span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> data<span style=color:#f92672>;</span>
-
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>init</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> data<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> k<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> data<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>k</span> <span style=color:#f92672>=</span> k<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> array<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> index<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> result<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
-                result <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>copyOfRange</span><span style=color:#f92672>(</span>array<span style=color:#f92672>,</span> index <span style=color:#f92672>+</span> 1<span style=color:#f92672>,</span> array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>);</span>
-            <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>Exception e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{};</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> remain<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>==</span> k<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                result<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;(</span>path<span style=color:#f92672>));</span>
-                <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> remain<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                path<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>remain<span style=color:#f92672>[</span>i<span style=color:#f92672>]);</span>
-                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span>remain<span style=color:#f92672>,</span> i<span style=color:#f92672>));</span>
-                <span style=color:#75715e>// 回溯
-</span><span style=color:#75715e></span>                path<span style=color:#f92672>.</span><span style=color:#a6e22e>remove</span><span style=color:#f92672>(</span>path<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>);</span>
-            <span style=color:#f92672>}</span>
-        <span style=color:#f92672>}</span>
-
-        <span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> <span style=color:#a6e22e>combine</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> n<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> k<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>init</span><span style=color:#f92672>(</span>IntStream<span style=color:#f92672>.</span><span style=color:#a6e22e>rangeClosed</span><span style=color:#f92672>(</span>1<span style=color:#f92672>,</span> n<span style=color:#f92672>).</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>(),</span> k<span style=color:#f92672>);</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>data</span><span style=color:#f92672>);</span>
-            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h3 ref=组合总和>组合总和</h3><a class=anchor id=组合总和></a>
-<p><a href=https://leetcode-cn.com/problems/combination-sum/>39. leetcode</a></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/CombinationSum.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#f92672>import</span> java.util.ArrayList<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.util.Arrays<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.util.List<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>CombinationSum</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
-        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> path <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> sum<span style=color:#f92672>;</span>
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> data<span style=color:#f92672>;</span>
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>init</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> data<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> data<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span> <span style=color:#f92672>=</span> target<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> array<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> index<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> result<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
-                result <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>copyOfRange</span><span style=color:#f92672>(</span>array<span style=color:#f92672>,</span> index<span style=color:#f92672>,</span> array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>);</span>
-            <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>Exception e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{};</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> array<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>==</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                result<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>));</span>
-                <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>&gt;</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>array<span style=color:#f92672>[</span>i<span style=color:#f92672>]);</span>
-                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>+=</span> array<span style=color:#f92672>[</span>i<span style=color:#f92672>];</span>
-                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span>array<span style=color:#f92672>,</span> i<span style=color:#f92672>));</span>
-                <span style=color:#66d9ef>int</span> remove <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remove</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>);</span>
-                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>-=</span> remove<span style=color:#f92672>;</span>
-            <span style=color:#f92672>}</span>
-        <span style=color:#f92672>}</span>
-
-        <span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> <span style=color:#a6e22e>combinationSum</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> candidates<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>init</span><span style=color:#f92672>(</span>candidates<span style=color:#f92672>,</span> target<span style=color:#f92672>);</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>data</span><span style=color:#f92672>);</span>
-            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h3 ref=组合总和-ii>组合总和 II</h3><a class=anchor id=组合总和-ii></a>
-<p><a href=https://leetcode-cn.com/problems/combination-sum-ii/>40. leetcode</a></p>
-<p>该题就是 <a href=#%E7%BB%84%E5%90%88>组合</a> 提到的「N 数之和为 target 的全部组合问题」，思路同上</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/CombinationSumII.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#f92672>import</span> java.util.ArrayList<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.util.Arrays<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.util.List<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>CombinationSumII</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> path <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> sorted_candidates<span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> candidates<span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> sum <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>init</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> candidates<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>candidates</span> <span style=color:#f92672>=</span> candidates<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> candidatesCopy <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>copyOf</span><span style=color:#f92672>(</span>candidates<span style=color:#f92672>,</span> candidates<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>);</span>
-            Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>sort</span><span style=color:#f92672>(</span>candidatesCopy<span style=color:#f92672>);</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sorted_candidates</span> <span style=color:#f92672>=</span> candidatesCopy<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span> <span style=color:#f92672>=</span> target<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> array<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> index<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> result<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
-                result <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>copyOfRange</span><span style=color:#f92672>(</span>array<span style=color:#f92672>,</span> index <span style=color:#f92672>+</span> 1<span style=color:#f92672>,</span> array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>);</span>
-            <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>Exception e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{};</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>ifSkipOnContinuesEqual</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> remain<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> index<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>return</span> index <span style=color:#f92672>-</span> 1 <span style=color:#f92672>&gt;=</span> 0 <span style=color:#f92672>&amp;&amp;</span> remain<span style=color:#f92672>[</span>index<span style=color:#f92672>]</span> <span style=color:#f92672>==</span> remain<span style=color:#f92672>[</span>index <span style=color:#f92672>-</span> 1<span style=color:#f92672>];</span>
-        <span style=color:#f92672>}</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> remain<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>sum <span style=color:#f92672>==</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                result<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;(</span>path<span style=color:#f92672>));</span>
-                <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
-            <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>sum <span style=color:#f92672>&gt;</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> remain<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>ifSkipOnContinuesEqual</span><span style=color:#f92672>(</span>remain<span style=color:#f92672>,</span> i<span style=color:#f92672>))</span> <span style=color:#f92672>{</span>
-                    <span style=color:#66d9ef>continue</span><span style=color:#f92672>;</span>
-                <span style=color:#f92672>}</span>
-                path<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>remain<span style=color:#f92672>[</span>i<span style=color:#f92672>]);</span>
-                sum <span style=color:#f92672>+=</span> remain<span style=color:#f92672>[</span>i<span style=color:#f92672>];</span>
-                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span>remain<span style=color:#f92672>,</span> i<span style=color:#f92672>));</span>
-                <span style=color:#66d9ef>int</span> val <span style=color:#f92672>=</span> path<span style=color:#f92672>.</span><span style=color:#a6e22e>remove</span><span style=color:#f92672>(</span>path<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>);</span>
-                sum <span style=color:#f92672>-=</span> val<span style=color:#f92672>;</span>
-            <span style=color:#f92672>}</span>
-        <span style=color:#f92672>}</span>
-        <span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> <span style=color:#a6e22e>combinationSum2</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> candidates<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>init</span><span style=color:#f92672>(</span>candidates<span style=color:#f92672>,</span> target<span style=color:#f92672>);</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sorted_candidates</span><span style=color:#f92672>);</span>
-            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h3 ref=组合总和-iii>组合总和 III</h3><a class=anchor id=组合总和-iii></a>
-<p><a href=https://leetcode-cn.com/problems/combination-sum-iii/>216. leetcode</a></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/CombinationSumIII.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#f92672>import</span> java.util.ArrayList<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.util.Arrays<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.util.List<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.util.stream.IntStream<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>CombinationSumIII</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
-        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> path <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> sum<span style=color:#f92672>;</span>
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> data<span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> k<span style=color:#f92672>;</span>
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>init</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> data<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> target<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> k<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> data<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span> <span style=color:#f92672>=</span> target<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>k</span> <span style=color:#f92672>=</span> k<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> array<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> index<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> result<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
-                result <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>copyOfRange</span><span style=color:#f92672>(</span>array<span style=color:#f92672>,</span> index <span style=color:#f92672>+</span> 1<span style=color:#f92672>,</span> array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>);</span>
-            <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>Exception e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{};</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-
-        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> remain<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>==</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>==</span> k<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>result</span><span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>));</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>&gt;</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>target</span> <span style=color:#f92672>||</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>&gt;</span> k<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> remain<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>remain<span style=color:#f92672>[</span>i<span style=color:#f92672>]);</span>
-                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>+=</span> remain<span style=color:#f92672>[</span>i<span style=color:#f92672>];</span>
-                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span>remain<span style=color:#f92672>,</span> i<span style=color:#f92672>));</span>
-                <span style=color:#66d9ef>int</span> remove <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remove</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>);</span>
-                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>sum</span> <span style=color:#f92672>-=</span> remove<span style=color:#f92672>;</span>
-            <span style=color:#f92672>}</span>
-        <span style=color:#f92672>}</span>
-
-        <span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span>List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;&gt;</span> <span style=color:#a6e22e>combinationSum3</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> k<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> n<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>init</span><span style=color:#f92672>(</span>IntStream<span style=color:#f92672>.</span><span style=color:#a6e22e>rangeClosed</span><span style=color:#f92672>(</span>1<span style=color:#f92672>,</span> 9<span style=color:#f92672>).</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>(),</span> n<span style=color:#f92672>,</span> k<span style=color:#f92672>);</span>
-            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>data</span><span style=color:#f92672>);</span>
-            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h2 ref=双指针>双指针</h2><a class=anchor id=双指针></a>
-<h3 ref=移除元素>移除元素</h3><a class=anchor id=移除元素></a>
-<p><a href=https://leetcode-cn.com/problems/remove-element/>27. leetcode</a></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/RemoveElement.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>RemoveElement</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>removeElement</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> val<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>int</span> p1 <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>int</span> p2 <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>!=</span> val<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                    nums<span style=color:#f92672>[</span>p1<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> nums<span style=color:#f92672>[</span>p2<span style=color:#f92672>];</span>
-                    p1<span style=color:#f92672>++;</span>
-                <span style=color:#f92672>}</span>
-                p2<span style=color:#f92672>++;</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> p1<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-
-</code></pre></div><h3 ref=两个数组的交集>两个数组的交集</h3><a class=anchor id=两个数组的交集></a>
-<p><a href=https://leetcode-cn.com/problems/intersection-of-two-arrays/>349. leetcode</a></p>
-<ul>
-<li>两个数组去重且从小到大排列</li>
-<li>依次比较两个数组的每个元素，其中 p1，p2 分别为 arr1，arr2 的下标，按照如下逻辑：
-<ul>
-<li>arr1[p1] = arr[p2]，存储结果，p1 + 1，p2 + 1</li>
-<li>arr1[p1] > arr[p2]，p2 + 1 ，反之</li>
-</ul>
-</li>
-</ul>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/IntersectionOfTwoArrays.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#f92672>import</span> java.util.ArrayList<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.util.Arrays<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.util.List<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IntersectionOfTwoArrays</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>intersection</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums1<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums2<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> n1 <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>(</span>nums1<span style=color:#f92672>).</span><span style=color:#a6e22e>sorted</span><span style=color:#f92672>().</span><span style=color:#a6e22e>distinct</span><span style=color:#f92672>().</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>();</span>
-            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> n2 <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>(</span>nums2<span style=color:#f92672>).</span><span style=color:#a6e22e>sorted</span><span style=color:#f92672>().</span><span style=color:#a6e22e>distinct</span><span style=color:#f92672>().</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>();</span>
-            List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
-            <span style=color:#66d9ef>int</span> p1 <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>int</span> p2 <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>while</span><span style=color:#f92672>(</span>p1 <span style=color:#f92672>&lt;</span> n1<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>&amp;&amp;</span> p2 <span style=color:#f92672>&lt;</span> n2<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>n1<span style=color:#f92672>[</span>p1<span style=color:#f92672>]</span> <span style=color:#f92672>==</span> n2<span style=color:#f92672>[</span>p2<span style=color:#f92672>])</span> <span style=color:#f92672>{</span>
-                    result<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>n1<span style=color:#f92672>[</span>p1<span style=color:#f92672>]);</span>
-                    p1<span style=color:#f92672>++;</span>
-                    p2<span style=color:#f92672>++;</span>
-                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>n1<span style=color:#f92672>[</span>p1<span style=color:#f92672>]</span> <span style=color:#f92672>&gt;</span> n2<span style=color:#f92672>[</span>p2<span style=color:#f92672>])</span> <span style=color:#f92672>{</span>
-                    p2<span style=color:#f92672>++;</span>
-                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
-                    p1<span style=color:#f92672>++;</span>
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>isHappy</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> n<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            Set<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> visited <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashSet<span style=color:#f92672>&lt;&gt;();</span>
+            <span style=color:#66d9ef>int</span> next <span style=color:#f92672>=</span> n<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(!</span>visited<span style=color:#f92672>.</span><span style=color:#a6e22e>contains</span><span style=color:#f92672>(</span>next<span style=color:#f92672>))</span> <span style=color:#f92672>{</span>
+                visited<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>next<span style=color:#f92672>);</span>
+                next <span style=color:#f92672>=</span> squareSumPerPosition<span style=color:#f92672>(</span>next<span style=color:#f92672>);</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>next <span style=color:#f92672>==</span> 1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span><span style=color:#f92672>;</span>
                 <span style=color:#f92672>}</span>
             <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>.</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>().</span><span style=color:#a6e22e>mapToInt</span><span style=color:#f92672>(</span> v <span style=color:#f92672>-&gt;</span> v<span style=color:#f92672>).</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>();</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h3 ref=有序数组的平方>有序数组的平方</h3><a class=anchor id=有序数组的平方></a>
-<p><a href=https://leetcode-cn.com/problems/squares-of-a-sorted-array/>977. leetcode</a></p>
-<ul>
-<li>数组非递减排序，故当前数组的平方后的较大值总是出现在数组的两端</li>
-<li>新建同等大小的数组用于存储结果，总是把较大值按照从尾部到头部存入</li>
-</ul>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/SquaresOfASortedArray.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SquaresOfASortedArray</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>sortedSquares</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> newNums <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[</span>nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>];</span>
-            <span style=color:#66d9ef>int</span> p <span style=color:#f92672>=</span> newNums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>int</span> p1 <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>int</span> p2 <span style=color:#f92672>=</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>int</span> p1Square <span style=color:#f92672>=</span> nums<span style=color:#f92672>[</span>p1<span style=color:#f92672>]</span> <span style=color:#f92672>*</span> nums<span style=color:#f92672>[</span>p1<span style=color:#f92672>];</span>
-                <span style=color:#66d9ef>int</span> p2Square <span style=color:#f92672>=</span> nums<span style=color:#f92672>[</span>p2<span style=color:#f92672>]</span> <span style=color:#f92672>*</span> nums<span style=color:#f92672>[</span>p2<span style=color:#f92672>];</span>
-                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>p1Square <span style=color:#f92672>&lt;</span> p2Square<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                    newNums<span style=color:#f92672>[</span>p<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> p2Square<span style=color:#f92672>;</span>
-                    p2<span style=color:#f92672>--;</span>
-                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
-                    newNums<span style=color:#f92672>[</span>p<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> p1Square<span style=color:#f92672>;</span>
-                    p1<span style=color:#f92672>++;</span>
-                <span style=color:#f92672>}</span>
-                p<span style=color:#f92672>--;</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> newNums<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h2 ref=滑动窗口>滑动窗口</h2><a class=anchor id=滑动窗口></a>
-<h3 ref=长度最小的子数组>长度最小的子数组</h3><a class=anchor id=长度最小的子数组></a>
-<p><a href=https://leetcode-cn.com/problems/minimum-size-subarray-sum/>209. leetcode</a></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/MinimumSizeSubArraySum.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#f92672>import</span> java.util.ArrayDeque<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.util.Deque<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MinimumSizeSubArraySum</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>minSubArrayLen</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> target<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>int</span> res <span style=color:#f92672>=</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span>
-            Deque<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> window <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayDeque<span style=color:#f92672>&lt;&gt;();</span>
-            <span style=color:#66d9ef>int</span> windowSum <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>windowSum <span style=color:#f92672>&lt;</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                    window<span style=color:#f92672>.</span><span style=color:#a6e22e>offer</span><span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>i<span style=color:#f92672>]);</span>
-                    windowSum <span style=color:#f92672>+=</span> nums<span style=color:#f92672>[</span>i<span style=color:#f92672>];</span>
-                <span style=color:#f92672>}</span>
-                <span style=color:#66d9ef>while</span><span style=color:#f92672>(</span>windowSum <span style=color:#f92672>&gt;=</span> target<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>window<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>&lt;</span> res<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                        res <span style=color:#f92672>=</span> window<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>();</span>
-                    <span style=color:#f92672>}</span>
-                    <span style=color:#66d9ef>int</span> pop <span style=color:#f92672>=</span> window<span style=color:#f92672>.</span><span style=color:#a6e22e>remove</span><span style=color:#f92672>();</span>
-                    windowSum <span style=color:#f92672>-=</span> pop<span style=color:#f92672>;</span>
-                <span style=color:#f92672>}</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> res <span style=color:#f92672>==</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>+</span> 1<span style=color:#f92672>?</span> 0<span style=color:#f92672>:</span> res<span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-
-</code></pre></div><h2 ref=常规题>常规题</h2><a class=anchor id=常规题></a>
-<h3 ref=螺旋矩阵-ii>螺旋矩阵 II</h3><a class=anchor id=螺旋矩阵-ii></a>
-<p><a href=https://leetcode-cn.com/problems/spiral-matrix-ii/>59. leetcode</a></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/SpiralMatrixII.java
-</span><span style=color:#75715e></span>
-<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SpiralMatrixII</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
-
-        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[][]</span> <span style=color:#a6e22e>generateMatrix</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> n<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>int</span><span style=color:#f92672>[][]</span> matrix <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[</span>n<span style=color:#f92672>][</span>n<span style=color:#f92672>];</span>
-            <span style=color:#66d9ef>int</span> l <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>int</span> r <span style=color:#f92672>=</span> n <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>int</span> t <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>int</span> b <span style=color:#f92672>=</span> n <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>int</span> inc <span style=color:#f92672>=</span> 1<span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>inc <span style=color:#f92672>&lt;=</span> n <span style=color:#f92672>*</span> n<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> l<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;=</span> r<span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                    matrix<span style=color:#f92672>[</span>t<span style=color:#f92672>][</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> inc<span style=color:#f92672>++;</span>
-                <span style=color:#f92672>}</span>
-                t<span style=color:#f92672>++;</span>
-                <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> t<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;=</span> b<span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
-                    matrix<span style=color:#f92672>[</span>i<span style=color:#f92672>][</span>r<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> inc<span style=color:#f92672>++;</span>
-                <span style=color:#f92672>}</span>
-                r<span style=color:#f92672>--;</span>
-                <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> r<span style=color:#f92672>;</span> i <span style=color:#f92672>&gt;=</span> l<span style=color:#f92672>;</span> i<span style=color:#f92672>--)</span> <span style=color:#f92672>{</span>
-                    matrix<span style=color:#f92672>[</span>b<span style=color:#f92672>][</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> inc<span style=color:#f92672>++;</span>
-                <span style=color:#f92672>}</span>
-                b<span style=color:#f92672>--;</span>
-                <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> b<span style=color:#f92672>;</span> i <span style=color:#f92672>&gt;=</span> t<span style=color:#f92672>;</span> i<span style=color:#f92672>--)</span> <span style=color:#f92672>{</span>
-                    matrix<span style=color:#f92672>[</span>i<span style=color:#f92672>][</span>l<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> inc<span style=color:#f92672>++;</span>
-                <span style=color:#f92672>}</span>
-                l<span style=color:#f92672>++;</span>
-            <span style=color:#f92672>}</span>
-            <span style=color:#66d9ef>return</span> matrix<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span><span style=color:#f92672>;</span>
         <span style=color:#f92672>}</span>
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
@@ -877,10 +189,10 @@ Jump to Section
 </code></pre></div>
 </div>
 <div class=chevrons>
-<a class=next href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%AD%97%E7%AC%A6%E4%B8%B2/ title=字符串 style=margin-right:0>
+<a class=next href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E7%BB%84/ title=数组 style=margin-right:0>
 <div>
 <p>Next page</p>
-<label>字符串</label>
+<label>数组</label>
 </div>
 <i class="fas fa-arrow-right" style=font-size:1.7em></i></a>
 </div>

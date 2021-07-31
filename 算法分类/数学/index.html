@@ -1,13 +1,13 @@
 <!doctype html><html>
 <head>
 <title>
-Footer :: LeetCode Solutions
+数学 :: LeetCode Solutions
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name=revised content="2021-07-31T04:32:59 UTC">
-<meta name=description content="Footer">
-<title>Footer :: LeetCode Solutions</title>
+<meta name=description content>
+<title>数学 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
 <link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css integrity=sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z crossorigin=anonymous>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css>
@@ -27,7 +27,7 @@ Footer :: LeetCode Solutions
 <script src=/leetcode/js/docport.js></script>
 <script type=text/javascript>var baseurl="https://nosugarcoffee.github.io/leetcode/"</script>
 </head>
-<body data-url=/leetcode/_layout/footer/>
+<body data-url=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E5%AD%A6/>
 <style type=text/css>#debug{display:-webkit-box;display:-ms-flexbox;display:flex;line-height:3.5rem;margin-bottom:.35rem;padding:0 2rem;position:fixed;left:0;right:0;top:0;top:0;min-height:150px;background-color:#fff;border:3px solid red;z-index:10000;word-wrap:all;overflow:auto}</style>
 <header>
 <div>
@@ -57,12 +57,12 @@ Footer :: LeetCode Solutions
 </a>
 </div>
 <ul class=menu>
-<li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/ class="dd-item haschildren
+<li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/ class="dd-item parent haschildren
 item_level_$level">
-<i class="fas fa-chevron-right ddexp"></i>
+<i class="fas fa-chevron-down ddexp"></i>
 <a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/>算法分类</a>
 <ul>
-<li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E5%AD%A6/ class="dd-item
+<li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E5%AD%A6/ class="dd-item parent active
 item_level_$level">
 <a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E5%AD%A6/>数学</a>
 </li>
@@ -111,24 +111,113 @@ item_level_$level">
 </ul>
 </aside>
 <section class=page>
+<nav id=ariane aria-label=breadcrumb>
+<ol class=ariane>
+<li>
+<a class=text-link href=https://nosugarcoffee.github.io/leetcode/>
+Home
+</a>
+</li>
+<li>
+<a class=text-link href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/>
+算法分类
+</a>
+</li>
+<li class=active>
+数学
+</li>
+</ol>
+</nav>
+<h1>数学</h1>
+<div class=jump-to-section>
+<span onclick="$h=$(this),$h.next('nav').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('nav').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<span class="fas fa-align-right"></span>
+Jump to Section
+<i class="fas fa-chevron-right"></i>
+</span>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#哈希表>哈希表</a>
+<ul>
+<li><a href=#快乐数>快乐数</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<div class=content>
+<h2 ref=哈希表>哈希表</h2><a class=anchor id=哈希表></a>
+<h3 ref=快乐数>快乐数</h3><a class=anchor id=快乐数></a>
+<p><a href=https://leetcode-cn.com/problems/happy-number/>202. leetcode</a></p>
+<ul>
+<li>squareSumPerPosition 函数计算给定数字的各位置平方和</li>
+<li>set 记录每次数字，如果出现重复，则表明一定是无限循环，否则一直在「进步」</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/math/HappyNumber.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.math<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.HashSet<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Set<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>HappyNumber</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>squareSumPerPosition</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> number<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>int</span> result <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>number <span style=color:#f92672>!=</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                result <span style=color:#f92672>+=</span> Math<span style=color:#f92672>.</span><span style=color:#a6e22e>pow</span><span style=color:#f92672>(</span>number <span style=color:#f92672>%</span> 10<span style=color:#f92672>,</span> 2<span style=color:#f92672>);</span>
+                number <span style=color:#f92672>/=</span> 10<span style=color:#f92672>;</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>isHappy</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> n<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            Set<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> visited <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashSet<span style=color:#f92672>&lt;&gt;();</span>
+            <span style=color:#66d9ef>int</span> next <span style=color:#f92672>=</span> n<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(!</span>visited<span style=color:#f92672>.</span><span style=color:#a6e22e>contains</span><span style=color:#f92672>(</span>next<span style=color:#f92672>))</span> <span style=color:#f92672>{</span>
+                visited<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>next<span style=color:#f92672>);</span>
+                next <span style=color:#f92672>=</span> squareSumPerPosition<span style=color:#f92672>(</span>next<span style=color:#f92672>);</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>next <span style=color:#f92672>==</span> 1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span><span style=color:#f92672>;</span>
+                <span style=color:#f92672>}</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span><span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+</code></pre></div>
+</div>
+<div class=chevrons>
+<a class=next href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E7%BB%84/ title=数组 style=margin-right:0>
+<div>
+<p>Next page</p>
+<label>数组</label>
+</div>
+<i class="fas fa-arrow-right" style=font-size:1.7em></i></a>
+</div>
 </section>
 <section class=right-menu>
 <div class=TableOfContents>
 <label><i class="fas fa-align-right"></i>&nbsp;&nbsp;What's on this page</label>
 <nav>
 <ul>
-<li><a href=/leetcode/_layout/footer/>Footer</a></li>
+<li><a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E5%AD%A6/>数学</a></li>
 </ul>
 </nav>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#哈希表>哈希表</a>
+<ul>
+<li><a href=#快乐数>快乐数</a></li>
+</ul>
+</li>
+</ul>
+</nav>
 </div>
 <div class=Actions>
 <nav>
 <ul>
-<li>
-<i class="fas fa-calendar"></i>
-Last update on 20 August 2020
-</li>
 </ul>
 </nav>
 </div>
