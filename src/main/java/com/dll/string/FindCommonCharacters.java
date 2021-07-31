@@ -7,9 +7,9 @@ import java.util.stream.Stream;
 
 public class FindCommonCharacters {
     class Solution {
-        private Map<String , Integer> countWord(String word) {
+        private Map<String, Integer> countWord(String word) {
             return Arrays.stream(word.split("")).
-                    collect(Collectors.toMap((w) -> w, (w) -> 1, (oldValue, newValue)-> oldValue + 1));
+                    collect(Collectors.toMap((w) -> w, (w) -> 1, (oldValue, newValue) -> oldValue + 1));
         }
 
         public List<String> commonChars(String[] words) {
