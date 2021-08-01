@@ -2,6 +2,34 @@
 weight: 1
 title: "数组"
 ---
+## 哈希法
+### 矩阵中战斗力最弱的 K 行
+[1337. leetcode](https://leetcode-cn.com/problems/the-k-weakest-rows-in-a-matrix/)
+
+```java
+// ../../../../src/main/java/com/dll/array/TheKWeakestRowsInAMatrix.java
+
+package com.dll.array;
+
+import java.util.*;
+import java.util.stream.IntStream;
+
+public class TheKWeakestRowsInAMatrix {
+    class Solution {
+        public int[] kWeakestRows(int[][] mat, int k) {
+            Map<Integer, Integer> map = new HashMap<>();
+            IntStream.range(0, mat.length).forEach(index -> map.put(index, Arrays.stream(mat[index]).sum()));
+            return map.entrySet().stream()
+                    .sorted(Comparator.comparing(Map.Entry<Integer, Integer>::getValue)
+                            .thenComparing(Map.Entry::getKey))
+                    .limit(k)
+                    .mapToInt(Map.Entry::getKey).toArray();
+        }
+    }
+}
+
+```
+
 ## 二分查找
 使用二分法需要满足以下条件：
 - 有序
