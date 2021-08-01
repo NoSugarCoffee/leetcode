@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-07-31T05:28:59 UTC">
+<meta name=revised content="2021-08-01T16:25:02 UTC">
 <meta name=description content>
 <title>数组 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -146,6 +146,7 @@ Jump to Section
 <li><a href=#组合总和>组合总和</a></li>
 <li><a href=#组合总和-ii>组合总和 II</a></li>
 <li><a href=#组合总和-iii>组合总和 III</a></li>
+<li><a href=#四数相加-ii>四数相加 II</a></li>
 </ul>
 </li>
 <li><a href=#双指针>双指针</a>
@@ -695,6 +696,48 @@ Jump to Section
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
+</code></pre></div><h3 ref=四数相加-ii>四数相加 II</h3><a class=anchor id=四数相加-ii></a>
+<p><a href=https://leetcode-cn.com/problems/4sum-ii/>454. leetcode</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/FourSumII.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.HashMap<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Map<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>FourSumII</span> <span style=color:#f92672>{</span>
+
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>fourSumCount</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums1<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums2<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums3<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums4<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            Map<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> m1 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;();</span>
+            Map<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> m2 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;();</span>
+
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> n1 <span style=color:#f92672>:</span> nums1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> n2 <span style=color:#f92672>:</span> nums2<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    <span style=color:#66d9ef>int</span> sum <span style=color:#f92672>=</span> n1 <span style=color:#f92672>+</span> n2<span style=color:#f92672>;</span>
+                    m1<span style=color:#f92672>.</span><span style=color:#a6e22e>compute</span><span style=color:#f92672>(</span>sum<span style=color:#f92672>,</span> <span style=color:#f92672>(</span>t<span style=color:#f92672>,</span> u<span style=color:#f92672>)</span> <span style=color:#f92672>-&gt;</span> m1<span style=color:#f92672>.</span><span style=color:#a6e22e>getOrDefault</span><span style=color:#f92672>(</span>sum<span style=color:#f92672>,</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>+</span> 1<span style=color:#f92672>);</span>
+                <span style=color:#f92672>}</span>
+            <span style=color:#f92672>}</span>
+
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> n3 <span style=color:#f92672>:</span> nums3<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> n4 <span style=color:#f92672>:</span> nums4<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    <span style=color:#66d9ef>int</span> sum <span style=color:#f92672>=</span> n3 <span style=color:#f92672>+</span> n4<span style=color:#f92672>;</span>
+                    m2<span style=color:#f92672>.</span><span style=color:#a6e22e>compute</span><span style=color:#f92672>(</span>sum<span style=color:#f92672>,</span> <span style=color:#f92672>(</span>t<span style=color:#f92672>,</span> u<span style=color:#f92672>)</span> <span style=color:#f92672>-&gt;</span> m2<span style=color:#f92672>.</span><span style=color:#a6e22e>getOrDefault</span><span style=color:#f92672>(</span>sum<span style=color:#f92672>,</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>+</span> 1<span style=color:#f92672>);</span>
+                <span style=color:#f92672>}</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> result <span style=color:#f92672>=</span> <span style=color:#f92672>{</span>0<span style=color:#f92672>};</span>
+            m1<span style=color:#f92672>.</span><span style=color:#a6e22e>forEach</span><span style=color:#f92672>((</span>k1<span style=color:#f92672>,</span> v1<span style=color:#f92672>)</span> <span style=color:#f92672>-&gt;</span> <span style=color:#f92672>{</span>
+                m2<span style=color:#f92672>.</span><span style=color:#a6e22e>forEach</span><span style=color:#f92672>((</span>k2<span style=color:#f92672>,</span> v2<span style=color:#f92672>)</span> <span style=color:#f92672>-&gt;</span> <span style=color:#f92672>{</span>
+                    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>k1 <span style=color:#f92672>+</span> k2 <span style=color:#f92672>==</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                        result<span style=color:#f92672>[</span>0<span style=color:#f92672>]</span> <span style=color:#f92672>+=</span> v1 <span style=color:#f92672>*</span> v2<span style=color:#f92672>;</span>
+                    <span style=color:#f92672>}</span>
+                <span style=color:#f92672>});</span>
+            <span style=color:#f92672>});</span>
+            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>[</span>0<span style=color:#f92672>];</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
 </code></pre></div><h2 ref=双指针>双指针</h2><a class=anchor id=双指针></a>
 <h3 ref=移除元素>移除元素</h3><a class=anchor id=移除元素></a>
 <p><a href=https://leetcode-cn.com/problems/remove-element/>27. leetcode</a></p>
@@ -955,6 +998,7 @@ Jump to Section
 <li><a href=#组合总和>组合总和</a></li>
 <li><a href=#组合总和-ii>组合总和 II</a></li>
 <li><a href=#组合总和-iii>组合总和 III</a></li>
+<li><a href=#四数相加-ii>四数相加 II</a></li>
 </ul>
 </li>
 <li><a href=#双指针>双指针</a>
