@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-08-01T16:25:02 UTC">
+<meta name=revised content="2021-08-01T16:28:48 UTC">
 <meta name=description content>
 <title>数组 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -129,6 +129,11 @@ Jump to Section
 </span>
 <nav id=TableOfContents>
 <ul>
+<li><a href=#哈希法>哈希法</a>
+<ul>
+<li><a href=#矩阵中战斗力最弱的-k-行>矩阵中战斗力最弱的 K 行</a></li>
+</ul>
+</li>
 <li><a href=#二分查找>二分查找</a>
 <ul>
 <li><a href=#二分查找-1>二分查找</a></li>
@@ -171,7 +176,31 @@ Jump to Section
 </nav>
 </div>
 <div class=content>
-<h2 ref=二分查找>二分查找</h2><a class=anchor id=二分查找></a>
+<h2 ref=哈希法>哈希法</h2><a class=anchor id=哈希法></a>
+<h3 ref=矩阵中战斗力最弱的-k-行>矩阵中战斗力最弱的 K 行</h3><a class=anchor id=矩阵中战斗力最弱的-k-行></a>
+<p><a href=https://leetcode-cn.com/problems/the-k-weakest-rows-in-a-matrix/>1337. leetcode</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/TheKWeakestRowsInAMatrix.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.stream.IntStream<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>TheKWeakestRowsInAMatrix</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>kWeakestRows</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[][]</span> mat<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> k<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            Map<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;</span> map <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;();</span>
+            IntStream<span style=color:#f92672>.</span><span style=color:#a6e22e>range</span><span style=color:#f92672>(</span>0<span style=color:#f92672>,</span> mat<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>).</span><span style=color:#a6e22e>forEach</span><span style=color:#f92672>(</span>index <span style=color:#f92672>-&gt;</span> map<span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>index<span style=color:#f92672>,</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>(</span>mat<span style=color:#f92672>[</span>index<span style=color:#f92672>]).</span><span style=color:#a6e22e>sum</span><span style=color:#f92672>()));</span>
+            <span style=color:#66d9ef>return</span> map<span style=color:#f92672>.</span><span style=color:#a6e22e>entrySet</span><span style=color:#f92672>().</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>()</span>
+                    <span style=color:#f92672>.</span><span style=color:#a6e22e>sorted</span><span style=color:#f92672>(</span>Comparator<span style=color:#f92672>.</span><span style=color:#a6e22e>comparing</span><span style=color:#f92672>(</span>Map<span style=color:#f92672>.</span><span style=color:#a6e22e>Entry</span><span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>,</span> Integer<span style=color:#f92672>&gt;::</span>getValue<span style=color:#f92672>)</span>
+                            <span style=color:#f92672>.</span><span style=color:#a6e22e>thenComparing</span><span style=color:#f92672>(</span>Map<span style=color:#f92672>.</span><span style=color:#a6e22e>Entry</span><span style=color:#f92672>::</span>getKey<span style=color:#f92672>))</span>
+                    <span style=color:#f92672>.</span><span style=color:#a6e22e>limit</span><span style=color:#f92672>(</span>k<span style=color:#f92672>)</span>
+                    <span style=color:#f92672>.</span><span style=color:#a6e22e>mapToInt</span><span style=color:#f92672>(</span>Map<span style=color:#f92672>.</span><span style=color:#a6e22e>Entry</span><span style=color:#f92672>::</span>getKey<span style=color:#f92672>).</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>();</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+</code></pre></div><h2 ref=二分查找>二分查找</h2><a class=anchor id=二分查找></a>
 <p>使用二分法需要满足以下条件：</p>
 <ul>
 <li>有序</li>
@@ -981,6 +1010,11 @@ Jump to Section
 </nav>
 <nav id=TableOfContents>
 <ul>
+<li><a href=#哈希法>哈希法</a>
+<ul>
+<li><a href=#矩阵中战斗力最弱的-k-行>矩阵中战斗力最弱的 K 行</a></li>
+</ul>
+</li>
 <li><a href=#二分查找>二分查找</a>
 <ul>
 <li><a href=#二分查找-1>二分查找</a></li>
