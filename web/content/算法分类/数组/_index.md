@@ -642,6 +642,44 @@ public class FourSumII {
 
 ```
 
+### 有效三角形的个数
+[611. leetcode](https://leetcode-cn.com/problems/valid-triangle-number/)
+- 满足构成三角形的条件：**任意**两边之和 > 第三边
+- 不容易想到的是，按照非严格升序的非负数组
+ [a1,a2,a3...an] 满足 a[i] <= a[j] <= a[k] (i < j < k 为数组的下标) ，
+ 则有如下隐含条件：
+    - a[j] + a[k] >= a[i]，当且仅当 a[i], a[j], a[k] 等于 0 时等号成立，不满足构成三角形条件
+    - a[i] + a[k] >= a[j]，当且仅当 a[i] = 0 时等号成立，不满足构成三角形条件
+ 当手动保证 a[i] + a[j] > a[k] 成立时，可以得到 a[i] > 0，即上述等号不成立，此时满足三角形的条件
+```java
+// ../../../../src/main/java/com/dll/array/ValidTriangleNumber.java
+
+package com.dll.array;
+
+import java.util.Arrays;
+
+public class ValidTriangleNumber {
+    class Solution {
+
+        public int triangleNumber(int[] nums) {
+            int[] sortedNums = Arrays.stream(nums).sorted().toArray();
+            int result = 0;
+            for (int i = 0; i < sortedNums.length; i++) {
+                for (int j = i + 1; j < sortedNums.length; j++) {
+                    for (int z = j + 1; z < sortedNums.length; z++) {
+                        if (sortedNums[i] + sortedNums[j] > sortedNums[z]) {
+                            result++;
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+    }
+}
+
+```
+
 ## 双指针
 ### 移除元素
 [27. leetcode](https://leetcode-cn.com/problems/remove-element/)
@@ -832,7 +870,41 @@ public class MinimumSizeSubArraySum {
 
 ```
 
-## 常规题
+## 排序
+### 最短无序连续子数组
+[581. leetcode](https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray/)
+
+将 nums 数组排序记为 sortedNums，从首尾两端分别比较 nums 和 sortedNums，
+若存在 nums[start] != sortedNums[start] && nums[end] != sortedNums[end]，则 [start,end] 区间则为所求
+
+- 时间复杂度：快排 O(n * logn)
+- 空间复杂度：开辟数组 O(n)
+
+```java
+// ../../../../src/main/java/com/dll/array/ShortestUnsortedContinuousSubarray.java
+
+package com.dll.array;
+
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
+public class ShortestUnsortedContinuousSubarray {
+    class Solution {
+        public int findUnsortedSubarray(int[] nums) {
+            int[] sortedNums = Arrays.stream(nums).sorted().toArray();
+            int first = IntStream.range(0, sortedNums.length)
+                    .filter(index -> sortedNums[index] != nums[index])
+                    .findFirst().orElse(0);
+            int end = IntStream.range(0, sortedNums.length).map(index -> sortedNums.length - 1 - index)
+                    .filter( index -> sortedNums[index] != nums[index])
+                    .findFirst().orElse(-1);
+            return end - first + 1;
+        }
+    }
+}
+
+```
+## 模拟
 ### 螺旋矩阵 II
 [59. leetcode](https://leetcode-cn.com/problems/spiral-matrix-ii/)
 
