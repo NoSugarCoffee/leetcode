@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-08-01T16:28:48 UTC">
+<meta name=revised content="2021-08-04T17:03:49 UTC">
 <meta name=description content>
 <title>数组 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -82,6 +82,10 @@ item_level_$level">
 item_level_$level">
 <a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/lru%E7%BC%93%E5%AD%98/>LRU 缓存</a>
 </li>
+<li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%9B%BE/ class="dd-item
+item_level_$level">
+<a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%9B%BE/>图</a>
+</li>
 <li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%A4%9A%E7%BA%BF%E7%A8%8B/ class="dd-item
 item_level_$level">
 <a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%A4%9A%E7%BA%BF%E7%A8%8B/>多线程</a>
@@ -152,6 +156,7 @@ Jump to Section
 <li><a href=#组合总和-ii>组合总和 II</a></li>
 <li><a href=#组合总和-iii>组合总和 III</a></li>
 <li><a href=#四数相加-ii>四数相加 II</a></li>
+<li><a href=#有效三角形的个数>有效三角形的个数</a></li>
 </ul>
 </li>
 <li><a href=#双指针>双指针</a>
@@ -167,7 +172,12 @@ Jump to Section
 <li><a href=#长度最小的子数组>长度最小的子数组</a></li>
 </ul>
 </li>
-<li><a href=#常规题>常规题</a>
+<li><a href=#排序>排序</a>
+<ul>
+<li><a href=#最短无序连续子数组>最短无序连续子数组</a></li>
+</ul>
+</li>
+<li><a href=#模拟>模拟</a>
 <ul>
 <li><a href=#螺旋矩阵-ii>螺旋矩阵 II</a></li>
 </ul>
@@ -767,6 +777,46 @@ Jump to Section
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
+</code></pre></div><h3 ref=有效三角形的个数>有效三角形的个数</h3><a class=anchor id=有效三角形的个数></a>
+<p><a href=https://leetcode-cn.com/problems/valid-triangle-number/>611. leetcode</a></p>
+<ul>
+<li>满足构成三角形的条件：<strong>任意</strong>两边之和 > 第三边</li>
+<li>不容易想到的是，按照非严格升序的非负数组
+[a1,a2,a3&mldr;an] 满足 a[i] &lt;= a[j] &lt;= a[k] (i &lt; j &lt; k 为数组的下标) ，
+则有如下隐含条件：
+<ul>
+<li>a[j] + a[k] >= a[i]，当且仅当 a[i], a[j], a[k] 等于 0 时等号成立，不满足构成三角形条件</li>
+<li>a[i] + a[k] >= a[j]，当且仅当 a[i] = 0 时等号成立，不满足构成三角形条件
+当手动保证 a[i] + a[j] > a[k] 成立时，可以得到 a[i] > 0，即上述等号不成立，此时满足三角形的条件</li>
+</ul>
+</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/ValidTriangleNumber.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.Arrays<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ValidTriangleNumber</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>triangleNumber</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> sortedNums <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>(</span>nums<span style=color:#f92672>).</span><span style=color:#a6e22e>sorted</span><span style=color:#f92672>().</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>();</span>
+            <span style=color:#66d9ef>int</span> result <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> sortedNums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> j <span style=color:#f92672>=</span> i <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span> j <span style=color:#f92672>&lt;</span> sortedNums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> j<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                    <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> z <span style=color:#f92672>=</span> j <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span> z <span style=color:#f92672>&lt;</span> sortedNums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> z<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>sortedNums<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>+</span> sortedNums<span style=color:#f92672>[</span>j<span style=color:#f92672>]</span> <span style=color:#f92672>&gt;</span> sortedNums<span style=color:#f92672>[</span>z<span style=color:#f92672>])</span> <span style=color:#f92672>{</span>
+                            result<span style=color:#f92672>++;</span>
+                        <span style=color:#f92672>}</span>
+                    <span style=color:#f92672>}</span>
+                <span style=color:#f92672>}</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
 </code></pre></div><h2 ref=双指针>双指针</h2><a class=anchor id=双指针></a>
 <h3 ref=移除元素>移除元素</h3><a class=anchor id=移除元素></a>
 <p><a href=https://leetcode-cn.com/problems/remove-element/>27. leetcode</a></p>
@@ -949,7 +999,38 @@ Jump to Section
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
-</code></pre></div><h2 ref=常规题>常规题</h2><a class=anchor id=常规题></a>
+</code></pre></div><h2 ref=排序>排序</h2><a class=anchor id=排序></a>
+<h3 ref=最短无序连续子数组>最短无序连续子数组</h3><a class=anchor id=最短无序连续子数组></a>
+<p><a href=https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray/>581. leetcode</a></p>
+<p>将 nums 数组排序记为 sortedNums，从首尾两端分别比较 nums 和 sortedNums，
+若存在 nums[start] != sortedNums[start] && nums[end] != sortedNums[end]，则 [start,end] 区间则为所求</p>
+<ul>
+<li>时间复杂度：快排 O(n * logn)</li>
+<li>空间复杂度：开辟数组 O(n)</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/ShortestUnsortedContinuousSubarray.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.Arrays<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.stream.IntStream<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ShortestUnsortedContinuousSubarray</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>findUnsortedSubarray</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> sortedNums <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>(</span>nums<span style=color:#f92672>).</span><span style=color:#a6e22e>sorted</span><span style=color:#f92672>().</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>();</span>
+            <span style=color:#66d9ef>int</span> first <span style=color:#f92672>=</span> IntStream<span style=color:#f92672>.</span><span style=color:#a6e22e>range</span><span style=color:#f92672>(</span>0<span style=color:#f92672>,</span> sortedNums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>)</span>
+                    <span style=color:#f92672>.</span><span style=color:#a6e22e>filter</span><span style=color:#f92672>(</span>index <span style=color:#f92672>-&gt;</span> sortedNums<span style=color:#f92672>[</span>index<span style=color:#f92672>]</span> <span style=color:#f92672>!=</span> nums<span style=color:#f92672>[</span>index<span style=color:#f92672>])</span>
+                    <span style=color:#f92672>.</span><span style=color:#a6e22e>findFirst</span><span style=color:#f92672>().</span><span style=color:#a6e22e>orElse</span><span style=color:#f92672>(</span>0<span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>int</span> end <span style=color:#f92672>=</span> IntStream<span style=color:#f92672>.</span><span style=color:#a6e22e>range</span><span style=color:#f92672>(</span>0<span style=color:#f92672>,</span> sortedNums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>).</span><span style=color:#a6e22e>map</span><span style=color:#f92672>(</span>index <span style=color:#f92672>-&gt;</span> sortedNums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> 1 <span style=color:#f92672>-</span> index<span style=color:#f92672>)</span>
+                    <span style=color:#f92672>.</span><span style=color:#a6e22e>filter</span><span style=color:#f92672>(</span> index <span style=color:#f92672>-&gt;</span> sortedNums<span style=color:#f92672>[</span>index<span style=color:#f92672>]</span> <span style=color:#f92672>!=</span> nums<span style=color:#f92672>[</span>index<span style=color:#f92672>])</span>
+                    <span style=color:#f92672>.</span><span style=color:#a6e22e>findFirst</span><span style=color:#f92672>().</span><span style=color:#a6e22e>orElse</span><span style=color:#f92672>(-</span>1<span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>return</span> end <span style=color:#f92672>-</span> first <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+</code></pre></div><h2 ref=模拟>模拟</h2><a class=anchor id=模拟></a>
 <h3 ref=螺旋矩阵-ii>螺旋矩阵 II</h3><a class=anchor id=螺旋矩阵-ii></a>
 <p><a href=https://leetcode-cn.com/problems/spiral-matrix-ii/>59. leetcode</a></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/SpiralMatrixII.java
@@ -1033,6 +1114,7 @@ Jump to Section
 <li><a href=#组合总和-ii>组合总和 II</a></li>
 <li><a href=#组合总和-iii>组合总和 III</a></li>
 <li><a href=#四数相加-ii>四数相加 II</a></li>
+<li><a href=#有效三角形的个数>有效三角形的个数</a></li>
 </ul>
 </li>
 <li><a href=#双指针>双指针</a>
@@ -1048,7 +1130,12 @@ Jump to Section
 <li><a href=#长度最小的子数组>长度最小的子数组</a></li>
 </ul>
 </li>
-<li><a href=#常规题>常规题</a>
+<li><a href=#排序>排序</a>
+<ul>
+<li><a href=#最短无序连续子数组>最短无序连续子数组</a></li>
+</ul>
+</li>
+<li><a href=#模拟>模拟</a>
 <ul>
 <li><a href=#螺旋矩阵-ii>螺旋矩阵 II</a></li>
 </ul>
