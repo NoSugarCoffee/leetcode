@@ -101,3 +101,59 @@ public class NetworkDelayTime {
 }
 
 ```
+
+### 找到最终的安全状态
+[802. leetcode](https://leetcode-cn.com/problems/find-eventual-safe-states/)
+
+深度遍历图的各个结点，并记录下遍历的路径，遇到重复（呈环）则表示深度遍历路径上的每个结点都不是「安全」结点
+- 其中 `graph[ori] = new int[]{}` 很关键，可以减少下次遍历到该结点的深度
+- unsafe 用于记录当前环内的结点，环内的结点不可能是「安全」的
+
+```java
+// ../../../../src/main/java/com/dll/graph/FindEventualSafeStates.java
+
+package com.dll.graph;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class FindEventualSafeStates {
+    class Solution {
+        private List<Integer> safe = new ArrayList<>();
+        private Set<Integer> unSafe = new HashSet<>();
+        private List<Integer> path = new ArrayList<>();
+
+        public List<Integer> eventualSafeNodes(int[][] graph) {
+            for (int i = 0; i < graph.length; i++) {
+                if (unSafe.contains(i)) {
+                    continue;
+                }
+                if (isSafe(graph, i)) {
+                    safe.add(i);
+                }
+            }
+            return safe;
+        }
+
+        private boolean isSafe(int[][] graph, int ori) {
+            if (path.contains(ori)) {
+                unSafe.addAll(path);
+                return false;
+            }
+            path.add(ori);
+            for (int node : graph[ori]) {
+                if (!isSafe(graph, node)) {
+                    path.remove(path.size() - 1);
+                    return false;
+                }
+            }
+            graph[ori] = new int[]{};
+            path.remove(path.size() - 1);
+            return true;
+        }
+    }
+}
+
+```
