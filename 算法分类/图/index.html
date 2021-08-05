@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-08-04T17:03:49 UTC">
+<meta name=revised content="2021-08-05T14:29:19 UTC">
 <meta name=description content>
 <title>图 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -136,6 +136,7 @@ Jump to Section
 <li><a href=#最短路径>最短路径</a>
 <ul>
 <li><a href=#网络延迟时间>网络延迟时间</a></li>
+<li><a href=#找到最终的安全状态>找到最终的安全状态</a></li>
 </ul>
 </li>
 </ul>
@@ -238,6 +239,59 @@ set[] 标记当前已知的最短路径顶点集合，dist[] 当前已知的最�
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
+</code></pre></div><h3 ref=找到最终的安全状态>找到最终的安全状态</h3><a class=anchor id=找到最终的安全状态></a>
+<p><a href=https://leetcode-cn.com/problems/find-eventual-safe-states/>802. leetcode</a></p>
+<p>深度遍历图的各个结点，并记录下遍历的路径，遇到重复（呈环）则表示深度遍历路径上的每个结点都不是「安全」结点</p>
+<ul>
+<li>其中 <code>graph[ori] = new int[]{}</code> 很关键，可以减少下次遍历到该结点的深度</li>
+<li>unsafe 用于记录当前环内的结点，环内的结点不可能是「安全」的</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/graph/FindEventualSafeStates.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.graph<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.ArrayList<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.HashSet<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.List<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.Set<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>FindEventualSafeStates</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> safe <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
+        <span style=color:#66d9ef>private</span> Set<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> unSafe <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashSet<span style=color:#f92672>&lt;&gt;();</span>
+        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> path <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
+
+        <span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>eventualSafeNodes</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[][]</span> graph<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> graph<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>unSafe<span style=color:#f92672>.</span><span style=color:#a6e22e>contains</span><span style=color:#f92672>(</span>i<span style=color:#f92672>))</span> <span style=color:#f92672>{</span>
+                    <span style=color:#66d9ef>continue</span><span style=color:#f92672>;</span>
+                <span style=color:#f92672>}</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>isSafe<span style=color:#f92672>(</span>graph<span style=color:#f92672>,</span> i<span style=color:#f92672>))</span> <span style=color:#f92672>{</span>
+                    safe<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>i<span style=color:#f92672>);</span>
+                <span style=color:#f92672>}</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> safe<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>isSafe</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[][]</span> graph<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> ori<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>path<span style=color:#f92672>.</span><span style=color:#a6e22e>contains</span><span style=color:#f92672>(</span>ori<span style=color:#f92672>))</span> <span style=color:#f92672>{</span>
+                unSafe<span style=color:#f92672>.</span><span style=color:#a6e22e>addAll</span><span style=color:#f92672>(</span>path<span style=color:#f92672>);</span>
+                <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span><span style=color:#f92672>;</span>
+            <span style=color:#f92672>}</span>
+            path<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>ori<span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> node <span style=color:#f92672>:</span> graph<span style=color:#f92672>[</span>ori<span style=color:#f92672>])</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(!</span>isSafe<span style=color:#f92672>(</span>graph<span style=color:#f92672>,</span> node<span style=color:#f92672>))</span> <span style=color:#f92672>{</span>
+                    path<span style=color:#f92672>.</span><span style=color:#a6e22e>remove</span><span style=color:#f92672>(</span>path<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>);</span>
+                    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span><span style=color:#f92672>;</span>
+                <span style=color:#f92672>}</span>
+            <span style=color:#f92672>}</span>
+            graph<span style=color:#f92672>[</span>ori<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]{};</span>
+            path<span style=color:#f92672>.</span><span style=color:#a6e22e>remove</span><span style=color:#f92672>(</span>path<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span><span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
 </code></pre></div>
 </div>
 <div class=chevrons>
@@ -262,6 +316,7 @@ set[] 标记当前已知的最短路径顶点集合，dist[] 当前已知的最�
 <li><a href=#最短路径>最短路径</a>
 <ul>
 <li><a href=#网络延迟时间>网络延迟时间</a></li>
+<li><a href=#找到最终的安全状态>找到最终的安全状态</a></li>
 </ul>
 </li>
 </ul>
