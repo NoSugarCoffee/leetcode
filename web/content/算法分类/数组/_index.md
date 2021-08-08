@@ -947,3 +947,56 @@ public class SpiralMatrixII {
 }
 
 ```
+
+### 环形数组是否存在循环
+[457. leetcode](https://leetcode-cn.com/problems/circular-array-loop/)
+
+- 当走到 nums[i] 出现正和负时，不是「循环」
+- 循环的步长 <= 1，不是「循环」
+- 当出现重复的 index 时，且重复 index 不是第一个加入的值时，不是「循环」
+
+```java
+// ../../../../src/main/java/com/dll/array/CircularArrayLoop.java
+
+package com.dll.array;
+
+import java.util.TreeSet;
+
+public class CircularArrayLoop {
+    class Solution {
+        private boolean isLoop(int[] nums, int index) {
+            TreeSet<Integer> set = new TreeSet<>();
+            int nextIndex = index;
+            boolean flag = nums[nextIndex] > 0;
+            while (true) {
+                if (nums[nextIndex] > 0 != flag) {
+                    return false;
+                }
+                set.add(nextIndex);
+                nextIndex = (nextIndex + nums[nextIndex] + Math.abs(nums[nextIndex]) * nums.length) % nums.length;
+
+                if (set.contains(nextIndex)) {
+                    if (nextIndex != index) {
+                        return false;
+                    } else if (set.first().intValue() == set.last()) {
+                        return false;
+                    }
+                    break;
+                }
+            }
+            return true;
+        }
+
+        public boolean circularArrayLoop(int[] nums) {
+            for (int i = 0; i < nums.length; i++) {
+                System.out.println(isLoop(nums, i) + "" + i);
+                if (isLoop(nums, i)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+}
+
+```
