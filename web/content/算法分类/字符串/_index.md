@@ -3,9 +3,10 @@ weight: 2
 title: "字符串"
 ---
 
-## 哈希表
-### 有效的字母异位词 
+##有效的字母异位词 
 [242. leetcode](https://leetcode-cn.com/problems/valid-anagram/)
+
+**哈希**
 
 ```java
 // ../../../../src/main/java/com/dll/string/ValidAnagram.java
@@ -38,8 +39,10 @@ public class ValidAnagram {
 
 ```
 
-### 查找常用字符
+## 查找常用字符
 [1002. leetcode](https://leetcode-cn.com/problems/find-common-characters/)
+
+**哈希**
 ```java
 // ../../../../src/main/java/com/dll/string/FindCommonCharacters.java
 
@@ -84,9 +87,10 @@ public class FindCommonCharacters {
 
 ```
 
-## 双指针
-### 反转字符串 
-[leetcode. 344](https://leetcode-cn.com/problems/reverse-string/)
+## 反转字符串 
+[344. leetcode](https://leetcode-cn.com/problems/reverse-string/)
+
+**双指针**
 
 ```java
 // ../../../../src/main/java/com/dll/string/ReverseString.java
@@ -115,9 +119,10 @@ public class ReverseString {
 
 ```
 
-## 滑动窗口
-### 最小覆盖子串 
+## 最小覆盖子串 
 [76. leetcode](https://leetcode-cn.com/problems/minimum-window-substring/)
+
+**滑动窗口**
 
 原字符 ori（s），以及需要包含的字符串 need（t），[l,r) 代表当前窗口，r 右滑直至满足条件，此时通过 l 右滑，可能找到最优解，重复直到结束。
     
@@ -179,6 +184,49 @@ public class MinimumWindowSubstring {
                 r++;
             }
             return result;
+        }
+    }
+}
+
+```
+
+
+## 学生出勤记录 I
+[551. leetcode](https://leetcode-cn.com/problems/student-attendance-record-i/)
+
+```java
+// ../../../../src/main/java/com/dll/string/StudentAttendanceRecordI.java
+
+package com.dll.string;
+
+public class StudentAttendanceRecordI {
+    class Solution {
+        private char charAt(String s, int index) {
+            char res = '\0';
+            try {
+                res = s.charAt(index);
+            } catch (IndexOutOfBoundsException ignored) {
+            }
+            return res;
+        }
+
+        public boolean checkRecord(String s) {
+            int absentCount = 0;
+            boolean continuous3DaysLate = false;
+            for (int i = 0; i < s.length(); i++) {
+                if (charAt(s, i) == 'A') {
+                    absentCount += 1;
+                } else if (
+                        charAt(s, i) == 'L' &&
+                                charAt(s, i + 1) == 'L' &&
+                                charAt(s, i + 2) == 'L') {
+                    continuous3DaysLate = true;
+                }
+                if (absentCount >= 2 || continuous3DaysLate) {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
