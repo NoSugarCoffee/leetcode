@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-08-11T15:17:07 UTC">
+<meta name=revised content="2021-08-17T15:19:45 UTC">
 <meta name=description content>
 <title>字符串 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -133,29 +133,17 @@ Jump to Section
 </span>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#哈希表>哈希表</a>
-<ul>
-<li><a href=#有效的字母异位词>有效的字母异位词</a></li>
 <li><a href=#查找常用字符>查找常用字符</a></li>
-</ul>
-</li>
-<li><a href=#双指针>双指针</a>
-<ul>
 <li><a href=#反转字符串>反转字符串</a></li>
-</ul>
-</li>
-<li><a href=#滑动窗口>滑动窗口</a>
-<ul>
 <li><a href=#最小覆盖子串>最小覆盖子串</a></li>
-</ul>
-</li>
+<li><a href=#学生出勤记录-i>学生出勤记录 I</a></li>
 </ul>
 </nav>
 </div>
 <div class=content>
-<h2 ref=哈希表>哈希表</h2><a class=anchor id=哈希表></a>
-<h3 ref=有效的字母异位词>有效的字母异位词</h3><a class=anchor id=有效的字母异位词></a>
-<p><a href=https://leetcode-cn.com/problems/valid-anagram/>242. leetcode</a></p>
+<p>##有效的字母异位词
+<a href=https://leetcode-cn.com/problems/valid-anagram/>242. leetcode</a></p>
+<p><strong>哈希</strong></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/string/ValidAnagram.java
 </span><span style=color:#75715e></span>
 <span style=color:#f92672>package</span> com.dll.string<span style=color:#f92672>;</span>
@@ -184,8 +172,9 @@ Jump to Section
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
-</code></pre></div><h3 ref=查找常用字符>查找常用字符</h3><a class=anchor id=查找常用字符></a>
+</code></pre></div><h2 ref=查找常用字符>查找常用字符</h2><a class=anchor id=查找常用字符></a>
 <p><a href=https://leetcode-cn.com/problems/find-common-characters/>1002. leetcode</a></p>
+<p><strong>哈希</strong></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/string/FindCommonCharacters.java
 </span><span style=color:#75715e></span>
 <span style=color:#f92672>package</span> com.dll.string<span style=color:#f92672>;</span>
@@ -227,9 +216,9 @@ Jump to Section
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
-</code></pre></div><h2 ref=双指针>双指针</h2><a class=anchor id=双指针></a>
-<h3 ref=反转字符串>反转字符串</h3><a class=anchor id=反转字符串></a>
-<p><a href=https://leetcode-cn.com/problems/reverse-string/>leetcode. 344</a></p>
+</code></pre></div><h2 ref=反转字符串>反转字符串</h2><a class=anchor id=反转字符串></a>
+<p><a href=https://leetcode-cn.com/problems/reverse-string/>344. leetcode</a></p>
+<p><strong>双指针</strong></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/string/ReverseString.java
 </span><span style=color:#75715e></span>
 <span style=color:#f92672>package</span> com.dll.string<span style=color:#f92672>;</span>
@@ -254,9 +243,9 @@ Jump to Section
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
-</code></pre></div><h2 ref=滑动窗口>滑动窗口</h2><a class=anchor id=滑动窗口></a>
-<h3 ref=最小覆盖子串>最小覆盖子串</h3><a class=anchor id=最小覆盖子串></a>
+</code></pre></div><h2 ref=最小覆盖子串>最小覆盖子串</h2><a class=anchor id=最小覆盖子串></a>
 <p><a href=https://leetcode-cn.com/problems/minimum-window-substring/>76. leetcode</a></p>
+<p><strong>滑动窗口</strong></p>
 <p>原字符 ori（s），以及需要包含的字符串 need（t），[l,r) 代表当前窗口，r 右滑直至满足条件，此时通过 l 右滑，可能找到最优解，重复直到结束。</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/string/MinimumWindowSubstring.java
 </span><span style=color:#75715e></span>
@@ -319,6 +308,44 @@ Jump to Section
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
+</code></pre></div><h2 ref=学生出勤记录-i>学生出勤记录 I</h2><a class=anchor id=学生出勤记录-i></a>
+<p><a href=https://leetcode-cn.com/problems/student-attendance-record-i/>551. leetcode</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/string/StudentAttendanceRecordI.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.string<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>StudentAttendanceRecordI</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>char</span> <span style=color:#a6e22e>charAt</span><span style=color:#f92672>(</span>String s<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> index<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>char</span> res <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;\0&#39;</span><span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
+                res <span style=color:#f92672>=</span> s<span style=color:#f92672>.</span><span style=color:#a6e22e>charAt</span><span style=color:#f92672>(</span>index<span style=color:#f92672>);</span>
+            <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>IndexOutOfBoundsException ignored<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> res<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>checkRecord</span><span style=color:#f92672>(</span>String s<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>int</span> absentCount <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>boolean</span> continuous3DaysLate <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span><span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> s<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>();</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>charAt<span style=color:#f92672>(</span>s<span style=color:#f92672>,</span> i<span style=color:#f92672>)</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;A&#39;</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    absentCount <span style=color:#f92672>+=</span> 1<span style=color:#f92672>;</span>
+                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>
+                        charAt<span style=color:#f92672>(</span>s<span style=color:#f92672>,</span> i<span style=color:#f92672>)</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;L&#39;</span> <span style=color:#f92672>&amp;&amp;</span>
+                                charAt<span style=color:#f92672>(</span>s<span style=color:#f92672>,</span> i <span style=color:#f92672>+</span> 1<span style=color:#f92672>)</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;L&#39;</span> <span style=color:#f92672>&amp;&amp;</span>
+                                charAt<span style=color:#f92672>(</span>s<span style=color:#f92672>,</span> i <span style=color:#f92672>+</span> 2<span style=color:#f92672>)</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;L&#39;</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    continuous3DaysLate <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span><span style=color:#f92672>;</span>
+                <span style=color:#f92672>}</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>absentCount <span style=color:#f92672>&gt;=</span> 2 <span style=color:#f92672>||</span> continuous3DaysLate<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span><span style=color:#f92672>;</span>
+                <span style=color:#f92672>}</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span><span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
 </code></pre></div>
 </div>
 <div class=chevrons>
@@ -340,22 +367,10 @@ Jump to Section
 </nav>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#哈希表>哈希表</a>
-<ul>
-<li><a href=#有效的字母异位词>有效的字母异位词</a></li>
 <li><a href=#查找常用字符>查找常用字符</a></li>
-</ul>
-</li>
-<li><a href=#双指针>双指针</a>
-<ul>
 <li><a href=#反转字符串>反转字符串</a></li>
-</ul>
-</li>
-<li><a href=#滑动窗口>滑动窗口</a>
-<ul>
 <li><a href=#最小覆盖子串>最小覆盖子串</a></li>
-</ul>
-</li>
+<li><a href=#学生出勤记录-i>学生出勤记录 I</a></li>
 </ul>
 </nav>
 </div>

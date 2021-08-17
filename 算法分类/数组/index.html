@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-08-11T15:17:07 UTC">
+<meta name=revised content="2021-08-17T15:19:45 UTC">
 <meta name=description content>
 <title>数组 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -181,6 +181,11 @@ Jump to Section
 <ul>
 <li><a href=#螺旋矩阵-ii>螺旋矩阵 II</a></li>
 <li><a href=#环形数组是否存在循环>环形数组是否存在循环</a></li>
+</ul>
+</li>
+<li><a href=#排列问题>排列问题</a>
+<ul>
+<li><a href=#优美的排列>优美的排列</a></li>
 </ul>
 </li>
 </ul>
@@ -1121,6 +1126,68 @@ Jump to Section
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
+</code></pre></div><h2 ref=排列问题>排列问题</h2><a class=anchor id=排列问题></a>
+<h3 ref=优美的排列>优美的排列</h3><a class=anchor id=优美的排列></a>
+<p><a href=https://leetcode-cn.com/problems/beautiful-arrangement/>526. leetcode</a></p>
+<ul>
+<li>回溯法列举全部排列，并判断是否满足需求</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/array/BeautifulArrangement.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.array<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.ArrayList<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.List<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.stream.IntStream<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>BeautifulArrangement</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> path <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> N<span style=color:#f92672>;</span>
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> result<span style=color:#f92672>;</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> array<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> index<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>return</span> IntStream<span style=color:#f92672>.</span><span style=color:#a6e22e>range</span><span style=color:#f92672>(</span>0<span style=color:#f92672>,</span> array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>).</span><span style=color:#a6e22e>filter</span><span style=color:#f92672>(</span>i <span style=color:#f92672>-&gt;</span> index <span style=color:#f92672>!=</span> i<span style=color:#f92672>).</span><span style=color:#a6e22e>map</span><span style=color:#f92672>(</span>i <span style=color:#f92672>-&gt;</span> array<span style=color:#f92672>[</span>i<span style=color:#f92672>]).</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>();</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>isArrangement</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> array<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>array<span style=color:#f92672>[</span>array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> i <span style=color:#f92672>-</span> 1<span style=color:#f92672>]</span> <span style=color:#f92672>%</span> <span style=color:#f92672>(</span>array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> i<span style=color:#f92672>)</span> <span style=color:#f92672>!=</span> 0 <span style=color:#f92672>&amp;&amp;</span>
+                        <span style=color:#f92672>(</span>array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> i<span style=color:#f92672>)</span> <span style=color:#f92672>%</span> array<span style=color:#f92672>[</span>array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> i <span style=color:#f92672>-</span> 1<span style=color:#f92672>]</span> <span style=color:#f92672>!=</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span><span style=color:#f92672>;</span>
+                <span style=color:#f92672>}</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span><span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> array<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>path<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>&gt;</span> 0 <span style=color:#f92672>&amp;&amp;</span>
+                    path<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>path<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>)</span> <span style=color:#f92672>%</span> <span style=color:#f92672>(</span>path<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>())</span> <span style=color:#f92672>!=</span> 0 <span style=color:#f92672>&amp;&amp;</span>
+                    path<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>%</span> path<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>path<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>)</span> <span style=color:#f92672>!=</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>==</span> N<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                result<span style=color:#f92672>++;</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> array<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>array<span style=color:#f92672>[</span>i<span style=color:#f92672>]);</span>
+                recursion<span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remain</span><span style=color:#f92672>(</span>array<span style=color:#f92672>,</span> i<span style=color:#f92672>));</span>
+                <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>remove</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>path</span><span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>);</span>
+            <span style=color:#f92672>}</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>countArrangement</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> n<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            init<span style=color:#f92672>(</span>n<span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>recursion</span><span style=color:#f92672>(</span>IntStream<span style=color:#f92672>.</span><span style=color:#a6e22e>rangeClosed</span><span style=color:#f92672>(</span>1<span style=color:#f92672>,</span> n<span style=color:#f92672>).</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>());</span>
+            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>init</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> n<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>N</span> <span style=color:#f92672>=</span> n<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
 </code></pre></div>
 </div>
 <div class=chevrons>
@@ -1190,6 +1257,11 @@ Jump to Section
 <ul>
 <li><a href=#螺旋矩阵-ii>螺旋矩阵 II</a></li>
 <li><a href=#环形数组是否存在循环>环形数组是否存在循环</a></li>
+</ul>
+</li>
+<li><a href=#排列问题>排列问题</a>
+<ul>
+<li><a href=#优美的排列>优美的排列</a></li>
 </ul>
 </li>
 </ul>
