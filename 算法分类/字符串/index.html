@@ -5,7 +5,7 @@
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-08-17T15:19:45 UTC">
+<meta name=revised content="2021-08-21T15:19:53 UTC">
 <meta name=description content>
 <title>字符串 :: LeetCode Solutions</title>
 <link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon>
@@ -137,6 +137,8 @@ Jump to Section
 <li><a href=#反转字符串>反转字符串</a></li>
 <li><a href=#最小覆盖子串>最小覆盖子串</a></li>
 <li><a href=#学生出勤记录-i>学生出勤记录 I</a></li>
+<li><a href=#反转字符串中的元音字母>反转字符串中的元音字母</a></li>
+<li><a href=#压缩字符串>压缩字符串</a></li>
 </ul>
 </nav>
 </div>
@@ -346,6 +348,104 @@ Jump to Section
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 
+</code></pre></div><h2 ref=反转字符串中的元音字母>反转字符串中的元音字母</h2><a class=anchor id=反转字符串中的元音字母></a>
+<p><a href=https://leetcode-cn.com/problems/reverse-vowels-of-a-string/>345. leetcode</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/string/ReverseVowelsOfAString.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.string<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.Arrays<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.List<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ReverseVowelsOfAString</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>isVowel</span><span style=color:#f92672>(</span>Character c<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            List<span style=color:#f92672>&lt;</span>Character<span style=color:#f92672>&gt;</span> vowels <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>asList</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#39;a&#39;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#39;e&#39;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#39;i&#39;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#39;o&#39;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#39;u&#39;</span><span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>return</span> vowels<span style=color:#f92672>.</span><span style=color:#a6e22e>contains</span><span style=color:#f92672>(</span>c<span style=color:#f92672>);</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>swap</span><span style=color:#f92672>(</span><span style=color:#66d9ef>char</span><span style=color:#f92672>[]</span> chars<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> l<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> r<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>char</span> temp <span style=color:#f92672>=</span> chars<span style=color:#f92672>[</span>l<span style=color:#f92672>];</span>
+            chars<span style=color:#f92672>[</span>l<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> chars<span style=color:#f92672>[</span>r<span style=color:#f92672>];</span>
+            chars<span style=color:#f92672>[</span>r<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> temp<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>reverseVowels</span><span style=color:#f92672>(</span>String s<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>char</span><span style=color:#f92672>[]</span> chars <span style=color:#f92672>=</span> s<span style=color:#f92672>.</span><span style=color:#a6e22e>toCharArray</span><span style=color:#f92672>();</span>
+            <span style=color:#66d9ef>int</span> leftIndex <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>int</span> rightIndex <span style=color:#f92672>=</span> chars<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> 1<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>leftIndex <span style=color:#f92672>&lt;</span> rightIndex<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>leftIndex <span style=color:#f92672>&lt;</span> rightIndex <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>!</span>isVowel<span style=color:#f92672>(</span>Character<span style=color:#f92672>.</span><span style=color:#a6e22e>toLowerCase</span><span style=color:#f92672>(</span>chars<span style=color:#f92672>[</span>leftIndex<span style=color:#f92672>])))</span> <span style=color:#f92672>{</span>
+                    leftIndex<span style=color:#f92672>++;</span>
+                <span style=color:#f92672>}</span>
+                <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>leftIndex <span style=color:#f92672>&lt;</span> rightIndex <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>!</span>isVowel<span style=color:#f92672>(</span>Character<span style=color:#f92672>.</span><span style=color:#a6e22e>toLowerCase</span><span style=color:#f92672>(</span>chars<span style=color:#f92672>[</span>rightIndex<span style=color:#f92672>])))</span> <span style=color:#f92672>{</span>
+                    rightIndex<span style=color:#f92672>--;</span>
+                <span style=color:#f92672>}</span>
+                swap<span style=color:#f92672>(</span>chars<span style=color:#f92672>,</span> leftIndex<span style=color:#f92672>,</span> rightIndex<span style=color:#f92672>);</span>
+                leftIndex<span style=color:#f92672>++;</span>
+                rightIndex<span style=color:#f92672>--;</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> String<span style=color:#f92672>.</span><span style=color:#a6e22e>valueOf</span><span style=color:#f92672>(</span>chars<span style=color:#f92672>);</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+</code></pre></div><h2 ref=压缩字符串>压缩字符串</h2><a class=anchor id=压缩字符串></a>
+<p><a href=https://leetcode-cn.com/problems/string-compression/>443. leetcode</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=color:#75715e>// ../../../../src/main/java/com/dll/string/StringCompression.java
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>package</span> com.dll.string<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>StringCompression</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> <span style=color:#a6e22e>splitNum</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> num<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            Deque<span style=color:#f92672>&lt;</span>Integer<span style=color:#f92672>&gt;</span> result <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayDeque<span style=color:#f92672>&lt;&gt;();</span>
+            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>num <span style=color:#f92672>!=</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                result<span style=color:#f92672>.</span><span style=color:#a6e22e>push</span><span style=color:#f92672>(</span>num <span style=color:#f92672>%</span> 10<span style=color:#f92672>);</span>
+                num <span style=color:#f92672>/=</span> 10<span style=color:#f92672>;</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> result<span style=color:#f92672>.</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>().</span><span style=color:#a6e22e>mapToInt</span><span style=color:#f92672>(</span>i <span style=color:#f92672>-&gt;</span> i<span style=color:#f92672>).</span><span style=color:#a6e22e>toArray</span><span style=color:#f92672>();</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>compress</span><span style=color:#f92672>(</span><span style=color:#66d9ef>char</span><span style=color:#f92672>[]</span> chars<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>chars<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>&lt;=</span> 1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>return</span> chars<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>int</span> writeIndex <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+            <span style=color:#66d9ef>char</span> pre <span style=color:#f92672>=</span> chars<span style=color:#f92672>[</span>0<span style=color:#f92672>];</span>
+            <span style=color:#66d9ef>int</span> count <span style=color:#f92672>=</span> 1<span style=color:#f92672>;</span>
+
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 1<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> chars<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>chars<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>==</span> pre<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    count<span style=color:#f92672>++;</span>
+                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+                    writeIndex <span style=color:#f92672>=</span> updateChars<span style=color:#f92672>(</span>chars<span style=color:#f92672>,</span> writeIndex<span style=color:#f92672>,</span> pre<span style=color:#f92672>,</span> count<span style=color:#f92672>);</span>
+                    count <span style=color:#f92672>=</span> 1<span style=color:#f92672>;</span>
+                <span style=color:#f92672>}</span>
+                pre <span style=color:#f92672>=</span> chars<span style=color:#f92672>[</span>i<span style=color:#f92672>];</span>
+            <span style=color:#f92672>}</span>
+            writeIndex <span style=color:#f92672>=</span> updateChars<span style=color:#f92672>(</span>chars<span style=color:#f92672>,</span> writeIndex<span style=color:#f92672>,</span> pre<span style=color:#f92672>,</span> count<span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>return</span> writeIndex<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+
+        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>updateChars</span><span style=color:#f92672>(</span><span style=color:#66d9ef>char</span><span style=color:#f92672>[]</span> chars<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> writeIndex<span style=color:#f92672>,</span> <span style=color:#66d9ef>char</span> val<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> count<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            chars<span style=color:#f92672>[</span>writeIndex<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> val<span style=color:#f92672>;</span>
+            writeIndex<span style=color:#f92672>++;</span>
+            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>count <span style=color:#f92672>!=</span> 1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>int</span><span style=color:#f92672>[]</span> nums <span style=color:#f92672>=</span> splitNum<span style=color:#f92672>(</span>count<span style=color:#f92672>);</span>
+                <span style=color:#66d9ef>int</span> l <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+                <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>l <span style=color:#f92672>&lt;</span> nums<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    chars<span style=color:#f92672>[</span>writeIndex<span style=color:#f92672>++]</span> <span style=color:#f92672>=</span> Character<span style=color:#f92672>.</span><span style=color:#a6e22e>forDigit</span><span style=color:#f92672>(</span>nums<span style=color:#f92672>[</span>l<span style=color:#f92672>],</span> 10<span style=color:#f92672>);</span>
+                    l<span style=color:#f92672>++;</span>
+                <span style=color:#f92672>}</span>
+            <span style=color:#f92672>}</span>
+            <span style=color:#66d9ef>return</span> writeIndex<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
 </code></pre></div>
 </div>
 <div class=chevrons>
@@ -371,6 +471,8 @@ Jump to Section
 <li><a href=#反转字符串>反转字符串</a></li>
 <li><a href=#最小覆盖子串>最小覆盖子串</a></li>
 <li><a href=#学生出勤记录-i>学生出勤记录 I</a></li>
+<li><a href=#反转字符串中的元音字母>反转字符串中的元音字母</a></li>
+<li><a href=#压缩字符串>压缩字符串</a></li>
 </ul>
 </nav>
 </div>
