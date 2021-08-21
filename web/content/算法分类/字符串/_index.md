@@ -232,3 +232,109 @@ public class StudentAttendanceRecordI {
 }
 
 ```
+
+## 反转字符串中的元音字母
+[345. leetcode](https://leetcode-cn.com/problems/reverse-vowels-of-a-string/)
+
+```java
+// ../../../../src/main/java/com/dll/string/ReverseVowelsOfAString.java
+
+package com.dll.string;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class ReverseVowelsOfAString {
+    class Solution {
+        private boolean isVowel(Character c) {
+            List<Character> vowels = Arrays.asList('a', 'e', 'i', 'o', 'u');
+            return vowels.contains(c);
+        }
+
+        private void swap(char[] chars, int l, int r) {
+            char temp = chars[l];
+            chars[l] = chars[r];
+            chars[r] = temp;
+        }
+
+        public String reverseVowels(String s) {
+            char[] chars = s.toCharArray();
+            int leftIndex = 0;
+            int rightIndex = chars.length - 1;
+            while (leftIndex < rightIndex) {
+                while (leftIndex < rightIndex && !isVowel(Character.toLowerCase(chars[leftIndex]))) {
+                    leftIndex++;
+                }
+                while (leftIndex < rightIndex && !isVowel(Character.toLowerCase(chars[rightIndex]))) {
+                    rightIndex--;
+                }
+                swap(chars, leftIndex, rightIndex);
+                leftIndex++;
+                rightIndex--;
+            }
+            return String.valueOf(chars);
+        }
+    }
+}
+
+```
+
+## 压缩字符串
+[443. leetcode](https://leetcode-cn.com/problems/string-compression/)
+
+```java
+// ../../../../src/main/java/com/dll/string/StringCompression.java
+
+package com.dll.string;
+
+import java.util.*;
+
+public class StringCompression {
+    class Solution {
+        public int[] splitNum(int num) {
+            Deque<Integer> result = new ArrayDeque<>();
+            while (num != 0) {
+                result.push(num % 10);
+                num /= 10;
+            }
+            return result.stream().mapToInt(i -> i).toArray();
+        }
+
+        public int compress(char[] chars) {
+            if (chars.length <= 1) {
+                return chars.length;
+            }
+            int writeIndex = 0;
+            char pre = chars[0];
+            int count = 1;
+
+            for (int i = 1; i < chars.length; i++) {
+                if (chars[i] == pre) {
+                    count++;
+                } else {
+                    writeIndex = updateChars(chars, writeIndex, pre, count);
+                    count = 1;
+                }
+                pre = chars[i];
+            }
+            writeIndex = updateChars(chars, writeIndex, pre, count);
+            return writeIndex;
+        }
+
+        private int updateChars(char[] chars, int writeIndex, char val, int count) {
+            chars[writeIndex] = val;
+            writeIndex++;
+            if (count != 1) {
+                int[] nums = splitNum(count);
+                int l = 0;
+                while (l < nums.length) {
+                    chars[writeIndex++] = Character.forDigit(nums[l], 10);
+                    l++;
+                }
+            }
+            return writeIndex;
+        }
+    }
+}
+
+```
