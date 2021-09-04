@@ -31,9 +31,8 @@ public class TheKWeakestRowsInAMatrix {
 ```
 
 ## 二分查找
-使用二分法需要满足以下条件：
-- 有序
-- 无重复（不强制，重复会导致查找到的 index 不唯一）
+使用二分查找需要满足以下条件：
+- 数组有序
 
 ### 二分查找
 [704. leetcode](https://leetcode-cn.com/problems/binary-search/)
@@ -59,6 +58,50 @@ public class BinarySearch {
                 }
             }
             return -1;
+        }
+    }
+}
+
+```
+### 第一个错误的版本
+[278. first-bad-version](https://leetcode-cn.com/problems/first-bad-version/)
+left，right 分别为 1 和 versions.length，mid 为 （left + right） / 2
+当 left <= right 时循环并做如下处理: 
+1. versions[mid] is bad version，则 right = mid - 1，并更新 earliestErrVersion = versions[mid]
+2. versions[mid] is not bad version，则 left = mid + 1
+
+```java
+// ../../../../src/main/java/com/dll/array/FirstBadVersion.java
+
+package com.dll.array;
+
+import java.util.function.Predicate;
+
+
+public class FirstBadVersion {
+    class VersionControl {
+        boolean isBadVersion(int val) {
+            return false;
+        }
+    }
+
+    class Solution extends VersionControl {
+        public int searchEarlisetErrVersion(int left, int right, Predicate<Integer> isBadFunc) {
+            int earlisetErrVersion = -1;
+            while (left <= right) {
+                int mid = left + (right - left) / 2;
+                if (isBadFunc.test(mid)) {
+                    earlisetErrVersion = mid;
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            }
+            return earlisetErrVersion;
+        }
+
+        public int firstBadVersion(int n) {
+            return this.searchEarlisetErrVersion(1, n, this::isBadVersion);
         }
     }
 }
