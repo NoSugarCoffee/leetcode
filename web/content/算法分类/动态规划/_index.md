@@ -30,3 +30,53 @@ public class FibonacciNumber {
 
 ```
 
+## 爬楼梯
+[70. leetcode](https://leetcode-cn.com/problems/climbing-stairs/)
+
+```java
+// ../../../../src/main/java/com/dll/dp/ClimbingStairs.java
+
+package com.dll.dp;
+
+public class ClimbingStairs {
+    class Solution {
+        public int climbStairs(int n) {
+            if (n <= 2) {
+                return n;
+            }
+            int[] dp = new int[n + 1];
+            dp[1] = 1;
+            dp[2] = 2;
+            for (int i = 3; i <= n; i++) {
+                dp[i] = dp[i - 1] + dp[i - 2];
+            }
+            return dp[n];
+        }
+    }
+}
+
+```
+
+## 使用最小花费爬楼梯
+[746. leetcode](https://leetcode-cn.com/problems/min-cost-climbing-stairs/)
+
+```java
+// ../../../../src/main/java/com/dll/dp/MinCostClimbingStairs.java
+
+package com.dll.dp;
+
+public class MinCostClimbingStairs {
+    class Solution {
+        public int minCostClimbingStairs(int[] cost) {
+            int[] dp = new int[cost.length];
+            dp[0] = cost[0];
+            dp[1] = cost[1];
+            for (int i = 2; i < cost.length; i++) {
+                dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i];
+            }
+            return Math.min(dp[cost.length - 1], dp[cost.length - 2]);
+        }
+    }
+}
+
+```
