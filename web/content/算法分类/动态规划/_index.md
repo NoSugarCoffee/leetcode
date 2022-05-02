@@ -165,3 +165,28 @@ public class IntegerBreak {
 }
 
 ```
+
+## 不同的二叉搜索树
+[96. leetcode](https://leetcode-cn.com/problems/unique-binary-search-trees/)
+
+```java
+// ../../../../src/main/java/com/dll/dp/UniqueBinarySearchTrees.java
+
+package com.dll.dp;
+
+public class UniqueBinarySearchTrees {
+    class Solution {
+        public int numTrees(int n) {
+            int[] dp = new int[n + 1];
+            dp[0] = 1;
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= i; j++) {
+                    dp[i] += dp[j - 1] * dp[i - (j - 1) - 1];
+                }
+            }
+            return dp[n];
+        }
+    }
+}
+
+```
