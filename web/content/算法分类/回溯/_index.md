@@ -3,8 +3,8 @@ weight: 8
 title: "回溯"
 ---
 
-## 组合
-[77. leetcode](https://leetcode-cn.com/problems/combinations/)
+## 77. 组合
+[leetcode](https://leetcode-cn.com/problems/combinations/)
 
 ```java
 // ../../../../src/main/java/com/dll/backtracing/Combinations.java
@@ -39,3 +39,48 @@ public class Combinations {
 }
 
 ```
+
+## 216. 组合总和 III
+[leetcode](https://leetcode-cn.com/problems/combination-sum-iii/)
+
+```java
+// ../../../../src/main/java/com/dll/backtracing/CombinationSumIII.java
+
+package com.dll.backtracing;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CombinationSumIII {
+    class Solution {
+        List<Integer> path = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
+
+        int sum(List<Integer> path) {
+            return path.stream().reduce(0, Integer::sum);
+        }
+
+        void backTracing(int k, int n, int startIndex) {
+            int total = sum(path);
+            if (total == n && path.size() == k) {
+                result.add(new ArrayList<>(path));
+                return;
+            } else if (total > n || path.size() > k) {
+                return;
+            }
+            for (int i = startIndex; i <= 9 - (k - path.size()) + 1; i++) {
+                path.add(i);
+                backTracing(k, n, startIndex + 1);
+                path.remove(path.size() - 1);
+            }
+        }
+
+        public List<List<Integer>> combinationSum3(int k, int n) {
+            backTracing(k, n, 1);
+            return result;
+        }
+    }
+}
+
+```
+
