@@ -2,6 +2,7 @@
 weight: 8
 title: "回溯"
 ---
+回溯属于暴力解法，常用于多层 for 表达不了的场景，比如能用两层 for 解决[『二数之和』](https://leetcode.cn/problems/two-sum/) ，三层 for 解决[『三数之后』](https://leetcode.cn/problems/three-sum/) ，但是无法解决[『n 数之和』](https://leetcode.cn/problems/combination-sum-ii/) 
 
 ## 77. 组合
 [leetcode](https://leetcode-cn.com/problems/combinations/)
@@ -144,6 +145,57 @@ public class LetterCombinationsOfAPhoneNumber {
 
         public List<String> letterCombinations(String digits) {
             backTracing(digits, 0);
+            return result;
+        }
+    }
+}
+
+```
+
+### 131. 分割回文串
+[leetcode](https://leetcode.cn/problems/palindrome-partitioning/)
+
+```java
+// ../../../../src/main/java/com/dll/backtracing/PalindromePartitioning.java
+
+package com.dll.backtracing;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class PalindromePartitioning {
+    class Solution {
+        private List<String> path = new ArrayList<>();
+        private List<List<String>> result = new ArrayList<>();
+
+        public boolean isPalindrome(String text) {
+            char[] letters = text.toCharArray();
+            int i = 0;
+            while (i < letters.length / 2) {
+                if (letters[i] != letters[letters.length - 1 - i]) {
+                    return false;
+                }
+                i++;
+            }
+            return true;
+        }
+
+        public void backTracing(String leftover) {
+            if (leftover.isEmpty() && path.stream().allMatch(this::isPalindrome)) {
+                result.add(new ArrayList<>(path));
+                return;
+            }
+            for (int splitIndex = 1; splitIndex <= leftover.length(); splitIndex++) {
+                String left = leftover.substring(0, splitIndex);
+                String right = leftover.substring(splitIndex);
+                path.add(left);
+                backTracing(right);
+                path.remove(path.size() - 1);
+            }
+        }
+
+        public List<List<String>> partition(String s) {
+            backTracing(s);
             return result;
         }
     }
