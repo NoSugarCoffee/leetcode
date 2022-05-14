@@ -19,5 +19,6 @@ public class PalindromePartitioningTest {
         PalindromePartitioning.Solution solution = new PalindromePartitioning().new Solution();
         List<List<String>> result= solution.partition("a");
         Assert.assertEquals(1, result.size());
+        System.out.println(Integer.parseInt("025"));
     }
 }

@@ -2,7 +2,7 @@
 weight: 8
 title: "回溯"
 ---
-回溯属于暴力解法，常用于多层 for 表达不了的场景，比如能用两层 for 解决[『二数之和』](https://leetcode.cn/problems/two-sum/) ，三层 for 解决[『三数之后』](https://leetcode.cn/problems/three-sum/) ，但是无法解决[『n 数之和』](https://leetcode.cn/problems/combination-sum-ii/) 
+回溯属于暴力解法，常用于多层 for 表达不了的场景，比如能用两层 for 解决[『二数之和』](https://leetcode.cn/problems/two-sum/) ，三层 for 解决[『三数之后』](https://leetcode.cn/problems/three-sum/) ，但是无法解决[『n 数之和』](https://leetcode.cn/problems/combination-sum-ii/) 。
 
 ## 77. 组合
 [leetcode](https://leetcode-cn.com/problems/combinations/)
@@ -85,7 +85,7 @@ public class CombinationSumIII {
 
 ```
 
-### 17. 电话号码的字母组合
+## 17. 电话号码的字母组合
 [leetcode](https://leetcode.cn/problems/letter-combinations-of-a-phone-number/)
 ```java
 // ../../../../src/main/java/com/dll/backtracing/LetterCombinationsOfAPhoneNumber.java
@@ -152,7 +152,7 @@ public class LetterCombinationsOfAPhoneNumber {
 
 ```
 
-### 131. 分割回文串
+## 131. 分割回文串
 [leetcode](https://leetcode.cn/problems/palindrome-partitioning/)
 
 ```java
@@ -195,6 +195,63 @@ public class PalindromePartitioning {
         }
 
         public List<List<String>> partition(String s) {
+            backTracing(s);
+            return result;
+        }
+    }
+}
+
+```
+
+## 93. 复原 IP 地址
+[leetcode](https://leetcode.cn/problems/restore-ip-addresses/)
+
+```java
+// ../../../../src/main/java/com/dll/backtracing/RestoreIpAddresses.java
+
+package com.dll.backtracing;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class RestoreIpAddresses {
+    class Solution {
+        private final List<String> path = new ArrayList<>();
+        private final List<String> result = new ArrayList<>();
+        private int stringLength = 0;
+        private int visitLength = 0;
+
+        private void backTracing(String s) {
+            if (path.size() > 4) {
+                return;
+            } else if (path.size() == 4 && visitLength == stringLength) {
+                result.add(String.join(".", path));
+                return;
+            }
+            for (int splitIndex = 1; splitIndex <= s.length(); splitIndex++) {
+                String left = s.substring(0, splitIndex);
+                String right = s.substring(splitIndex);
+                if (isIllegal(left)) {
+                    return;
+                }
+                path.add(left);
+                visitLength += left.length();
+                backTracing(right);
+                path.remove(path.size() - 1);
+                visitLength -= left.length();
+            }
+        }
+
+        private boolean isIllegal(String text) {
+            return text.startsWith("0") && text.length() >= 2
+                    || Integer.parseInt(text) > 255;
+        }
+
+        public List<String> restoreIpAddresses(String s) {
+            if (s.length() < 4 || s.length() > 12) {
+                return new ArrayList<>();
+            }
+            stringLength = s.length();
             backTracing(s);
             return result;
         }
