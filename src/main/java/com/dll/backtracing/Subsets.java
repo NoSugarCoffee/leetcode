@@ -8,9 +8,6 @@ public class Subsets {
         private List<Integer> path = new ArrayList<>();
         private List<List<Integer>> result = new ArrayList<>();
         private void backTracing(int[] nums, int start) {
-            if (start >= nums.length) {
-                return ;
-            }
             for (int i = start; i < nums.length; i++) {
                 path.add(nums[i]);
                 result.add(new ArrayList<>(path));
