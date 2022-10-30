@@ -11,10 +11,8 @@ public class Offer06Test {
     ListNode node2 = new Offer06().new ListNode(2);
     node.next = node2;
 
-    Assert.assertArrayEquals(new int[]{2, 1},
-        new Offer06().new Solution().reversePrint(node));
+    Assert.assertArrayEquals(new int[] {2, 1}, new Offer06().new Solution().reversePrint(node));
 
-    Assert.assertArrayEquals(new int[]{},
-        new Offer06().new Solution().reversePrint(null));
+    Assert.assertArrayEquals(new int[] {}, new Offer06().new Solution().reversePrint(null));
   }
 }

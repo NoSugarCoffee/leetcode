@@ -22,7 +22,7 @@ public class MinimumNumberOfArrowsToBurstBalloons {
               || (balloons.get(i)[0] < p1[0] && balloons.get(i)[1] > p1[1])) {
             int start = balloons.get(i)[0] > p1[0] ? balloons.get(i)[0] : p1[0];
             int end = balloons.get(i)[1] < p1[1] ? balloons.get(i)[1] : p1[1];
-            p1 = new int[]{start, end};
+            p1 = new int[] {start, end};
             balloons.remove(i--);
           }
         }

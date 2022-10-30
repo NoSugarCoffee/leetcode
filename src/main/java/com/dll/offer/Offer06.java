@@ -1,6 +1,5 @@
 package com.dll.offer;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +7,10 @@ public class Offer06 {
   class ListNode {
     int val;
     ListNode next;
-    ListNode(int x) { val = x; }
+
+    ListNode(int x) {
+      val = x;
+    }
   }
 
   class Solution {

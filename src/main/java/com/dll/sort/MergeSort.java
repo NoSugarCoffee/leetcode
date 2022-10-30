@@ -4,9 +4,7 @@ import java.util.Arrays;
 
 public class MergeSort {
 
-  /**
-   * 用于合并两个升序的数组
-   */
+  /** 用于合并两个升序的数组 */
   public int[] mergeSortedArray(int[] arr1, int[] arr2) {
     int[] merged = new int[arr1.length + arr2.length];
     int i = 0;

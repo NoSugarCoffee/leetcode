@@ -5,15 +5,56 @@ import java.util.Map;
 
 public class LRUCache146 {
 
+  private DoubleLinkedList list = new DoubleLinkedList();
+  private int capacity;
+  public LRUCache146(int capacity) {
+    if (capacity <= 0) {
+      throw new RuntimeException();
+    }
+    this.capacity = capacity;
+  }
+
+  /**
+   * get value by key from cache
+   *
+   * @param key key of cache
+   * @return value of key
+   */
+  public int get(int key) {
+    DoubleLinkedList.Node node = list.get(key);
+    if (node == null) {
+      return -1;
+    }
+    list.delete(node);
+    list.addFirst(node.key, node.value);
+    return node.value;
+  }
+
+  /**
+   * put key and value to cache
+   *
+   * @param key key of cache
+   * @param value value of key
+   */
+  public void put(int key, int value) {
+    // 1. exist in map -> remove(value) & push(value)
+    // 2. don't exist in map -> deque is full -> removeLast & push(value)
+    // 3. don't exist in map -> deque is empty -> push(value)
+    if (list.containsKey(key)) {
+      list.delete(list.get(key));
+    } else {
+      if (list.getSize() >= this.capacity) {
+        list.deleteLast();
+      }
+    }
+    list.addFirst(key, value);
+  }
+
   class DoubleLinkedList {
     private Map<Integer, Node> map;
     private Node head;
     private Node tail;
     private int size;
-
-    public int getSize() {
-      return this.size;
-    }
 
     private DoubleLinkedList() {
       head = new Node(null, -1, -1, null);
@@ -23,18 +64,8 @@ public class LRUCache146 {
       this.map = new HashMap<>();
     }
 
-    class Node {
-      int key;
-      int value;
-      Node prev;
-      Node next;
-
-      Node(Node prev, int key, int value, Node next) {
-        this.key = key;
-        this.prev = prev;
-        this.value = value;
-        this.next = next;
-      }
+    public int getSize() {
+      return this.size;
     }
 
     private boolean containsKey(int key) {
@@ -72,49 +103,18 @@ public class LRUCache146 {
       return deleted;
     }
 
-  }
+    class Node {
+      int key;
+      int value;
+      Node prev;
+      Node next;
 
-  private DoubleLinkedList list = new DoubleLinkedList();
-  private int capacity;
-
-  public LRUCache146(int capacity) {
-    if (capacity <= 0) {
-      throw new RuntimeException();
-    }
-    this.capacity = capacity;
-  }
-
-  /**
-   * get value by key from cache
-   * @param key key of cache
-   * @return value of key
-   */
-  public int get(int key) {
-    DoubleLinkedList.Node node = list.get(key);
-    if (node == null) {
-      return -1;
-    }
-    list.delete(node);
-    list.addFirst(node.key, node.value);
-    return node.value;
-  }
-
-  /**
-   * put key and value to cache
-   * @param key key of cache
-   * @param value value of key
-   */
-  public void put(int key, int value) {
-    // 1. exist in map -> remove(value) & push(value)
-    // 2. don't exist in map -> deque is full -> removeLast & push(value)
-    // 3. don't exist in map -> deque is empty -> push(value)
-    if (list.containsKey(key)) {
-      list.delete(list.get(key));
-    } else {
-      if (list.getSize() >= this.capacity) {
-        list.deleteLast();
+      Node(Node prev, int key, int value, Node next) {
+        this.key = key;
+        this.prev = prev;
+        this.value = value;
+        this.next = next;
       }
     }
-    list.addFirst(key, value);
   }
 }

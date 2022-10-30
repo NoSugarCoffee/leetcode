@@ -9,8 +9,7 @@ public class Offer09 {
     Deque<Integer> inQueueStack = new LinkedList<>();
     Deque<Integer> deQueueStack = new LinkedList<>();
 
-    public CQueue() {
-    }
+    public CQueue() {}
 
     public void appendTail(int value) {
       inQueueStack.push(value);

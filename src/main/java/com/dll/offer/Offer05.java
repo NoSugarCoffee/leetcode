@@ -9,13 +9,15 @@ public class Offer05 {
         return "";
       }
       StringBuilder sb = new StringBuilder();
-      Stream.of(s.split("")).forEach(ss -> {
-        if (" ".equals(ss)) {
-          sb.append("%20");
-        } else {
-          sb.append(ss);
-        }
-      });
+      Stream.of(s.split(""))
+          .forEach(
+              ss -> {
+                if (" ".equals(ss)) {
+                  sb.append("%20");
+                } else {
+                  sb.append(ss);
+                }
+              });
       return sb.toString();
     }
   }

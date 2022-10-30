@@ -7,6 +7,7 @@ public class LinkedListCycleIIHash {
   class ListNode {
     int val;
     ListNode next;
+
     ListNode(int x) {
       val = x;
       next = null;
@@ -15,6 +16,7 @@ public class LinkedListCycleIIHash {
 
   public class Solution {
     private Set<ListNode> set = new HashSet<>();
+
     public ListNode detectCycle(ListNode head) {
       ListNode p = head;
       while (p != null) {
