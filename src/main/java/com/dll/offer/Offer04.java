@@ -11,7 +11,7 @@ public class Offer04 {
       int i = 0;
       int j = cols - 1;
 
-      while (i < rows  && j > -1) {
+      while (i < rows && j > -1) {
         int upperRightCorner = matrix[i][j];
         if (upperRightCorner == target) {
           return true;

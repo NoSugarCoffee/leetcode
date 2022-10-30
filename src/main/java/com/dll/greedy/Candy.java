@@ -61,11 +61,9 @@ public class Candy {
       if ((leftRatingsValue.isPresent() && leftRatingsValue.get() < current)
           && (rightRatingsValue.isPresent() && rightRatingsValue.get() < current)) {
         candy[index] = max(leftCandyValue.get(), rightCandyValue.get()) + 1;
-      } else if (leftRatingsValue.isPresent()
-          && leftRatingsValue.get() < current) {
+      } else if (leftRatingsValue.isPresent() && leftRatingsValue.get() < current) {
         candy[index] = leftCandyValue.get() + 1;
-      } else if (rightRatingsValue.isPresent()
-          && rightRatingsValue.get() < current) {
+      } else if (rightRatingsValue.isPresent() && rightRatingsValue.get() < current) {
         candy[index] = rightCandyValue.get() + 1;
       }
     }

@@ -9,14 +9,14 @@ public class TwoSumIIInputArrayIsSorted {
       int pe = numbers.length - 1;
       while (ps < pe) {
         if (numbers[ps] + numbers[pe] == target) {
-          return new int[]{ps + 1, pe + 1};
+          return new int[] {ps + 1, pe + 1};
         } else if (numbers[ps] + numbers[pe] > target) {
           pe--;
         } else {
           ps++;
         }
       }
-      return new int[]{-1, -1};
+      return new int[] {-1, -1};
     }
   }
 }

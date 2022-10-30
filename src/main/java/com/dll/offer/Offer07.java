@@ -1,18 +1,12 @@
 package com.dll.offer;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Deque;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Offer07 {
   class LevelTreeNode {
     TreeNode node;
     int level;
+
     public LevelTreeNode(TreeNode node, int level) {
       this.node = node;
       this.level = level;
@@ -23,6 +17,7 @@ public class Offer07 {
     int val;
     TreeNode left;
     TreeNode right;
+
     TreeNode(int val) {
       this.val = val;
     }
@@ -35,7 +30,8 @@ public class Offer07 {
       }
       if (preorder.length != inorder.length) {
         throw new RuntimeException(
-            String.format("internal error, preorder:%s inorder:%s",
+            String.format(
+                "internal error, preorder:%s inorder:%s",
                 Arrays.toString(preorder), Arrays.toString(inorder)));
       }
       int rootValue = preorder[0];
@@ -47,15 +43,14 @@ public class Offer07 {
       int leftTreeLength = leftInorder.length;
       int rightTreeLength = rightInorder.length;
 
-      int[] leftPreorder = new int[]{};
-      int[] rightPreorder = new int[]{};
+      int[] leftPreorder = new int[] {};
+      int[] rightPreorder = new int[] {};
 
       if (leftTreeLength > 0) {
         leftPreorder = Arrays.copyOfRange(preorder, 1, 1 + leftTreeLength);
-
       }
       if (rightTreeLength > 0) {
-        rightPreorder = Arrays.copyOfRange(preorder,  1 + leftTreeLength, preorder.length);
+        rightPreorder = Arrays.copyOfRange(preorder, 1 + leftTreeLength, preorder.length);
       }
 
       TreeNode left = buildTree(leftPreorder, leftInorder);
@@ -69,7 +64,7 @@ public class Offer07 {
 
     private int findIndexInArray(int[] array, int root) {
       int index = 0;
-      for (int value: array) {
+      for (int value : array) {
         if (value == root) {
           return index;
         }
@@ -81,21 +76,21 @@ public class Offer07 {
     int[][] splitInorder(int[] inorder, int root) {
       int rootIndex = this.findIndexInArray(inorder, root);
       if (rootIndex == -1) {
-        return new int[][]{{},{}};
+        return new int[][] {{}, {}};
       }
       int[] left = Arrays.copyOfRange(inorder, 0, rootIndex);
       int[] right = Arrays.copyOfRange(inorder, rootIndex + 1, inorder.length);
-      return new int[][]{left, right};
+      return new int[][] {left, right};
     }
 
-    // this also can solve problem https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
+    // this also can solve problem
+    // https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
     public List<List<Integer>> levelOrder(TreeNode root) {
       // map key is level, map value is the list of node value
       if (root == null) {
         return new ArrayList<>(new ArrayList<>());
       }
-      Map<Integer, List<Integer>> map =
-          new TreeMap<>(Comparator.comparingInt(Integer::valueOf));
+      Map<Integer, List<Integer>> map = new TreeMap<>(Comparator.comparingInt(Integer::valueOf));
 
       Deque<LevelTreeNode> queue = new ArrayDeque<>();
       queue.offer(new LevelTreeNode(root, 0));

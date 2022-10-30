@@ -1,4 +1,3 @@
-
 package com.dll.offer;
 
 import java.util.HashMap;
@@ -19,6 +18,5 @@ public class Offer10I {
       cache.put(n, val);
       return val;
     }
-
   }
 }
