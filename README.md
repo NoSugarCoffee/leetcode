@@ -1,6 +1,8 @@
 # LeetCode solutions
 
+[![github pages](https://github.com/NoSugarCoffee/leetcode/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/NoSugarCoffee/leetcode/actions/workflows/gh-pages.yml)
 [![GitHub Super-Linter](https://github.com/NoSugarCoffee/leetcode/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
 
 LeetCode solutions writing in java. Rendered by hugo & github pages. You can
 visit [here](https://nosugarcoffee.github.io/leetcode) for a happy reading.
