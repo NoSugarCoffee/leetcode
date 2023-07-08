@@ -3,4 +3,4 @@
 	url = https://github.com/budparr/gohugo-theme-ananke.git
 [submodule "web/themes/docport"]
 	path = web/themes/docport
-	url = https://github.com/vjeantet/hugo-theme-docport.git
+	url = https://github.com/NoSugarCoffee/hugo-theme-docport.git
