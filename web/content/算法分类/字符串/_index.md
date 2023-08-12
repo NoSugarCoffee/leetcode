@@ -3,7 +3,7 @@ weight: 2
 title: "字符串"
 ---
 
-##有效的字母异位词 
+## 有效的字母异位词 
 [242. leetcode](https://leetcode-cn.com/problems/valid-anagram/)
 
 **哈希**
