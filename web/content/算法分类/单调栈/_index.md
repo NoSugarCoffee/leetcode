@@ -66,7 +66,9 @@ public class DailyTemperatures {
 package com.dll.monotonicstack;
 
 import java.util.Arrays;
-import java.util.HashMap;import java.util.Map;import java.util.Stack;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
 
 public class NextGreaterElementI {
   class Element {
@@ -98,7 +100,7 @@ public class NextGreaterElementI {
           if (current.getValue() > peek.getValue()) {
             Element pop = stack.pop();
             nextGreaterElements.put(pop.getValue(), current.getValue());
-          } else  {
+          } else {
             break;
           }
         }
