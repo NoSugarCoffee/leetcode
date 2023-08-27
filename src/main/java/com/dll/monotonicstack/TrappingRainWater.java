@@ -27,21 +27,19 @@ public class TrappingRainWater {
       Stack<Elevation> stack = new Stack<>();
       for (int i = 0; i < height.length; i++) {
         Elevation current = new Elevation(height[i], i);
-        if (!stack.empty() && current.getValue() >= stack.peek().getValue()) {
-          Elevation top = stack.peek();
-          while (current.getValue() >= top.getValue() && !stack.empty()) {
+        while (!stack.empty()) {
+          Elevation peek = stack.peek();
+          if (current.getValue() >= peek.getValue()) {
             Elevation pop = stack.pop();
-            if (stack.empty()) {
-              break;
-            }
-            if (current.getValue() > top.getValue()) {
+            if (current.getValue() > peek.getValue() && !stack.empty()) {
               Elevation peekAfterPop = stack.peek();
               int trap =
                   (Math.min(peekAfterPop.getValue(), current.getValue()) - pop.getValue())
                       * (current.getIndex() - peekAfterPop.getIndex() - 1);
               traps += trap;
             }
-            top = stack.peek();
+          } else {
+            break;
           }
         }
         stack.push(current);
