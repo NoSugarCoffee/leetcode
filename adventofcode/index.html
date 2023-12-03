@@ -1,0 +1,151 @@
+<!doctype html><html><head><title>AdventOfCode :: LeetCode Solutions
+</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name=revised content="2023-12-03T16:59:51 UTC"><meta name=description content><title>AdventOfCode :: LeetCode Solutions</title>
+<link rel="shortcut icon" href=/leetcode/images/favicon.png type=image/x-icon><link href=https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css rel=stylesheet><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css><script src=https://code.jquery.com/jquery-3.5.1.min.js></script><link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel=stylesheet><link rel=stylesheet type=text/css href=https://nosugarcoffee.github.io/leetcode/sass/layout.css><link rel=stylesheet type=text/css href=https://nosugarcoffee.github.io/leetcode/css/style.main.css><link rel=stylesheet type=text/css href=https://nosugarcoffee.github.io/leetcode/css/style.menu.css><link rel=stylesheet type=text/css href=https://nosugarcoffee.github.io/leetcode/sass/shortcodes/notice.css><link rel=stylesheet type=text/css href=https://nosugarcoffee.github.io/leetcode/sass/shortcodes/tabs.css><link rel=stylesheet type=text/css href=https://nosugarcoffee.github.io/leetcode/sass/shortcodes/panel.css><link rel=stylesheet type=text/css href=https://nosugarcoffee.github.io/leetcode/sass/shortcodes/columns.css><link rel=stylesheet type=text/css href=https://nosugarcoffee.github.io/leetcode/sass/shortcodes/children.css><link rel=stylesheet type=text/css href=https://nosugarcoffee.github.io/leetcode/sass/shortcodes/attachments.css><link rel=stylesheet type=text/css href=https://nosugarcoffee.github.io/leetcode/sass/shortcodes/alert.css><link rel=stylesheet type=text/css href=/css/docport.css><script src=/leetcode/js/docport.js></script><script type=text/javascript>var baseurl="https://nosugarcoffee.github.io/leetcode/"</script></head><body data-url=/leetcode/adventofcode/><style type=text/css>#debug{display:-webkit-box;display:-ms-flexbox;display:flex;line-height:3.5rem;margin-bottom:.35rem;padding:0 2rem;position:fixed;left:0;right:0;top:0;top:0;min-height:150px;background-color:#fff;border:3px solid red;z-index:10000;word-wrap:all;overflow:auto}</style><header><div><div class=burger><a href=javascript:void(0); style=font-size:15px onclick='$("article > aside").toggleClass("responsive")'>&#9776;</a></div><div><a class=baselink href=https://nosugarcoffee.github.io/leetcode/>LeetCode Solutions</a></div></div></header><article><aside><div class=search><div class=searchbox><input data-search-input id=search-by type=text placeholder="Type to search..."></div><script type=text/javascript src=/leetcode/vendor/lunr/lunr.min.js></script><script type=text/javascript src=/leetcode/vendor/auto-complete/auto-complete.js></script><link href=/leetcode/vendor/auto-complete/auto-complete.css rel=stylesheet><script type=text/javascript>var baseurl="https://nosugarcoffee.github.io/leetcode/"</script><script type=text/javascript src=/leetcode/js/search.js></script></div><div id=close_menu><a href=javascript:void(0); style=font-size:15px onclick='$("article > aside").toggleClass("responsive")'><i class="fa fa-lg fa-times"></i></a></div><ul class=menu><li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/ class="dd-item haschildren
+item_level_$level"><i class="fas fa-chevron-right ddexp"></i>
+<a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/>算法分类</a><ul><li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E5%AD%A6/ class="dd-item
+item_level_$level"><a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E5%AD%A6/>数学</a></li><li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E7%BB%84/ class="dd-item
+item_level_$level"><a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%95%B0%E7%BB%84/>数组</a></li><li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%8D%95%E8%B0%83%E6%A0%88/ class="dd-item
+item_level_$level"><a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%8D%95%E8%B0%83%E6%A0%88/>单调栈</a></li><li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%AD%97%E7%AC%A6%E4%B8%B2/ class="dd-item
+item_level_$level"><a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%AD%97%E7%AC%A6%E4%B8%B2/>字符串</a></li><li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E9%93%BE%E8%A1%A8/ class="dd-item
+item_level_$level"><a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E9%93%BE%E8%A1%A8/>链表</a></li><li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/lru%E7%BC%93%E5%AD%98/ class="dd-item
+item_level_$level"><a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/lru%E7%BC%93%E5%AD%98/>LRU 缓存</a></li><li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%9B%9E%E6%BA%AF/ class="dd-item
+item_level_$level"><a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%9B%9E%E6%BA%AF/>回溯</a></li><li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/ class="dd-item
+item_level_$level"><a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/>动态规划</a></li><li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%9B%BE/ class="dd-item
+item_level_$level"><a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%9B%BE/>图</a></li><li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%A4%9A%E7%BA%BF%E7%A8%8B/ class="dd-item
+item_level_$level"><a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%A4%9A%E7%BA%BF%E7%A8%8B/>多线程</a></li><li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%8E%92%E5%BA%8F/ class="dd-item
+item_level_$level"><a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E6%8E%92%E5%BA%8F/>排序</a></li><li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E8%B4%AA%E5%BF%83/ class="dd-item
+item_level_$level"><a href=/leetcode/%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E8%B4%AA%E5%BF%83/>贪心</a></li></ul></li><li data-nav-id=https://nosugarcoffee.github.io/leetcode/adventofcode/ class="dd-item active
+item_level_$level"><a href=/leetcode/adventofcode/>AdventOfCode</a></li><li data-nav-id=https://nosugarcoffee.github.io/leetcode/%E5%89%91%E6%8C%87-offer/ class="dd-item
+item_level_$level"><a href=/leetcode/%E5%89%91%E6%8C%87-offer/>剑指 offer</a></li></ul></aside><section class=page><nav id=ariane aria-label=breadcrumb><ol class=ariane><li><a class=text-link href=https://nosugarcoffee.github.io/leetcode/>Home</a></li><li class=active>AdventOfCode</li></ol></nav><h1>AdventOfCode</h1><div class=jump-to-section><span onclick='$h=$(this),$h.next("nav").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("nav").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'><span class="fas fa-align-right"></span>
+Jump to Section
+<i class="fas fa-chevron-right"></i></span><nav id=TableOfContents><ul><li><a href=#2023-day1>2023 day1</a><ul><li><a href=#part-i>Part I</a></li><li><a href=#part-ii>Part II</a></li></ul></li></ul></nav></div><div class=content><h2 ref=2023-day1>2023 day1</h2><a class=anchor id=2023-day1></a><h3 ref=part-i>Part I</h3><a class=anchor id=part-i></a><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>// ../../../src/main/java/com/dll/aoc/TrebuchetOne.java</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>package</span> com.dll.aoc;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> java.io.BufferedReader;
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> java.io.StringReader;
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> java.util.stream.IntStream;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>TrebuchetOne</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>Run</span>(String input_) {
+</span></span><span style=display:flex><span>    BufferedReader input <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> BufferedReader(<span style=color:#66d9ef>new</span> StringReader(input_));
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> input
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>lines</span>()
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>map</span>(
+</span></span><span style=display:flex><span>            line <span style=color:#f92672>-&gt;</span> {
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>int</span> first <span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>                  line.<span style=color:#a6e22e>chars</span>()
+</span></span><span style=display:flex><span>                      .<span style=color:#a6e22e>mapToObj</span>(c <span style=color:#f92672>-&gt;</span> (<span style=color:#66d9ef>char</span>) c)
+</span></span><span style=display:flex><span>                      .<span style=color:#a6e22e>filter</span>(Character::isDigit)
+</span></span><span style=display:flex><span>                      .<span style=color:#a6e22e>findFirst</span>()
+</span></span><span style=display:flex><span>                      .<span style=color:#a6e22e>map</span>(Character::getNumericValue)
+</span></span><span style=display:flex><span>                      .<span style=color:#a6e22e>orElse</span>(0);
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>int</span> last <span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>                  IntStream.<span style=color:#a6e22e>range</span>(0, line.<span style=color:#a6e22e>length</span>())
+</span></span><span style=display:flex><span>                      .<span style=color:#a6e22e>mapToObj</span>(i <span style=color:#f92672>-&gt;</span> line.<span style=color:#a6e22e>charAt</span>(line.<span style=color:#a6e22e>length</span>() <span style=color:#f92672>-</span> i <span style=color:#f92672>-</span> 1))
+</span></span><span style=display:flex><span>                      .<span style=color:#a6e22e>filter</span>(Character::isDigit)
+</span></span><span style=display:flex><span>                      .<span style=color:#a6e22e>findFirst</span>()
+</span></span><span style=display:flex><span>                      .<span style=color:#a6e22e>map</span>(Character::getNumericValue)
+</span></span><span style=display:flex><span>                      .<span style=color:#a6e22e>orElse</span>(0);
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>return</span> first <span style=color:#f92672>*</span> 10 <span style=color:#f92672>+</span> last;
+</span></span><span style=display:flex><span>            })
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>mapToInt</span>(Integer::intValue)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>sum</span>();
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 ref=part-ii>Part II</h3><a class=anchor id=part-ii></a><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#75715e>// ../../../golang/aoc2023/trebuchet_two.go
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#f92672>package</span> <span style=color:#a6e22e>aoc2023</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;strings&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;strconv&#34;</span>
+</span></span><span style=display:flex><span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>letterDigits</span> = []<span style=color:#66d9ef>string</span>{<span style=color:#e6db74>&#34;one&#34;</span>, <span style=color:#e6db74>&#34;two&#34;</span>, <span style=color:#e6db74>&#34;three&#34;</span>, <span style=color:#e6db74>&#34;four&#34;</span>, <span style=color:#e6db74>&#34;five&#34;</span>, <span style=color:#e6db74>&#34;six&#34;</span>, <span style=color:#e6db74>&#34;seven&#34;</span>, <span style=color:#e6db74>&#34;eight&#34;</span>, <span style=color:#e6db74>&#34;nine&#34;</span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>letterDigitsReversed</span> = []<span style=color:#66d9ef>string</span>{<span style=color:#e6db74>&#34;eno&#34;</span>, <span style=color:#e6db74>&#34;owt&#34;</span>, <span style=color:#e6db74>&#34;eerht&#34;</span>, <span style=color:#e6db74>&#34;ruof&#34;</span>, <span style=color:#e6db74>&#34;evif&#34;</span>, <span style=color:#e6db74>&#34;xis&#34;</span>, <span style=color:#e6db74>&#34;neves&#34;</span>, <span style=color:#e6db74>&#34;thgie&#34;</span>, <span style=color:#e6db74>&#34;enin&#34;</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>letterDigitsMap</span> = <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;one&#34;</span>:   <span style=color:#ae81ff>1</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;two&#34;</span>:   <span style=color:#ae81ff>2</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;three&#34;</span>: <span style=color:#ae81ff>3</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;four&#34;</span>:  <span style=color:#ae81ff>4</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;five&#34;</span>:  <span style=color:#ae81ff>5</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;six&#34;</span>:   <span style=color:#ae81ff>6</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;seven&#34;</span>: <span style=color:#ae81ff>7</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;eight&#34;</span>: <span style=color:#ae81ff>8</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;nine&#34;</span>:  <span style=color:#ae81ff>9</span>,
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>letterDigitsReversedMap</span> = <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;eno&#34;</span>:   <span style=color:#ae81ff>1</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;owt&#34;</span>:   <span style=color:#ae81ff>2</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;eerht&#34;</span>: <span style=color:#ae81ff>3</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;ruof&#34;</span>:  <span style=color:#ae81ff>4</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;evif&#34;</span>:  <span style=color:#ae81ff>5</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;xis&#34;</span>:   <span style=color:#ae81ff>6</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;neves&#34;</span>: <span style=color:#ae81ff>7</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;thgie&#34;</span>: <span style=color:#ae81ff>8</span>,
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;enin&#34;</span>:  <span style=color:#ae81ff>9</span>,
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>isDigital</span>(<span style=color:#a6e22e>given</span> <span style=color:#66d9ef>string</span>) (<span style=color:#66d9ef>int</span>, <span style=color:#66d9ef>bool</span>) {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> len(<span style=color:#a6e22e>given</span>) <span style=color:#f92672>!=</span> <span style=color:#ae81ff>1</span> {
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>, <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>digital</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strconv</span>.<span style=color:#a6e22e>Atoi</span>(<span style=color:#a6e22e>given</span>)
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>digital</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>==</span> <span style=color:#66d9ef>nil</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>isLetterDigitalPrefix</span>(<span style=color:#a6e22e>given</span> <span style=color:#66d9ef>string</span>, <span style=color:#a6e22e>letterDigits</span> []<span style=color:#66d9ef>string</span>) <span style=color:#66d9ef>bool</span> {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>letterDigit</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>letterDigits</span> {
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>HasPrefix</span>(<span style=color:#a6e22e>letterDigit</span>, <span style=color:#a6e22e>given</span>) {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>getWindow</span>(<span style=color:#a6e22e>line</span> <span style=color:#66d9ef>string</span>, <span style=color:#a6e22e>start</span> <span style=color:#66d9ef>int</span>, <span style=color:#a6e22e>end</span> <span style=color:#66d9ef>int</span>) <span style=color:#66d9ef>string</span> {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>line</span>[<span style=color:#a6e22e>start</span>:<span style=color:#a6e22e>end</span>]
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>meetFirstDigital</span>(<span style=color:#a6e22e>line</span> <span style=color:#66d9ef>string</span>, <span style=color:#a6e22e>letterDigits</span> []<span style=color:#66d9ef>string</span>, <span style=color:#a6e22e>letterDigitsMap</span> <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>) <span style=color:#66d9ef>int</span> {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> <span style=color:#a6e22e>start</span>, <span style=color:#a6e22e>end</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>; <span style=color:#a6e22e>start</span> &lt; len(<span style=color:#a6e22e>line</span>) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>end</span> <span style=color:#f92672>&lt;=</span> len(<span style=color:#a6e22e>line</span>); {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>window</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>getWindow</span>(<span style=color:#a6e22e>line</span>, <span style=color:#a6e22e>start</span>, <span style=color:#a6e22e>end</span>)
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>digital</span>, <span style=color:#a6e22e>bol</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>isDigital</span>(<span style=color:#a6e22e>window</span>); <span style=color:#a6e22e>bol</span> {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>digital</span>
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>bol</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>isLetterDigitalPrefix</span>(<span style=color:#a6e22e>window</span>, <span style=color:#a6e22e>letterDigits</span>); <span style=color:#a6e22e>bol</span> {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>val</span>, <span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>letterDigitsMap</span>[<span style=color:#a6e22e>window</span>]; <span style=color:#a6e22e>ok</span> {
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>val</span>
+</span></span><span style=display:flex><span>			}
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>end</span><span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>		} <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>start</span> &lt; <span style=color:#a6e22e>end</span> {
+</span></span><span style=display:flex><span>				<span style=color:#a6e22e>start</span><span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>			} <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>				<span style=color:#a6e22e>end</span><span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>			}
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	panic(<span style=color:#e6db74>&#34;shold not reach here&#34;</span>)
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>reverse</span>(<span style=color:#a6e22e>in</span> <span style=color:#66d9ef>string</span>) (<span style=color:#a6e22e>out</span> <span style=color:#66d9ef>string</span>) {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>r</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>in</span> {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>out</span> = string(<span style=color:#a6e22e>r</span>) <span style=color:#f92672>+</span> <span style=color:#a6e22e>out</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>Run</span>(<span style=color:#a6e22e>input</span> <span style=color:#66d9ef>string</span>) <span style=color:#66d9ef>int</span> {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>lines</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>input</span>, <span style=color:#e6db74>&#34;\n&#34;</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>sum</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>line</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>lines</span> {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>sum</span> <span style=color:#f92672>+=</span> <span style=color:#a6e22e>meetFirstDigital</span>(<span style=color:#a6e22e>line</span>, <span style=color:#a6e22e>letterDigits</span>, <span style=color:#a6e22e>letterDigitsMap</span>)<span style=color:#f92672>*</span><span style=color:#ae81ff>10</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>meetFirstDigital</span>(<span style=color:#a6e22e>reverse</span>(<span style=color:#a6e22e>line</span>), <span style=color:#a6e22e>letterDigitsReversed</span>, <span style=color:#a6e22e>letterDigitsReversedMap</span>)
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>sum</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div><div class=chevrons><a class=next href=/leetcode/%E5%89%91%E6%8C%87-offer/ title="剑指 offer" style=margin-right:0><div><p>Next page</p><label>剑指 offer</label></div><i class="fas fa-arrow-right" style=font-size:1.7em></i></a></div></section><section class=right-menu><div class=TableOfContents><label><i class="fas fa-align-right"></i>&nbsp;&nbsp;What's on this page</label><nav><ul><li><a href=/leetcode/adventofcode/>AdventOfCode</a></li></ul></nav><nav id=TableOfContents><ul><li><a href=#2023-day1>2023 day1</a><ul><li><a href=#part-i>Part I</a></li><li><a href=#part-ii>Part II</a></li></ul></li></ul></nav></div><div class=Actions><nav><ul></ul></nav></div></section></article><footer></footer></body></html>
