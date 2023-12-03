@@ -6,6 +6,7 @@ weight: 3
 ## 2023 day1
 
 ### Part I
+
 ```java
 // ../../../src/main/java/com/dll/aoc/TrebuchetOne.java
 
@@ -29,6 +30,7 @@ public class TrebuchetOne {
 ```
 
 ### Part II
+
 ```go
 // ../../../golang/aoc2023/trebuchet_two.go
 
@@ -125,5 +127,4 @@ func Run(input string) int {
 	}
 	return sum
 }
-
 ```
