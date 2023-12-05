@@ -1,9 +1,9 @@
 package aoc2023
 
-import "strings"
 import (
 	"regexp"
 	"strconv"
+	"strings"
 )
 
 func PartOne(input string) int {

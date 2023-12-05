@@ -130,7 +130,6 @@ func meetFirstDigital(line string, letterDigits []string, letterDigitsMap map[st
 		}
 	}
 	panic("shold not reach here")
-	return -1
 }
 
 func reverse(in string) (out string) {
@@ -148,6 +147,7 @@ func Run(input string) int {
 	}
 	return sum
 }
+
 ```
 
 ## 2023 day2
@@ -161,10 +161,10 @@ func Run(input string) int {
 
 package aoc2023
 
-import "strings"
 import (
 	"regexp"
 	"strconv"
+	"strings"
 )
 
 func PartOne(input string) int {
@@ -191,4 +191,5 @@ func PartOne(input string) int {
 	}
 	return result
 }
+
 ```
