@@ -3,10 +3,14 @@ title: AdventOfCode
 weight: 3
 ---
 
-<!-- markdownlint-disable MD010 -->
+<!-- markdownlint-disable MD010 MD013 MD024-->
 
 ## 2023 day1
+
+[problem](https://adventofcode.com/2023/day/1)
+
 ### Part I
+
 ```java
 // ../../../src/main/java/com/dll/aoc/TrebuchetOne.java
 
@@ -47,6 +51,7 @@ public class TrebuchetOne {
 ```
 
 ### Part II
+
 ```go
 // ../../../golang/aoc2023/trebuchet_two.go
 
@@ -142,5 +147,48 @@ func Run(input string) int {
 		sum += meetFirstDigital(line, letterDigits, letterDigitsMap)*10 + meetFirstDigital(reverse(line), letterDigitsReversed, letterDigitsReversedMap)
 	}
 	return sum
+}
+```
+
+## 2023 day2
+
+[problem](https://adventofcode.com/2023/day/2)
+
+### Part I
+
+```go
+// ../../../golang/aoc2023/cube_conundrum.go
+
+package aoc2023
+
+import "strings"
+import (
+	"regexp"
+	"strconv"
+)
+
+func PartOne(input string) int {
+	var re = regexp.MustCompile(`(?mi)(\d+) (\w+)[,;]?`)
+	lines := strings.Split(input, "\n")
+	result := 0
+	for i, line := range lines {
+		m := map[string]int{
+			"red":   0,
+			"green": 0,
+			"blue":  0,
+		}
+		match := re.FindAllStringSubmatch(line, -1)
+		for _, group := range match {
+			count, _ := strconv.Atoi(group[1])
+			color := group[2]
+			if exist, ok := m[color]; ok && exist < count {
+				m[color] = count
+			}
+		}
+		if m["red"] <= 12 && m["green"] <= 13 && m["blue"] <= 14 {
+			result += i + 1
+		}
+	}
+	return result
 }
 ```
