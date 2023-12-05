@@ -73,7 +73,6 @@ func meetFirstDigital(line string, letterDigits []string, letterDigitsMap map[st
 		}
 	}
 	panic("shold not reach here")
-	return -1
 }
 
 func reverse(in string) (out string) {
