@@ -4,8 +4,7 @@ import (
 	"testing"
 )
 
-func TestCubeConundrumOne(t *testing.T) {
-	input := `Game 1: 1 green, 1 blue, 1 red; 1 green, 8 red, 7 blue; 6 blue, 10 red; 4 red, 9 blue, 2 green; 1 green, 3 blue; 4 red, 1 green, 10 blue
+var input = `Game 1: 1 green, 1 blue, 1 red; 1 green, 8 red, 7 blue; 6 blue, 10 red; 4 red, 9 blue, 2 green; 1 green, 3 blue; 4 red, 1 green, 10 blue
 Game 2: 9 red, 7 green, 3 blue; 15 green, 2 blue, 5 red; 10 red, 3 blue, 13 green
 Game 3: 3 red, 1 blue, 4 green; 6 red, 3 green, 2 blue; 6 red, 16 blue, 1 green
 Game 4: 2 blue, 2 green, 19 red; 3 blue, 11 red, 16 green; 18 blue, 13 green, 20 red; 18 red, 12 blue, 16 green; 8 green, 16 blue, 16 red
@@ -106,7 +105,14 @@ Game 98: 1 blue; 2 green, 1 red; 5 red, 2 green; 4 red, 1 green; 2 red, 2 green,
 Game 99: 6 blue, 5 red, 2 green; 9 red, 1 blue; 2 green, 2 red, 5 blue; 10 blue, 2 green; 11 blue, 1 green, 4 red
 Game 100: 1 blue, 13 green, 14 red; 11 green, 11 blue, 7 red; 2 red, 1 blue, 2 green; 10 blue, 15 red`
 
-	if PartOne(input) != 3035 {
-		t.Errorf("Not correct!: %d", PartOne(input))
+func TestCubeConundrumOne(t *testing.T) {
+	if CubeCountingPartOne(input) != 3035 {
+		t.Errorf("Not correct!: %d", CubeCountingPartOne(input))
+	}
+}
+
+func TestCubeCountingPartTwo(t *testing.T) {
+	if CubeCountingPartTwo(input) != 66027 {
+		t.Errorf("Not correct!: %d", CubeCountingPartTwo(input))
 	}
 }
