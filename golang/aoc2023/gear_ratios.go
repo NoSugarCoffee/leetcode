@@ -68,8 +68,8 @@ func GearRatiosPartOne(input string) int {
 			end := numberIndex[1]
 			for y := start; y < end; y++ {
 				if _, bol := exist(NewPoint(x, y), symbolBoardAndAround); bol {
-					number_, _ := strconv.Atoi(numbers[i])
-					result += number_
+					n, _ := strconv.Atoi(numbers[i])
+					result += n
 					break
 				}
 			}
@@ -110,11 +110,11 @@ func GearRatiosPartTwo(input string) int {
 			end := numberIndex[1]
 			for y := start; y < end; y++ {
 				if p, ok := exist(NewPoint(x, y), gearBoard); ok {
-					number_, _ := strconv.Atoi(numbers[ni])
+					n, _ := strconv.Atoi(numbers[ni])
 					if v, ok := adjacentMultiply[p.String()]; ok {
-						result += v * number_
+						result += v * n
 					} else {
-						adjacentMultiply[p.String()] = number_
+						adjacentMultiply[p.String()] = n
 					}
 					break
 				}
