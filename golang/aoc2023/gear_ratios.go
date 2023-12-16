@@ -1,10 +1,10 @@
 package aoc2023
 
 import (
-	"fmt"
-	"regexp"
-	"strconv"
 	"strings"
+	"regexp"
+	"fmt"
+	"strconv"
 )
 
 type Point struct {
@@ -68,8 +68,8 @@ func GearRatiosPartOne(input string) int {
 			end := numberIndex[1]
 			for y := start; y < end; y++ {
 				if _, bol := exist(NewPoint(x, y), symbolBoardAndAround); bol {
-					n, _ := strconv.Atoi(numbers[i])
-					result += n
+					number_, _ := strconv.Atoi(numbers[i])
+					result += number_
 					break
 				}
 			}
@@ -110,11 +110,11 @@ func GearRatiosPartTwo(input string) int {
 			end := numberIndex[1]
 			for y := start; y < end; y++ {
 				if p, ok := exist(NewPoint(x, y), gearBoard); ok {
-					n, _ := strconv.Atoi(numbers[ni])
+					number_, _ := strconv.Atoi(numbers[ni])
 					if v, ok := adjacentMultiply[p.String()]; ok {
-						result += v * n
+						result += v * number_
 					} else {
-						adjacentMultiply[p.String()] = n
+						adjacentMultiply[p.String()] = number_
 					}
 					break
 				}
