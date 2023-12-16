@@ -1,10 +1,10 @@
 package aoc2023
 
 import (
-	"strings"
-	"regexp"
 	"fmt"
+	"regexp"
 	"strconv"
+	"strings"
 )
 
 type Point struct {
