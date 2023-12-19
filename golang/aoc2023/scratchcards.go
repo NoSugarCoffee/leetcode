@@ -3,8 +3,8 @@ package aoc2023
 import (
 	"math"
 	"regexp"
-	"strings"
 	"strconv"
+	"strings"
 )
 
 func calcPoints(times int) int {
