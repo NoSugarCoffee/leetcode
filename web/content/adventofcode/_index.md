@@ -362,8 +362,8 @@ package aoc2023
 import (
 	"math"
 	"regexp"
-	"strings"
 	"strconv"
+	"strings"
 )
 
 func calcPoints(times int) int {
@@ -401,7 +401,7 @@ func matchCount(line string) int {
 	total := 0
 	for _, num := range rightNums {
 		if leftNumbsMap[num] == -1 {
-			total += 1
+			total++
 		}
 	}
 	return total
@@ -423,9 +423,9 @@ func ScratchcardsPartTwo(input string) int {
 	for i, line := range lines {
 		cardIndex := i + 1
 		matched := matchCount(line)
-		instances[cardIndex] = instances[cardIndex] + 1
+		instances[cardIndex]++
 		for j := 1; j <= matched; j++ {
-			instances[cardIndex+j] = instances[cardIndex+j] + instances[cardIndex]
+			instances[cardIndex+j] += instances[cardIndex]
 		}
 	}
 	for _, instance := range instances {
