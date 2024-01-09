@@ -18,6 +18,13 @@ on:
         default: false
 
 jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: hello world
+        shell: bash
+        run: echo "hello world"
+        
   debug:
     runs-on: ubuntu-latest
     name: Debug
