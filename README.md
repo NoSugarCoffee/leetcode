@@ -4,17 +4,17 @@
 [![GitHub Super-Linter](https://github.com/NoSugarCoffee/leetcode/actions/workflows/linter-and-test.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 
-LeetCode solutions writing in java. Rendered by hugo & github pages. You can
+LeetCode solutions are written in Java. Rendered by Hugo & GitHub pages. You can
 visit [here](https://nosugarcoffee.github.io/leetcode) for a happy reading.
 
 ## Local Development And Preview
 
-1. Add comment of relative file path in .md which you want to include, like following:
+1. Add the comment of the relative path in .md that you want to include, like the following:
     ```java
     // ../../../../src/lrucache_146/LRUCache.java
     ```
 2. Run `npx embedme README.md`
-3. Run `hugo server` under web directory
+3. Run `hugo server` under web/
 
 ## Github Actions
 
@@ -25,8 +25,8 @@ visit [here](https://nosugarcoffee.github.io/leetcode) for a happy reading.
 ## Spec
 
 - Following [Chinese Copywriting Guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines) for better written communication
-- Following [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html) 
+- Following [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
 ## Q&A
 
-- How to embed source code by link rather than COPY&PASTE in README ?
+- How to embed source code by link rather than COPY&PASTE in README?
     - You can use this [tool](https://github.com/zakhenry/embedme) written by js.
