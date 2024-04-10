@@ -25,7 +25,6 @@ visit [here](https://nosugarcoffee.github.io/leetcode) for a happy reading.
 ## Spec
 
 - Following [Chinese Copywriting Guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines) for better written communication
-- Following [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
 ## Q&A
 
 - How to embed source code by link rather than COPY&PASTE in README?
