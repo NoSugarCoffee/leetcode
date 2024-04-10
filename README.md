@@ -16,7 +16,7 @@ visit [here](https://nosugarcoffee.github.io/leetcode) for a happy reading.
 2. Run `npx embedme README.md`
 3. Run `hugo server` under web/
 
-## Github Actions
+## GitHub Actions
 
 - Use [super-linter](https://github.com/github/super-linter) for code lint
 - Use [setup-java](https://docs.github.com/en/actions/guides/building-and-testing-java-with-maven) for maven test
