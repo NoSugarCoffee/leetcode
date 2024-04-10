@@ -25,7 +25,8 @@ visit [here](https://nosugarcoffee.github.io/leetcode) for a happy reading.
 ## Spec
 
 - Following [Chinese Copywriting Guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines) for better written communication
+
 ## Q&A
 
 - How to embed source code by link rather than COPY&PASTE in README?
-    - You can use this [tool](https://github.com/zakhenry/embedme) written by js.
+  - You can use this [tool](https://github.com/zakhenry/embedme) written by js.
